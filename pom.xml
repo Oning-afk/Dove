@@ -12,6 +12,8 @@
       <module>service-config</module>
       <module>teacher</module>
       <module>web-boss</module>
+      <module>statistical</module>
+      <module>operating</module>
     </modules>
     <packaging>pom</packaging>
 
