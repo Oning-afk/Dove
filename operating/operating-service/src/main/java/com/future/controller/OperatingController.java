@@ -1,6 +1,8 @@
 package com.future.controller;
 
 import com.future.interfaces.OperatingServiceApi;
+import com.future.model.CardVoucher;
+import com.future.model.PageBean;
 import com.future.service.OperatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +21,7 @@ public class OperatingController implements OperatingServiceApi {
     private OperatingService operatingService;
 
     @Override
-    public String testT() {
-        return "测试成功";
+    public PageBean<CardVoucher> cardVoucherList(CardVoucher cardVoucher, Integer page, Integer rows) {
+        return operatingService.cardVoucherList(cardVoucher,page,rows);
     }
 }

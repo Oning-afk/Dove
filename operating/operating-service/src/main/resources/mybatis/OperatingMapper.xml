@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.OperatingMapper" >
+    <resultMap id="BaseResultMap" type="com.future.model.CardVoucher" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="institutions_id" property="institutionsId" jdbcType="BIGINT" />
+        <result column="card_voucher_no" property="cardVoucherNo" jdbcType="INTEGER" />
+        <result column="card_voucher_number" property="cardVoucherNumber" jdbcType="INTEGER" />
+        <result column="received_number" property="receivedNumber" jdbcType="INTEGER" />
+        <result column="memo" property="memo" jdbcType="VARCHAR" />
+        <result column="card_voucher_type" property="cardVoucherType" jdbcType="INTEGER" />
+        <result column="validite_day" property="validiteDay" jdbcType="INTEGER" />
+        <result column="to_received_date" property="toReceivedDate" jdbcType="TIMESTAMP" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="getCount" parameterType="com.future.model.CardVoucher" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            card_voucher
+        where
+            1 = 1
+            <if test="id != null" >
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="institutionsId != null" >
+                and institutions_id = #{institutionsId,jdbcType=BIGINT}
+            </if>
+            <if test="cardVoucherNo != null" >
+                and card_voucher_no = #{cardVoucherNo,jdbcType=INTEGER}
+            </if>
+    </select>
+
+    <select id="cardVoucherList" parameterType="map" resultMap="BaseResultMap">
+        select
+            *,
+            cvt.card_voucher_name as cardVoucherName
+        from
+            card_voucher cv
+        left join
+            card_voucher_type cvt
+        on
+            cv.card_voucher_type = cvt.id
+        where
+            1 = 1
+                <if test="cardVoucher.id != null" >
+                    and cv.id = #{cardVoucher.id,jdbcType=BIGINT}
+                </if>
+                <if test="cardVoucher.institutionsId != null" >
+                    and cv.institutions_id = #{cardVoucher.institutionsId,jdbcType=BIGINT}
+                </if>
+                <if test="cardVoucher.cardVoucherNo != null" >
+                    and cv.card_voucher_no = #{cardVoucher.cardVoucherNo,jdbcType=INTEGER}
+                </if>
+        limit
+            #{page},#{rows}
+    </select>
+</mapper>
