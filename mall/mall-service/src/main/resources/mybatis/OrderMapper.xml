@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.OrderMapper" >
+    <resultMap id="BaseResultMap" type="com.future.model.Order" >
+        <id column="orderid" property="orderId" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="commodity_id" property="commodityId" jdbcType="INTEGER" />
+        <result column="inventory" property="inventory" jdbcType="INTEGER" />
+        <result column="exchangeNumber" property="exchangeNumber" jdbcType="INTEGER" />
+        <result column="methodPayment" property="methodPayment" jdbcType="VARCHAR" />
+        <result column="payAmount" property="payAmount" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="generatetime" property="generatetime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <select id="getCount" parameterType="com.future.model.Order" resultType="java.lang.Integer">
+        select
+        count(*)
+        from
+        mall_order
+        where
+        1 = 1
+        <if test="orderId != null" >
+            and orderid = #{orderId,jdbcType=INTEGER}
+        </if>
+        <if test="userId != null" >
+            and user_id = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="commodityId != null" >
+            and commodity_id = #{commodityId,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="orderList" parameterType="map" resultMap="BaseResultMap">
+        select
+        *,
+        com.commodity_name as commodityName,
+        com.freight as commodityFreight,
+        us.name as userName
+        from
+        mall_order a
+        left join
+        mall_commodity com
+        on
+        a.commodity_id = com.id
+        left join
+        t_user us
+        on
+        a.user_id = us.id
+        where
+        1 = 1
+        <if test="orderId != null" >
+            and orderid = #{orderId,jdbcType=INTEGER}
+        </if>
+        <if test="userId != null" >
+            and user_id = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="commodityId != null" >
+            and commodity_id = #{commodityId,jdbcType=INTEGER}
+        </if>
+        limit
+        #{page},#{rows}
+    </select>
+</mapper>

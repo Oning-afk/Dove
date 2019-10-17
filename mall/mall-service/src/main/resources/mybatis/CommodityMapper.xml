@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.CommodityMapper" >
+    <resultMap id="BaseResultMap" type="com.future.model.Commodity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="classification_id" property="classificationId" jdbcType="BIGINT" />
+        <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
+        <result column="price" property="price" />
+        <result column="inventory" property="inventory" jdbcType="INTEGER" />
+        <result column="freight" property="freight" />
+        <result column="state" property="state" jdbcType="INTEGER" />
+        <result column="essence" property="essence" jdbcType="INTEGER" />
+        <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
+        <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+        <result column="coverimg" property="coverimg" jdbcType="VARCHAR" />
+        <result column="details" property="details" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="getCount" parameterType="com.future.model.Commodity" resultType="java.lang.Integer">
+        select
+        count(*)
+        from
+        mall_commodity
+        where
+        1 = 1
+        <if test="id != null" >
+            and id = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="classificationId != null" >
+            and classification_id = #{classificationId,jdbcType=BIGINT}
+        </if>
+    </select>
+
+    <select id="commodityList" parameterType="map" resultMap="BaseResultMap">
+        select
+        *,
+        com.name as name
+        from
+        mall_commodity co
+        left join
+        mall_commodity_type com
+        on
+        co.classification_id = com.id
+        where
+        1 = 1
+        <if test="id != null" >
+            and id = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="classificationId != null" >
+            and classification_id = #{classificationId,jdbcType=BIGINT}
+        </if>
+        limit
+        #{page},#{rows}
+    </select>
+
+</mapper>

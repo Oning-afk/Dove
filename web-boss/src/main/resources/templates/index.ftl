@@ -264,9 +264,9 @@
                         <a id="root_72" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('72');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">商城管理</span></a>
                         <ul id="tree_72" class="submenu">
                             <!-- 第三级菜单 -->
-                            <li><a id="menu_73" href="javascript:void(0)" onClick="switch_sub_menu('73', 'http://try.51eduline.com/index.php?app=mall&mod=AdminGoods&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">商品管理</a></li>
-                            <li><a id="menu_74" href="javascript:void(0)" onClick="switch_sub_menu('74', 'http://try.51eduline.com/index.php?app=mall&mod=AdminGoodsOrder&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">订单管理</a></li>
-                            <li><a id="menu_75" href="javascript:void(0)" onClick="switch_sub_menu('75', 'http://try.51eduline.com/index.php?app=mall&mod=AdminGoodsAddress&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">收货地址管理</a></li>
+                            <li><a id="menu_73" href="javascript:void(0)" onClick="switch_sub_menu('73', '/mall/findCommodity');" class="submenuA" hidefocus="true" style="outline:none;">商品管理</a></li>
+                            <li><a id="menu_74" href="javascript:void(0)" onClick="switch_sub_menu('74', '/order/findOrder');" class="submenuA" hidefocus="true" style="outline:none;">订单管理</a></li>
+                            <li><a id="menu_75" href="javascript:void(0)" onClick="switch_sub_menu('75', '/receiving/findReceiving');" class="submenuA" hidefocus="true" style="outline:none;">收货地址管理</a></li>
                             <li><a id="menu_76" href="javascript:void(0)" onClick="switch_sub_menu('76', 'http://try.51eduline.com/index.php?app=mall&mod=AdminGoodsCate&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">商品分类配置</a></li>
                             <li><a id="menu_77" href="javascript:void(0)" onClick="switch_sub_menu('77', 'http://try.51eduline.com/index.php?app=admin&mod=Config&act=kuaidiConfig&');" class="submenuA" hidefocus="true" style="outline:none;">物流信息配置</a></li>
                         </ul>
