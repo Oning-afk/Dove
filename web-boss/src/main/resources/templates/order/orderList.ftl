@@ -549,7 +549,7 @@
                     <td>${order.exchangeNumber}</td>
                     <td>${order.commodityFreight}</td>
                     <td>${order.methodPayment}</td>
-                    <td>￥${order.payAmount}</td>
+                    <td>${order.payAmount}</td>
                     <td>${order.address}</td>
                     <td>${order.generatetime ? string('yyyy-MM-dd hh:mm:ss')}</td>
                     <td>
