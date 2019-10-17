@@ -14,6 +14,16 @@
     <dependencies>
         <dependency>
             <groupId>com.future</groupId>
+            <artifactId>user-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.future</groupId>
+            <artifactId>user-feign</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.future</groupId>
             <artifactId>teacher-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
