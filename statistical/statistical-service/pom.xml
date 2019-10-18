@@ -19,12 +19,35 @@
       <artifactId>statistical-common</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-mongodb</artifactId>
+    </dependency>
 
     <!-- mybatis -->
     <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
       <artifactId>mybatis-spring-boot-starter</artifactId>
     </dependency>
+      <!-- 加入POI核心依赖 -->
+      <dependency>
+          <groupId>org.apache.poi</groupId>
+          <artifactId>poi</artifactId>
+          <version>3.10-beta2</version>
+      </dependency>
+      <!-- 为POI支持Office Open XML -->
+      <dependency>
+          <groupId>org.apache.poi</groupId>
+          <artifactId>poi-ooxml</artifactId>
+          <version>3.10-beta2</version>
+      </dependency>
+      <!-- 支持Word文档的操作 -->
+      <dependency>
+          <groupId>org.apache.poi</groupId>
+          <artifactId>poi-scratchpad</artifactId>
+          <version>3.10-beta2</version>
+      </dependency>
+
 
     <dependency>
       <groupId>mysql</groupId>
