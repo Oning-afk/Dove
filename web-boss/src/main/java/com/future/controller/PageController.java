@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @program: dove-parent
+<<<<<<< HEAD
  * @description: 跳转页面
  * @author: 邓希凡
  * @create: 2019-10-17 10:59
@@ -20,8 +21,8 @@ public class PageController {
     * @Author: 邓希凡 
     * @Date: 2019/10/17 
     */ 
-    @RequestMapping("index")
-    public String index(){
+    @RequestMapping("toMain")
+    public String toMain(){
         return "index";
     }
 
@@ -30,9 +31,9 @@ public class PageController {
         return "login";
     }
 
-    @RequestMapping("rear")
-    public String rear(){
-        return "rear";
+    @RequestMapping("main")
+    public String main(){
+        return "main";
     }
-    
+
 }

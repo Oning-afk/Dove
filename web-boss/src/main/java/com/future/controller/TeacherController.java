@@ -1,9 +1,12 @@
 package com.future.controller;
 
+import com.future.model.Swiper;
 import com.future.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @program: dove-parent
@@ -21,4 +24,10 @@ public class TeacherController {
     public String testT(){
         return teacherService.testT();
     }
+
+    @RequestMapping("findSwiper")
+    public List<Swiper> findSwiper(){
+        return teacherService.findSwiper();
+    }
+
 }
