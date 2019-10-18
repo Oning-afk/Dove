@@ -1,9 +1,12 @@
 package com.future.controller;
 
 import com.future.interfaces.TeacherServiceApi;
+import com.future.model.Swiper;
 import com.future.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @program: dove-parent
@@ -19,7 +22,7 @@ public class TeacherController implements TeacherServiceApi {
     private TeacherService teacherService;
 
     @Override
-    public String testT() {
-        return "测试成功";
+    public List<Swiper> findSwiper() {
+        return teacherService.findSwiper();
     }
 }

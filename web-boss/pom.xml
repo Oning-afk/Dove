@@ -12,6 +12,8 @@
     <artifactId>web-boss</artifactId>
     <name>web-boss</name>
     <dependencies>
+
+
         <dependency>
             <groupId>com.future</groupId>
             <artifactId>mall-common</artifactId>
@@ -78,6 +80,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
         </dependency>
 
         <dependency>

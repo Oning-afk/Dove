@@ -15,15 +15,11 @@ import java.util.List;
  * @create: 2019-10-12 16:57
  **/
 @RestController
+@RequestMapping("teacher")
 public class TeacherController {
 
     @Autowired
     private TeacherService teacherService;
-
-    @RequestMapping("test")
-    public String testT(){
-        return teacherService.testT();
-    }
 
     @RequestMapping("findSwiper")
     public List<Swiper> findSwiper(){

@@ -12,12 +12,23 @@
     <name>teacher-service</name>
 
     <dependencies>
+
         <dependency>
             <groupId>com.future</groupId>
             <artifactId>teacher-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <!-- redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
         <!-- mybatis -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
