@@ -1,960 +1,418 @@
 
-<!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Eduline — Eduline在线教育平台|在线网校系统|在线教育系统|在线教育解决方案|在线教育系统|在线学习系统|在线培训系统</title>
-    <meta content="在线教育，教育系统，在线教育系统，在线教育平台，在线教育网站，在线教育解决方案，网络教学系统，直播系统，点播系统，录播系统，在线约课，在线考试，在线题库，题库系统，在线教育app，在线网校系统，网校系统，培训系统，企业培训系统，企业内训系统，在线培训系统，在线教育系统，在线学习系统，慕课系统，教育系统源码，教育源码，教育源码" name="keywords">
-    <meta content="Eduline多机构在线教育交易平台" name="description">
-    <meta name="viewport" charset="UTF-8" content="user-scalable=no"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link href="css/admin_header.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Eduline - Eduline在线教育平台|在线网校系统|在线教育系统|在线教育解决方案|在线教育系统|在线学习系统|在线培训系统</title>
+    <link rel="shortcut icon" href="images/5b6a91bca0b3b.ico" type="image/x-icon">
+    <script type="text/javascript" src="js/jquery-1.8.0.js"></script>
 
-    <link rel="shortcut icon" href="http://try.51eduline.com/data/upload/2018/0808/14/5b6a91bca0b3b.ico" type="image/x-icon">
+    <script type="text/javascript">
+        var SITE_URL = 'http://try.51eduline.com';
+        var APPNAME = 'admin';
+        /* 按下F5时仅刷新iframe页面 */
 
-    <!-- 站点css -->
-    <!--<link href="http://try.51eduline.com/addons/theme/stv1/_static/css/css.php?t=css&f=common_new.css,basic_new.css,common.css,index.css,logincss.css,media.css,style.css,style_add.css,style_new.css,wenda.css,_header_footer.css&v=20180814.css" rel="stylesheet" type="text/css" />-->
-    <link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/rest.css?v=20180814">
-    <link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/icon/iconfont.css?v=20180814">
-    <link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/common.css?v=20180814">
-    <link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/index.css?v=20180814">
-    <link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/style.css?v=20180814">
-    <link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/js/tbox/box.css?v=20180814">
-    <style>
-        @font-face {font-family: 'iconfontNEW';src: url('http://try.51eduline.com/addons/theme/stv1/_static/icon/iconfontNEW.woff?v={$site.sys_version}');}
-        .iconfontNEW{font-family: iconfontNEW;}
-    </style>
-    <!--<script src="http://try.51eduline.com/addons/theme/stv1/_static/js/js.php?t=js&f=jquery.form.js,common.js,core.js,module.js,module.common.js,jwidget_1.0.0.js,jquery.atwho.js,jquery.caret.js,ui.core.js,ui.draggable.js,plugins/core.comment.js,plugins/core.digg.js&v=20180814.js"></script>-->
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/jquery.atwho.js"></script>
-    <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/jquery.caret.js"></script>
-    <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/core.js?v=20180814"></script>
-    <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/module.js?v=20180814"></script>
-    <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/module.common.js?v=20180814"></script>
-    <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/common.js?v=20180814"></script>
-    <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/script.js?v=20180814"></script>
-    <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/user.js?v=20180814"></script>
-    <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/plugins/core.comment.js?v=20180814"></script>
-
-    <script>
-        //全局变量
-        var SITE_URL  = 'http://try.51eduline.com';
-        var UPLOAD_URL= 'http://try.51eduline.com/data/upload';
-        var THEME_URL = 'http://try.51eduline.com/addons/theme/stv1/_static';
-        var APPNAME   = 'classroom';
-        var MID		  = '0';
-        var UID		  = '0';
-        var initNums  =  '140';
-        var SYS_VERSION = '20180814';
-        var _ROOT_    = 'http://try.51eduline.com';
-
-        //注册登录模板
-        var REG_LOGIN="http://try.51eduline.com/index.php?app=basic&mod=Passport&act=regLogin";
-        //邮箱验证地址
-        var CLICK_EMIL="http://try.51eduline.com/index.php?app=basic&mod=Passport&act=clickEmail";
-        //异步注册地址
-        var REG_ADDRESS="http://try.51eduline.com/index.php?app=basic&mod=Passport&act=ajaxReg";
-        //异步登录
-        var LOGIN_ADDRESS="http://try.51eduline.com/index.php?app=basic&mod=Passport&act=ajaxLogin";
-        //退出登录
-        var LOGINOUT_ADDRESS="http://try.51eduline.com/index.php?app=basic&mod=Passport&act=logout";
-        //手机号正则
-        var PHONE_MATCH = /^1[3|4|5|6|7|8|9][0-9]\d{8}$/;
-        //邮箱正则
-        var EMAIL_MATCH = /([\w\-\.]+\@[\w\-\.]+\.[\w\-\.]+)/;
-
-        $(function(){
-            $('.backtop').click(function(){
-                $('body,html').animate({scrollTop:0},300);
-                return false;
-            });
-            $('.full-course').hover(function(){
-                $(this).addClass('hover');
-            },function(){
-                $(this).removeClass('hover');
-            });
-
-            $(".search_index_val span a").click(function(){
-                var span_Val = $(this).text();
-                var a_Attr = $(this).attr("attr");
-                $(".search_index_val p").html(span_Val);
-                $("#search_cate").val(a_Attr);
-                $(".search_index #search_combo_input").attr("placeholder","搜索"+span_Val);
-                $(this).hide().siblings().show();
-            });
-
-            $(".search_index input").focus(function(){
-                $(".search_index").css("width","250px");
-                $(".search_index input").css("width","140px");
-            });
-            $.post("http://localhost:5880/statistics/saveVisit");
-        });
-
-        $(window).scroll(function(){
-            if($(window).scrollTop()>300){
-                $('.backtop').fadeIn(300);
-            }else{
-                $('.backtop').fadeOut(200);
+        document.onkeydown=function (e) {
+            e=window.event||e;
+            var key = e.keyCode;
+            if ((e.ctrlKey && key == 82) || key == 116) {
+                parent.MainIframe.location.reload();
+                if(document.all) {
+                    e.keyCode = 0;
+                    e.returnValue = false;
+                }else {
+                    e.cancelBubble = true;
+                    e.preventDefault();
+                }
             }
-        });
-
-        if(navigator.userAgent.match(/(iPhone|Android|ios)/i)) {
-            $(window).load(function () {
-                $('.modular,.logos,.window-box').show();
-                $('.users').attr('style','display:block');
-            });
         }
+        function nof5() {
+            return true;
+        }
+        //模拟ts U函数 需要预先定义JS全局变量 SITE_URL 和 APPNAME
+        var U = function(url, params) {
+            var website = SITE_URL + '/index.php';
+            url = url.split('/');
+            if (url[0] == '' || url[0] == '@') url[0] = APPNAME;
+            if (!url[1]) url[1] = 'Index';
+            if (!url[2]) url[2] = 'index';
+            website = website + '?app=' + url[0] + '&mod=' + url[1] + '&act=' + url[2];
+            if (params) {
+                params = params.join('&');
+                website = website + '&' + params;
+            }
+            return website;
+        };
 
-        function closeMsg(obj){
-            $(".news-msg").remove();
+        function refresh() {
+            parent.MainIframe.location.reload();
         }
     </script>
-    <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/ui.layer.js"></script>
 
-    <!-- 站点js -->
-    <!--[if lt IE 9]>
-    <script src="http://try.51eduline.com/addons/theme/stv1/_static/js/lazyload/html5shiv.js"></script>
-    <![endif]-->
-    <!--[if lt IE 9]><script src="js/html5.js" type="text/javascript"></script><![endif]-->
-
+    <!--主题色配置-->
+    <style>
+        .header , .header .logo ,.MenuList ul, .MenuList li ,.submenu li ,#FrameTitle{background-color:#323944;}
+        .treemenu .actuator{background-color: #3f4856;}
+        .header .main_nav a , .submenu li a{color:#c8cee0;}
+        .header .logo a .icon{color: #3676b3;}
+    </style>
 </head>
-<body>
 
+<body style="margin:0; padding:0;" onLoad="nof5()">
 
-<link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/reg_login.css?v=20180814">
-
-<div id="transparent" style="display: none;">
-
-    <div id="loging-worap-regsiter"><a class="loging-Cancel" href="javascript:;" onclick="removeReg()">×</a>
-        <!--登录-->
-        <div id="loging-worap">
-            <div class="title">登录</div>
-            <div class="loging" style="padding:0 20px;margin:0;width:auto;border:0">
-                <ul>
-                    <li class="her-login">
-                        <div class="input-box">
-                            <i class="icon-zhanghao"></i>
-                            <input name="usercode" id="usercode" class="regsiter-width" maxlength="30" type="text" placeholder="请输入用户名/手机号/邮箱">
-                            <em>×</em>
-                        </div>
-                    </li>
-                    <li class="her-login">
-                        <div class="input-box">
-                            <i class="icon-mima"></i>
-                            <input name="password" id="password" class="regsiter-width" maxlength="30" type="password" placeholder="请输入登录密码">
-                            <em>×</em>
-                        </div>
-                    </li>
-                    <li class="her-login">
-                        <input name="" id="logSub" onclick="logSub()" class="loging-xy-submit" type="submit" value="登录"/>
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td colspan="3">
+            <div class="header"><!-- 头部 begin -->
+                <div class="logo">
+                    <a href="http://try.51eduline.com/admin.html"><i class="icon icon-houtai9"></i>管理中心</a>
+                </div>
+                <div class="nav_sub">
+                    您好,17792274425&nbsp; | <a target="_blank" href="/">返回前台</a> | <a href="javascript:void(0);" onClick="refresh();">刷新</a> | <a href="http://try.51eduline.com/index.php?app=admin&mod=Public&act=logout">退出</a><br/>
+                    <div id="TopTime"></div>
+                </div>
+                <div class="main_nav">
+                    <a id="channel_index" class="on" href="javascript:void(0)" onclick="switchChannel('index');" hidefocus="true" style="outline:none;">首页</a><a id="channel_statistics"  href="javascript:void(0)" onclick="switchChannel('statistics');" hidefocus="true" style="outline:none;">统计</a><a id="channel_content"  href="javascript:void(0)" onclick="switchChannel('content');" hidefocus="true" style="outline:none;">运营</a><a id="channel_course"  href="javascript:void(0)" onclick="switchChannel('course');" hidefocus="true" style="outline:none;">课堂</a><a id="channel_finance"  href="javascript:void(0)" onclick="switchChannel('finance');" hidefocus="true" style="outline:none;">财务</a><a id="channel_mall"  href="javascript:void(0)" onclick="switchChannel('mall');" hidefocus="true" style="outline:none;">商城</a><a id="channel_school"  href="javascript:void(0)" onclick="switchChannel('school');" hidefocus="true" style="outline:none;">机构</a>            </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td width="234px" height="100%" valign="top" id="FrameTitle" >
+            <div class="LeftMenu">
+                <!--<div class="g-icon">
+                    <img src="http://try.51eduline.com/apps/admin/_static/images/jin.png" alt="">
+                </div>-->
+                <!-- 第一级菜单，即大频道 -->
+                <ul class="MenuList" id="root_index" >
+                    <!-- 第二级菜单 -->
+                    <li class="treemenu">
+                        <a id="root_1" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('1');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">首页</span></a>
+                        <ul id="tree_1" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_2" href="javascript:void(0)" onClick="switch_sub_menu('2', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=statistics&');" class="submenuA" hidefocus="true" style="outline:none;">基本信息</a></li>
+                            <li><a id="menu_3" href="javascript:void(0)" onClick="switch_sub_menu('3', 'http://try.51eduline.com/index.php?app=admin&mod=Tool&act=cleancache&');" class="submenuA" hidefocus="true" style="outline:none;">缓存清理</a></li>
+                        </ul>
                     </li>
                 </ul>
-                <div class="loging-xy">
-                    <div class="loging-bottom">
-                        <div class="third-party"><dl><dd><a href="http://try.51eduline.com/login_callback/qzone/Login/login_sync_other.html" class="icon-qzone"></a></dd><dd><a href="http://try.51eduline.com/login_callback/weixin/Login/login_sync_other.html" class="icon-weixin"></a></dd><dd><a href="http://try.51eduline.com/login_callback/sina/Login/login_sync_other.html" class="icon-sina"></a></dd></dl></div>                        <div class="loging-xy-bottom">
-                        <a class="goto_res" href="http://try.51eduline.com/register.html">注册账号</a>                            <a href="http://try.51eduline.com/repwd.html" sty>忘记密码？</a></div>
-                        <style>
-                            #transparent a{color: #00BED4;}
-                            .icon-qzone {
-                                background-position: -461px -661px;
-                                background-image:url(http://try.51eduline.com/addons/theme/stv1/_static/icon/icon.png);
-                            }
-                            .icon-weixin {
-                                background-position: -511px -661px;
-                                background-image:url(http://try.51eduline.com/addons/theme/stv1/_static/icon/icon.png);
-                            }
-                            .icon-sina {
-                                background-position: -561px -661px;
-                                background-image:url(http://try.51eduline.com/addons/theme/stv1/_static/icon/icon.png);
-                            }
-                        </style>
-                    </div>
-                </div>
+                <ul class="MenuList" id="root_statistics" style="display:none;">
+                    <!-- 第二级菜单 -->
+                    <li class="treemenu">
+                        <a id="root_4" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('4');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">统计管理</span></a>
+                        <ul id="tree_4" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_5" href="javascript:void(0)" onClick="switch_sub_menu('5', '/statistics/visit');" class="submenuA" hidefocus="true" style="outline:none;">访问统计</a></li>
+                            <li><a id="menu_6" href="javascript:void(0)" onClick="switch_sub_menu('6', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=regCount&');" class="submenuA" hidefocus="true" style="outline:none;">用户注册量统计</a></li>
+                            <li><a id="menu_7" href="javascript:void(0)" onClick="switch_sub_menu('7', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=activeCount&');" class="submenuA" hidefocus="true" style="outline:none;">活跃度统计</a></li>
+                            <li><a id="menu_8" href="javascript:void(0)" onClick="switch_sub_menu('8', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=courseSales&');" class="submenuA" hidefocus="true" style="outline:none;">课程销量统计</a></li>
+                            <li><a id="menu_9" href="javascript:void(0)" onClick="switch_sub_menu('9', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=orderCount&');" class="submenuA" hidefocus="true" style="outline:none;">销量变化</a></li>
+                            <li><a id="menu_10" href="javascript:void(0)" onClick="switch_sub_menu('10', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=vipUserCount&');" class="submenuA" hidefocus="true" style="outline:none;">会员统计</a></li>
+                            <li><a id="menu_11" href="javascript:void(0)" onClick="switch_sub_menu('11', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=profit&');" class="submenuA" hidefocus="true" style="outline:none;">收益统计</a></li>
+                            <li><a id="menu_12" href="javascript:void(0)" onClick="switch_sub_menu('12', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminLearnRecord&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">学习记录统计</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="MenuList" id="root_content" style="display:none;">
+                    <!-- 第二级菜单 -->
+                    <li class="treemenu">
+                        <a id="root_13" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('13');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">营销卡管理</span></a>
+                        <ul id="tree_13" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_14" href="javascript:void(0)" onClick="switch_sub_menu('14', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminUserCard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">卡券发放记录</a></li>
+                            <li><a id="menu_15" href="javascript:void(0)" onClick="switch_sub_menu('15', '/operating/findCardVoucher');" class="submenuA" hidefocus="true" style="outline:none;">线上卡券管理</a></li>
+                            <li><a id="menu_16" href="javascript:void(0)" onClick="switch_sub_menu('16', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminEntityCard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">实体卡管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_17" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('17');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">内容管理</span></a>
+                        <ul id="tree_17" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_18" href="javascript:void(0)" onClick="switch_sub_menu('18', 'http://try.51eduline.com/index.php?app=news&mod=AdminTopic&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">资讯管理</a></li>
+                            <li><a id="menu_19" href="javascript:void(0)" onClick="switch_sub_menu('19', 'http://try.51eduline.com/index.php?app=admin&mod=Single&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">单页管理</a></li>
+                            <li><a id="menu_20" href="javascript:void(0)" onClick="switch_sub_menu('20', 'http://try.51eduline.com/index.php?app=admin&mod=Content&act=message&');" class="submenuA" hidefocus="true" style="outline:none;">私信管理</a></li>
+                            <li><a id="menu_21" href="javascript:void(0)" onClick="switch_sub_menu('21', 'http://try.51eduline.com/index.php?app=admin&mod=Suggest&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">反馈管理</a></li>
+                            <li><a id="menu_22" href="javascript:void(0)" onClick="switch_sub_menu('22', 'http://try.51eduline.com/index.php?app=admin&mod=SystemMessage&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">系统消息管理</a></li>
+                            <li><a id="menu_23" href="javascript:void(0)" onClick="switch_sub_menu('23', 'http://try.51eduline.com/index.php?app=admin&mod=MessageBoard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">留言板管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_24" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('24');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">活动管理</span></a>
+                        <ul id="tree_24" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_25" href="javascript:void(0)" onClick="switch_sub_menu('25', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminDiscount&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">限时打折</a></li>
+                            <li><a id="menu_26" href="javascript:void(0)" onClick="switch_sub_menu('26', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminSeckill&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">秒杀抢购</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_27" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('27');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">等级头衔管理</span></a>
+                        <ul id="tree_27" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_28" href="javascript:void(0)" onClick="switch_sub_menu('28', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminVip&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">会员等级</a></li>
+                            <li><a id="menu_29" href="javascript:void(0)" onClick="switch_sub_menu('29', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminTeacherVip&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">讲师头衔</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_30" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('30');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">财务配置</span></a>
+                        <ul id="tree_30" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_31" href="javascript:void(0)" onClick="switch_sub_menu('31', 'http://try.51eduline.com/index.php?app=mall&mod=AdminGlobalConfig&act=credit&');" class="submenuA" hidefocus="true" style="outline:none;">积分规则配置</a></li>
+                            <li><a id="menu_32" href="javascript:void(0)" onClick="switch_sub_menu('32', 'http://try.51eduline.com/index.php?app=admin&mod=Config&act=rechargeIntoConfig&');" class="submenuA" hidefocus="true" style="outline:none;">余额&积分配置</a></li>
+                            <li><a id="menu_33" href="javascript:void(0)" onClick="switch_sub_menu('33', 'http://try.51eduline.com/index.php?app=admin&mod=Config&act=vipPatternConfig&');" class="submenuA" hidefocus="true" style="outline:none;">会员模式管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_34" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('34');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">营销配置</span></a>
+                        <ul id="tree_34" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_35" href="javascript:void(0)" onClick="switch_sub_menu('35', 'http://try.51eduline.com/index.php?app=admin&mod=Config&act=marketConfig&');" class="submenuA" hidefocus="true" style="outline:none;">营销数据开关</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="MenuList" id="root_user" style="display:none;">
+                    <!-- 第二级菜单 -->
+                    <li class="treemenu">
+                        <a id="root_36" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('36');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">用户</span></a>
+                        <ul id="tree_36" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_37" href="javascript:void(0)" onClick="switch_sub_menu('37', 'http://try.51eduline.com/index.php?app=admin&mod=User&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">用户管理</a></li>
+                            <li><a id="menu_38" href="javascript:void(0)" onClick="switch_sub_menu('38', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminTeacher&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">讲师管理</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="MenuList" id="root_course" style="display:none;">
+                    <!-- 第二级菜单 -->
+                    <li class="treemenu">
+                        <a id="root_39" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('39');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">点播课管理</span></a>
+                        <ul id="tree_39" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_40" href="javascript:void(0)" onClick="switch_sub_menu('40', 'http://try.51eduline.com/index.php?app=course&mod=AdminVideo&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">点播课管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_41" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('41');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">直播课管理</span></a>
+                        <ul id="tree_41" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_42" href="javascript:void(0)" onClick="switch_sub_menu('42', 'http://try.51eduline.com/index.php?app=live&mod=AdminLive&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">直播课管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_43" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('43');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">班级管理</span></a>
+                        <ul id="tree_43" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_44" href="javascript:void(0)" onClick="switch_sub_menu('44', 'http://try.51eduline.com/index.php?app=course&mod=AdminAlbum&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">班级课管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_45" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('45');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">线下课管理</span></a>
+                        <ul id="tree_45" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_46" href="javascript:void(0)" onClick="switch_sub_menu('46', 'http://try.51eduline.com/index.php?app=course&mod=AdminLineClass&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">线下课管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_47" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('47');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">考试管理</span></a>
+                        <ul id="tree_47" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_48" href="javascript:void(0)" onClick="switch_sub_menu('48', 'http://try.51eduline.com/index.php?app=exams&mod=AdminCategory&act=subject&');" class="submenuA" hidefocus="true" style="outline:none;">分类管理</a></li>
+                            <li><a id="menu_49" href="javascript:void(0)" onClick="switch_sub_menu('49', 'http://try.51eduline.com/index.php?app=exams&mod=AdminPoint&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">考点管理</a></li>
+                            <li><a id="menu_50" href="javascript:void(0)" onClick="switch_sub_menu('50', 'http://try.51eduline.com/index.php?app=exams&mod=AdminQuestion&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">试题管理</a></li>
+                            <li><a id="menu_51" href="javascript:void(0)" onClick="switch_sub_menu('51', 'http://try.51eduline.com/index.php?app=exams&mod=AdminPaper&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">试卷管理</a></li>
+                            <li><a id="menu_52" href="javascript:void(0)" onClick="switch_sub_menu('52', 'http://try.51eduline.com/index.php?app=exams&mod=AdminExamsUser&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">成绩管理</a></li>
+                            <li><a id="menu_53" href="javascript:void(0)" onClick="switch_sub_menu('53', 'http://try.51eduline.com/index.php?app=exams&mod=AdminExamsCert&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">证书管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_54" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('54');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">内容管理</span></a>
+                        <ul id="tree_54" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_55" href="javascript:void(0)" onClick="switch_sub_menu('55', 'http://try.51eduline.com/index.php?app=wenda&mod=AdminWenda&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">问答管理</a></li>
+                            <li><a id="menu_56" href="javascript:void(0)" onClick="switch_sub_menu('56', 'http://try.51eduline.com/index.php?app=course&mod=AdminNote&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">笔记管理</a></li>
+                            <li><a id="menu_57" href="javascript:void(0)" onClick="switch_sub_menu('57', 'http://try.51eduline.com/index.php?app=course&mod=AdminQuestion&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">提问管理</a></li>
+                            <li><a id="menu_58" href="javascript:void(0)" onClick="switch_sub_menu('58', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminReview&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">点评管理</a></li>
+                            <li><a id="menu_59" href="javascript:void(0)" onClick="switch_sub_menu('59', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminLibrary&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">文库管理</a></li>
+                            <li><a id="menu_60" href="javascript:void(0)" onClick="switch_sub_menu('60', 'http://try.51eduline.com/index.php?app=course&mod=AdminCourseCategory&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">分类配置</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="MenuList" id="root_finance" style="display:none;">
+                    <!-- 第二级菜单 -->
+                    <li class="treemenu">
+                        <a id="root_61" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('61');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">订单与账户</span></a>
+                        <ul id="tree_61" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_62" href="javascript:void(0)" onClick="switch_sub_menu('62', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminOrder&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">订单管理</a></li>
+                            <li><a id="menu_63" href="javascript:void(0)" onClick="switch_sub_menu('63', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminApplirefund&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">申请退款管理</a></li>
+                            <li><a id="menu_64" href="javascript:void(0)" onClick="switch_sub_menu('64', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminWithdraw&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">提现申请</a></li>
+                            <li><a id="menu_65" href="javascript:void(0)" onClick="switch_sub_menu('65', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminCard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">卡号列表</a></li>
+                            <li><a id="menu_66" href="javascript:void(0)" onClick="switch_sub_menu('66', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminRecharge&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">支付记录</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_67" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('67');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">财务明细管理</span></a>
+                        <ul id="tree_67" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_68" href="javascript:void(0)" onClick="switch_sub_menu('68', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminLearnc&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">余额管理</a></li>
+                            <li><a id="menu_69" href="javascript:void(0)" onClick="switch_sub_menu('69', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminUserSplit&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">收入管理</a></li>
+                            <li><a id="menu_70" href="javascript:void(0)" onClick="switch_sub_menu('70', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminSplit&act=splitVideo&');" class="submenuA" hidefocus="true" style="outline:none;">分成明细</a></li>
+                            <li><a id="menu_71" href="javascript:void(0)" onClick="switch_sub_menu('71', 'http://try.51eduline.com/index.php?app=mall&mod=AdminGlobal&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">积分管理</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="MenuList" id="root_mall" style="display:none;">
+                    <!-- 第二级菜单 -->
+                    <li class="treemenu">
+                        <a id="root_72" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('72');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">商城管理</span></a>
+                        <ul id="tree_72" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_73" href="javascript:void(0)" onClick="switch_sub_menu('73', '/mall/findCommodity');" class="submenuA" hidefocus="true" style="outline:none;">商品管理</a></li>
+                            <li><a id="menu_74" href="javascript:void(0)" onClick="switch_sub_menu('74', '/order/findOrder');" class="submenuA" hidefocus="true" style="outline:none;">订单管理</a></li>
+                            <li><a id="menu_75" href="javascript:void(0)" onClick="switch_sub_menu('75', '/receiving/findReceiving');" class="submenuA" hidefocus="true" style="outline:none;">收货地址管理</a></li>
+                            <li><a id="menu_76" href="javascript:void(0)" onClick="switch_sub_menu('76', 'http://try.51eduline.com/index.php?app=mall&mod=AdminGoodsCate&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">商品分类配置</a></li>
+                            <li><a id="menu_77" href="javascript:void(0)" onClick="switch_sub_menu('77', 'http://try.51eduline.com/index.php?app=admin&mod=Config&act=kuaidiConfig&');" class="submenuA" hidefocus="true" style="outline:none;">物流信息配置</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="MenuList" id="root_school" style="display:none;">
+                    <!-- 第二级菜单 -->
+                    <li class="treemenu">
+                        <a id="root_78" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('78');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">机构</span></a>
+                        <ul id="tree_78" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_79" href="javascript:void(0)" onClick="switch_sub_menu('79', 'http://try.51eduline.com/index.php?app=school&mod=AdminSchool&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">机构管理</a></li>
+                            <li><a id="menu_80" href="javascript:void(0)" onClick="switch_sub_menu('80', 'http://try.51eduline.com/index.php?app=school&mod=AdminDomaiName&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">独立域名管理</a></li>
+                            <li><a id="menu_81" href="javascript:void(0)" onClick="switch_sub_menu('81', 'http://try.51eduline.com/index.php?app=school&mod=AdminSchool&act=footNav&');" class="submenuA" hidefocus="true" style="outline:none;">首页配置</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_82" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('82');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">内容管理</span></a>
+                        <ul id="tree_82" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_83" href="javascript:void(0)" onClick="switch_sub_menu('83', 'http://try.51eduline.com/index.php?app=news&mod=AdminTopic&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">资讯管理</a></li>
+                            <li><a id="menu_84" href="javascript:void(0)" onClick="switch_sub_menu('84', 'http://try.51eduline.com/index.php?app=course&mod=AdminVideo&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">点播课管理</a></li>
+                            <li><a id="menu_85" href="javascript:void(0)" onClick="switch_sub_menu('85', 'http://try.51eduline.com/index.php?app=live&mod=AdminLive&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">直播课管理</a></li>
+                            <li><a id="menu_86" href="javascript:void(0)" onClick="switch_sub_menu('86', 'http://try.51eduline.com/index.php?app=course&mod=AdminAlbum&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">班级课管理</a></li>
+                            <li><a id="menu_87" href="javascript:void(0)" onClick="switch_sub_menu('87', 'http://try.51eduline.com/index.php?app=course&mod=AdminLineClass&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">线下课管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_88" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('88');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">用户</span></a>
+                        <ul id="tree_88" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_89" href="javascript:void(0)" onClick="switch_sub_menu('89', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminTeacher&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">讲师管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_90" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('90');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">数据统计</span></a>
+                        <ul id="tree_90" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_91" href="javascript:void(0)" onClick="switch_sub_menu('91', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=regCount&');" class="submenuA" hidefocus="true" style="outline:none;">用户注册量统计</a></li>
+                            <li><a id="menu_92" href="javascript:void(0)" onClick="switch_sub_menu('92', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=activeCount&');" class="submenuA" hidefocus="true" style="outline:none;">活跃度统计</a></li>
+                            <li><a id="menu_93" href="javascript:void(0)" onClick="switch_sub_menu('93', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=courseSales&');" class="submenuA" hidefocus="true" style="outline:none;">课程销量统计</a></li>
+                            <li><a id="menu_94" href="javascript:void(0)" onClick="switch_sub_menu('94', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=orderCount&');" class="submenuA" hidefocus="true" style="outline:none;">销量变化</a></li>
+                            <li><a id="menu_95" href="javascript:void(0)" onClick="switch_sub_menu('95', 'http://try.51eduline.com/index.php?app=admin&mod=Home&act=profit&');" class="submenuA" hidefocus="true" style="outline:none;">收益统计</a></li>
+                            <li><a id="menu_96" href="javascript:void(0)" onClick="switch_sub_menu('96', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminLearnRecord&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">学习记录统计</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_97" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('97');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">营销卡管理</span></a>
+                        <ul id="tree_97" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_98" href="javascript:void(0)" onClick="switch_sub_menu('98', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminUserCard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">卡券发放</a></li>
+                            <li><a id="menu_99" href="javascript:void(0)" onClick="switch_sub_menu('99', '/operating/findCardVoucher');" class="submenuA" hidefocus="true" style="outline:none;">线上卡券管理</a></li>
+                            <li><a id="menu_100" href="javascript:void(0)" onClick="switch_sub_menu('100', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminEntityCard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">实体卡管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="treemenu">
+                        <a id="root_101" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('101');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">订单与账户</span></a>
+                        <ul id="tree_101" class="submenu">
+                            <!-- 第三级菜单 -->
+                            <li><a id="menu_102" href="javascript:void(0)" onClick="switch_sub_menu('102', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminOrder&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">订单管理</a></li>
+                            <li><a id="menu_103" href="javascript:void(0)" onClick="switch_sub_menu('103', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminSplit&act=splitVideo&');" class="submenuA" hidefocus="true" style="outline:none;">用户分成管理</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </div>
-    <div id="loging-back"></div>
-</div>
-
-<script>
-
-    function logSub(){
-        var usercode = $("#usercode").val();
-        var password = $("#password").val();
-        if(usercode!=null&&password!=null){
-            $.ajax({
-                url:"http://localhost:5880/user/login",
-                type:"post",
-                data:{usercode:usercode,password:password},
-                dataType:"json",
-                success:function(data){
-                    if(data.success){
-
-                    }else{
-                        alert(data.message);
-                    }
-                },
-                error:function(){
-                    alert("错误");
-                }
-            })
-
-        }
-    }
-
-    $(document).keydown(function (event) {
-        if ($("#transparent").css("display") == "block") {
-            if (event.keyCode == 13) {
-                logSub();
-            }
-        }
-    });
-    /**
-     * 取消注册
-     */
-    function removeReg() {
-        $("#transparent").css("display", "none");
-    }
-
-    $('.loging li .input-box em').on("click",function(){
-        $(this).siblings(".regsiter-width").val("").focus();
-    });
-
-    $(".loging li .input-box .regsiter-width").blur(function(){
-        $(this).parent(".loging li .input-box").css({"box-shadow":"0px 0px 0 0 rgba(255,255,255,1)","border": "1px solid #eeeeee"})
-    });
-
-    $(".loging li .input-box .regsiter-width").focus(function(){
-        $(this).parent(".loging li .input-box").css({"box-shadow":"0px 0px 1px 1px rgba(0,190,212,1)","border": "1px solid transparent"})
-    });
-</script>
-<div class="win hide"></div>
-
-<div class="top">
-    <div class="header_new2">
-        <div class="top1">
-            <div class="top1img">
-                <a href="/" title="Eduline"><img src="http://try.51eduline.com/data/upload/2018/12/045c065a09b4e79.png" width="150"/></a>
-            </div>
-
-            <div class="nav">
-                <ul>
-                    <li class='active'>
-                        <a href="http://try.51eduline.com" target="_self">首页</a>
-                    </li>                        <li >
-                    <a href="javascript:;" target="_self">课程</a>
-                    <span class="course-class">
-                            <a href="http://try.51eduline.com/course.html?vtype=1" target="_self">点播</a><a href="http://try.51eduline.com/course.html?vtype=2" target="_self">直播</a><a href="http://try.51eduline.com/album.html" target="_self">班级</a><a href="http://try.51eduline.com/lineclass.html" target="_self">线下</a>                            </span>                        </li>                        <li >
-                    <a href="http://try.51eduline.com/exam.html" target="_self">考试</a>
-                </li>                        <li >
-                    <a href="http://try.51eduline.com/school.html" target="_self">机构</a>
-                </li>                        <li >
-                    <a href="http://try.51eduline.com/teacher.html" target="_self">名师</a>
-                </li>                        <li >
-                    <a href="http://try.51eduline.com/vip.html" target="_self">会员</a>
-                </li>                        <li >
-                    <a href="javascript:;" target="_self">更多</a>
-                    <span class="course-class">
-                            <a href="http://try.51eduline.com/mall.html" target="_self">商城</a><a href="http://try.51eduline.com/card_receipt/coupon.html" target="_self">卡券</a><a href="http://try.51eduline.com/news.html" target="_self">资讯</a><a href="http://try.51eduline.com/question.html" target="_self">问答</a><a href="http://try.51eduline.com/library.html" target="_self">资料</a>                            </span>                        </li>                </ul>
-            </div>
-        </div>
-
-        <div class="top3">
-            <!--消息提示-->
-            <ul class="news-msg" style="display:none;">
-                <a class="shanchu-ico" href="javascript:;" onClick="closeMsg(this)">×</a>
-
-
-
-            </ul>
-            <div class="search_index">
-                <div class="search_index_val">
-                    <div>
-                        <p>课程</p><i></i>
-                    </div>
-                    <span>
-                        <a href="javascript:void(0)" attr="course">课程</a>
-                        <a href="javascript:void(0)" attr="school">机构</a>                        <a href="javascript:void(0)" attr="teacher">讲师</a>
-                    </span>
-                    <input value="video" id="search_cate" type="hidden" disabled />
-                </div>
-                <p class="bd_right"></p>
-                <input type="text" id="search_combo_input" placeholder="搜索课程">
-                <i class="search_start icon icon-sousuo" id="btn_search_site"></i>
-            </div>
-            <script>
-                $(function(){
-                    $('#btn_search_site').click(function(){
-                        var search_cate = $('#search_cate').val();
-                        var search_combo_input = $('#search_combo_input').val();
-                        if(search_combo_input != ''){
-                            if(search_cate == 'video'){
-                                window.open("http://try.51eduline.com/course.html"+"?search="+search_combo_input);
-                            }else if(search_cate == 'school'){
-                                window.open("http://try.51eduline.com/school.html"+"?search="+search_combo_input);
-                            }else if(search_cate == 'teacher'){
-                                window.open("http://try.51eduline.com/teacher.html"+"?search="+search_combo_input);
-                            }
-                        }
-                    });
-
-                    $(".search_index_val").hover(function(){
-                        $(".search_index").css("border-radius","4px 4px 4px 0px")
-                    },function(){
-                        $(".search_index").css("border-radius","4px 4px 4px 4px")
-                    })
-                })
-                function closeMsg(){
-                    $(".news-msg").remove();
-                }
-            </script>
-            <div class="nav1">
-                <div class="look_scanning">
-                    <i></i>
-                    <div class="ewm">
-                        <div class="h5">
-                            <div id="nav_h5_qrcode"><img style="display: block;" width="86" height="86" src="http://try.51eduline.com/index.php?app=basic&mod=Qrcode&act=index&config[content]=http%3A%2F%2Ftry.51eduline.com&config[print]=1" data-bd-imgshare-binded="1"></div>
-                            <p>手机网页端</p>
-                        </div>
-                        <div class="app">
-                            <div id="nav_app_qrcode"><img src="http://try.51eduline.com/index.php?app=basic&mod=Qrcode&act=index&config[content]=https%3A%2F%2Fwww.pgyer.com%2F5RDd%3Fversion%3D4.1&config[print]=1" data-bd-imgshare-binded="1"></div>
-                            <p>APP下载</p>
-                        </div>
-                    </div>
-                </div>
-                <ul class="page_header_adiv">
-                    <li><a href="javascript:;" onclick="reg_login();">登录</a></li>
-                    <li style="line-height: 80px;">丨</li>
-                    <li>
-                        <a href="http://try.51eduline.com/register.html">注册</a>                        </li>                </ul>
-            </div>
-
-            <div class="nav2">
-                <a class="page_header_adiv" href="http://try.51eduline.com/login.html">机构入驻</a>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    if($(".ewm").children().length>1){
-        $(".ewm").width(203)
-    }else{
-        $(".ewm").width(93)
-    }
-</script>
-
-<link rel="stylesheet" type="text/css" href="http://try.51eduline.com/apps/classroom/_static/css/index.css">
-<link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/slick_banner.css">
-<link rel="stylesheet" type="text/css" href="../css/swiper.css">
-<link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/slider_banner.css">
-<script src="../js/swiper.js"></script>
-<script src="../js/vue/vue.js"></script>
-<script src="http://try.51eduline.com/addons/theme/stv1/_static/js/countUp.min.js"></script>
-<script src="http://try.51eduline.com/addons/theme/stv1/_static/js/index_2.0.js"></script>
-<script src="http://try.51eduline.com/addons/theme/stv1/_static/js/slick.js"></script>
-<script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/jquery.SuperSlide.2.1.1.js"></script>
-<script>
-    $(function(){
-        vm = new Vue({
-            el: '#slideshow',
-            data:{
-                list:{
-                    imgs:'',
-                    url:''
-                }
-            }
-        });
-
-        findSwiper();
-
-        $(".direction a").on("click",function(){
-            $("#search_cate").val($(this).attr("attr"));
-            var search_cate = $("search_cate").val();
-        });
-        $('#btn_search_site').click(function(){
-            var search_cate = $('#search_cate').val();
-            var search_combo_input = $('#search_combo_input').val();
-            if(search_combo_input != ''){
-                if(search_cate == 'video'){
-                    window.open("http://try.51eduline.com/course.html"+"?search="+search_combo_input);
-                }else if(search_cate == 'school'){
-                    window.open("http://try.51eduline.com/school.html"+"?search="+search_combo_input);
-                }else if(search_cate == 'teacher'){
-                    window.open("http://try.51eduline.com/teacher.html"+"?search="+search_combo_input);
-                }
-            }
-        });
-        $('.search_hot a').click(function(){
-            var cateId = $(this).attr('attr');
-            var search_cate = $('#search_cate').val();
-            if(search_cate == 'video'){
-                window.open("http://try.51eduline.com/course.html"+"?search="+cateId);
-            }else if(search_cate == 'school'){
-                window.open("http://try.51eduline.com/school.html"+"&search="+cateId);
-            }else if(search_cate == 'teacher'){
-                window.open("http://try.51eduline.com/teacher.html"+"?search="+cateId);
-            }
-        });
-        $(window).scroll(function () {
-            var _lazydata=[];
-            $.each($(".information-imgtxt .lazyload"),function () {
-                lazydata={
-                    obj:$(this),
-                    url:$(this).attr("data-original"),
-                };
-                _lazydata.push(lazydata)
-            });
-            $.each(_lazydata,function (i,data) {
-                if(data.obj.offset().top-$(document).scrollTop()<$(window).height()){
-                    data.obj.attr("src",data.url)
-                }
-            })
-        })
-    })
-
-    function findSwiper(){
-        $.post("http://localhost:5880/findSwiper",{},function (data) {
-            vm.list = data;
-        })
-    }
-
-    var mySwiper = new Swiper('.swiper-container',{
-        prevButton:'.swiper-button-prev',
-        nextButton:'.swiper-button-next',
-    })
-</script>
-<!--banner start-->
-<section>
-    <div class="swiper-container" >
-            <div class="swiper-wrapper" id="slideshow">
-                <span v-for="site in list">
-                    <div class="swiper-slide">
-                            <a :href="site.url" title="">
-                                <img :src="site.imgs" alt="" >
-                            </a>
-                    </div>
-                </span>
-            </div>
-            <!-- Add Pagination -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
-</section>
-<!--banner end-->
-
-<!-- 首页模块 -->
-<!--APP下载、创建小组、入驻机构-->
-<div class="body01" style="margin:0 auto">
-    <ul class="my-server">
-        <li>
-            <a href="https://www.pgyer.com/5RDd?version=4.1">
-                <i class="icon icon-app"></i>
-                <span>
-                                <h3>APP下载</h3>
-                                <small>海量课程随身携带</small>
-                            </span>
-            </a>
-        </li>
-        <li>
-            <a href="javascript:;" onClick="reg_login();"
-            >
-                <i class="icon icon-laoshi"></i>
-                <span>
-                                <h3>认证讲师</h3>
-                                <small>寻找更多志同道合的人</small>
-                            </span>
-            </a>
-        </li>
-        <li class="border-none">
-
-            <a href="javascript:;" onClick="reg_login();"
-            >
-                <i class="icon icon-jigou1"></i>
-                <span>
-                                    <h3>入驻机构</h3>
-                                    <small>打造专属的在线课堂</small>
-                                </span>
-            </a>
-        </li>
-    </ul>
-
-    <!--热门资讯-->
-    <!-- <div class="hot-news">
-         <h4>热门资讯：</h4>
-         <ul>
-             <li><i class="icon icon-dian"></i><a href="http://try.51eduline.com/news/55.html">啊啊啊</a></li>                    </ul>
-     </div>-->
-</div>
-
-
-
-
-
-<!---->
-
-
-
-
-<!--最新课程 start-->
-<div class="body01">
-    <h1>最新课程</h1>
-    <div class="body01-content">
-        <ul>
-            <li>
-                <img class="lefttopimg" src="http://try.51eduline.com/addons/theme/stv1/_static/images/course.png"
-                     alt="">
-                <a href="http://try.51eduline.com/course/176.html">
-                    <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/10/135da30070ebe5c_580_320_580_320.jpg" alt="" />
-                </a>
-                <div class="title">
-                    <h5><a href="http://try.51eduline.com/course/176.html">一组测试</a></h5>
-                    <span><strong> ￥66</strong><small>300人购买</small></span>
-                </div>
-            </li><li>
-            <img class="lefttopimg" src="http://try.51eduline.com/addons/theme/stv1/_static/images/course.png"
-                 alt="">
-            <a href="http://try.51eduline.com/course/170.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/08/025d432b6488191_580_320_580_320.png" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/course/170.html">内在管理111</a></h5>
-                <span><strong><span style="color: #56b02a;">免费</span> </strong><small>10000003人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/166.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/06/175d07941490d11_580_320_580_320.png" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/166.html">贝刃公益</a></h5>
-                <span><strong><span style="color: #56b02a;">免费</span> </strong><small>185人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/160.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/04/275cc3a293f3bea_580_320_580_320.jpg" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/160.html">mm</a></h5>
-                <span><strong> ￥100</strong><small>102人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/158.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/04/105cad4231455e1_580_320_580_320.jpg" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/158.html">好直播</a></h5>
-                <span><strong> ￥250</strong><small>102人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/154.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/03/295c9de7711d633_580_320_580_320.jpg" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/154.html">java从入门到放弃</a></h5>
-                <span><strong><span style="color: #56b02a;">免费</span> </strong><small>168人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/152.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/03/295c9d7aef4eedb_580_320_580_320.jpg" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/152.html">222</a></h5>
-                <span><strong> ￥333</strong><small>101人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/136.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/09/255ba9951b2f803_580_320_580_320.jpg" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/136.html">tesdt123456</a></h5>
-                <span><strong><span style="color: #56b02a;">免费</span> </strong><small>186人购买</small></span>
-            </div>
-        </li>                </ul>
-    </div>
-    <!--查看更多-->
-    <div class="all-buy">
-        <a href="http://try.51eduline.com/course.html?orderBy=new"  class="look-all">查看更多</a>
-    </div>
-</div>
-<!--最新课程 end-->
-
-
-<!---->
-
-
-
-<!--精选课程 start-->
-<div class="body01">
-    <h1>精选课程</h1>
-    <div class="body01-content">
-        <ul>
-            <li>
-                <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-                <a href="http://try.51eduline.com/live/166.html">
-                    <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/06/175d07941490d11_580_320_580_320.png" alt="" />
-                </a>
-                <div class="title">
-                    <h5><a href="http://try.51eduline.com/live/166.html">贝刃公益</a></h5>
-                    <span><strong><span style="color: #56b02a;">免费</span> </strong><small>185人购买</small></span>
-                </div>
-            </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/116.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0808/15/5b6a9f1ba14b6_580_320_580_320.png" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/116.html">展示互动直播课</a></h5>
-                <span><strong> ￥200</strong><small>133人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/136.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/09/255ba9951b2f803_580_320_580_320.jpg" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/136.html">tesdt123456</a></h5>
-                <span><strong><span style="color: #56b02a;">免费</span> </strong><small>186人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg" src="http://try.51eduline.com/addons/theme/stv1/_static/images/course.png"
-                 alt="">
-            <a href="http://try.51eduline.com/course/176.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/10/135da30070ebe5c_580_320_580_320.jpg" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/course/176.html">一组测试</a></h5>
-                <span><strong> ￥66</strong><small>300人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/117.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0808/15/5b6a9faf4147c_580_320_580_320.png" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/117.html">CClive直播课</a></h5>
-                <span><strong> ￥300</strong><small>130人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/118.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0808/15/5b6aa03c4641c_580_320_580_320.png" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/118.html">微吼直播课</a></h5>
-                <span><strong> ￥100</strong><small>133人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg" src="http://try.51eduline.com/addons/theme/stv1/_static/images/course.png"
-                 alt="">
-            <a href="http://try.51eduline.com/course/5.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0814/13/5b726b963f7e7_580_320_580_320.jpg" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/course/5.html">Oracle数据库开发</a></h5>
-                <span><strong> ￥100</strong><small>138人购买</small></span>
-            </div>
-        </li><li>
-            <img class="lefttopimg"  src="http://try.51eduline.com/apps/course/_static/icon/living.png" alt="">
-            <a href="http://try.51eduline.com/live/154.html">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/03/295c9de7711d633_580_320_580_320.jpg" alt="" />
-            </a>
-            <div class="title">
-                <h5><a href="http://try.51eduline.com/live/154.html">java从入门到放弃</a></h5>
-                <span><strong><span style="color: #56b02a;">免费</span> </strong><small>168人购买</small></span>
-            </div>
-        </li>                </ul>
-    </div>
-    <!--查看更多-->
-    <div class="all-buy">
-        <a href="http://try.51eduline.com/course.html?best=1"  class="look-all">查看更多</a>
-    </div>
-</div>
-<!--精选课程 end-->
-
-
-
-<!---->
-
-
-
-
-
-<!--分享 start-->
-<div class="body01" style="width:100%;background: #F5F8FA;height: 350px;overflow: hidden">
-    <h1>让知识更好的分享</h1>
-    <div class="share-date">
-        <ul>
-            <li class="co1 jumbo" style="">
-                <strong style="">20</strong>
-                <small>/个</small><p>在线课程</p>
-            </li>
-            <li class="co2 jumbo">
-                <strong>12</strong>
-                <small>/个</small><p>入驻机构</p>
-            </li>                    <li class="co3 jumbo" style="">
-            <strong style="">5</strong>
-            <small>/个</small><p>入驻老师</p>
-        </li>
-            <li class="co4 jumbo" style="">
-                <strong style="">
-                    100w+                        </strong>
-                <small>/个</small><p>平台用户</p>
-            </li>
-        </ul>
-    </div>
-</div>
-<!--分享 end-->
-
-<!---->
-
-
-
-
-
-
-<!--讲师团队 start-->
-<div class="body01">
-    <h1>讲师团队</h1>
-    <div class="teacher-team">
-        <ul>
-            <li>
-                <a href="http://try.51eduline.com/teacher/80.html">
-                            <span>
-                                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2019/10/125da1914735f67.jpg">
-                            </span>
-                    <h5>王新生</h5>
-                    <small>金牌讲师</small>
-                    <p></p>
-                </a>
-            </li><li>
-            <a href="http://try.51eduline.com/teacher/8.html">
-                            <span>
-                                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0808/15/5b6a980e7ff20.png">
-                            </span>
-                <h5>测试机构4讲师2</h5>
-                <small>普通讲师</small>
-                <p>一直从事专业教育工作，旨在发现创新的教学方法，力争提升学生的理解能力，并推广有趣...</p>
-            </a>
-        </li><li>
-            <a href="http://try.51eduline.com/teacher/7.html">
-                            <span>
-                                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0808/15/5b6a97fcaaa23.png">
-                            </span>
-                <h5>测试机构4讲师1</h5>
-                <small>普通讲师</small>
-                <p>一直从事专业教育工作，旨在发现创新的教学方法，力争提升学生的理解能力，并推广有趣...</p>
-            </a>
-        </li><li>
-            <a href="http://try.51eduline.com/teacher/6.html">
-                            <span>
-                                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0808/15/5b6a97f035412.png">
-                            </span>
-                <h5>测试机构3讲师2</h5>
-                <small>普通讲师</small>
-                <p>她以不对称、曲面状的前卫服饰闻名全球，受到许多时尚界人士的喜爱，从那开始，她就一...</p>
-            </a>
-        </li>                </ul>
-    </div>
-    <!--查看更多-->
-    <div class="all-buy">
-        <a href="http://try.51eduline.com/teacher.html" class="look-all">查看更多</a>
-    </div>
-</div>
-<!--讲师团队 end-->
-<!---->
-
-
-
-
-
-
-<!--入驻机构 strat-->
-<div class="body01">
-    <h1>入驻机构</h1>
-    <div class="settled-shcool">
-        <ul>
-            <li>
-                <a href="http://aa.try.51eduline.com">
-                    <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0808/15/5b6a9c4eaa219_140_140_140_140.png">
-                    <p>测试机构1</p>
-                </a>
-            </li><li>
-            <a href="http://try.51eduline.com/index.php?app=school&mod=School&act=index&id=3">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0808/15/5b6a9c806d272_140_140_140_140.png">
-                <p>测试机构3</p>
-            </a>
-        </li><li>
-            <a href="http://try.51eduline.com/index.php?app=school&mod=School&act=index&id=4">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0808/15/5b6a9ce541139_140_140_140_140.png">
-                <p>测试机构4</p>
-            </a>
-        </li><li>
-            <a href="http://try.51eduline.com/index.php?app=school&mod=School&act=index&id=5">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/0808/15/5b6a9cf230803_140_140_140_140.png">
-                <p>测试机构5</p>
-            </a>
-        </li><li>
-            <a href="http://try.51eduline.com/index.php?app=school&mod=School&act=index&id=31">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload/2018/10/305bd82178af3a4_140_140_140_140.jpg">
-                <p>牛顿课堂</p>
-            </a>
-        </li><li>
-            <a href="http://try.51eduline.com/index.php?app=school&mod=School&act=index&id=37">
-                <img class="lazyload" data-original="http://try.51eduline.com/data/upload//_140_140.">
-                <p>金科教育</p>
-            </a>
-        </li>                </ul>
-    </div>
-    <!--查看更多-->
-    <div class="all-buy">
-        <a href="http://try.51eduline.com/school.html" class="look-all">查看更多</a>
-    </div>
-</div>
-<!--入驻机构 end-->
-<div class="post-service yensen">
-    <div class="other-service">
-        <div class="service-class" style='width:160px; '>
-            <a target="_blank"  href="javascript:;"
-            ><span>服务规则</span></a>
-            <a target="_blank"                         href="http://try.51eduline.com/single/1.html"  >绑卡验证协议</a><a target="_blank"                         href="http://try.51eduline.com/single/2.html"  >会员服务协议</a><a target="_blank"                         href="http://try.51eduline.com/single/23.html"  >合作专区</a><a target="_blank"                         href="http://try.51eduline.com/single/25.html"  >机构帮助</a><a target="_blank"                         href="http://try.51eduline.com/single/26.html"  >机构入驻协议</a>            </div><div class="service-class" style='width:160px; '>
-        <a target="_blank"  href="javascript:;"
-        ><span>机构入驻</span></a>
-        <a target="_blank"                         href="http://try.51eduline.com/single/4.html"  >第一步</a><a target="_blank"  href="javascript:;"
-    >机构入驻</a><a target="_blank"                         href="http://try.51eduline.com/single/5.html"  >第二步</a><a target="_blank"                         href="http://try.51eduline.com/single/6.html"  >第三步</a><a target="_blank"  href="javascript:;"
-    >第四步</a>            </div><div class="service-class" style='width:160px; '>
-        <a target="_blank"  href="javascript:;"
-        ><span>用户注册</span></a>
-        <a target="_blank"                         href="http://try.51eduline.com/single/9.html"  >第一步</a><a target="_blank"                         href="http://try.51eduline.com/single/10.html"  >第二步</a><a target="_blank"                         href="http://try.51eduline.com/single/11.html"  >第三步</a><a target="_blank"  href="javascript:;"
-    >第四步</a>            </div><div class="service-class" style='width:160px; '>
-        <a target="_blank"  href="javascript:;"
-        ><span>名师签约</span></a>
-        <a target="_blank"                         href="http://try.51eduline.com/single/13.html"  >联系平台</a><a target="_blank"                         href="http://try.51eduline.com/single/14.html"  >后台审核</a><a target="_blank"                         href="http://try.51eduline.com/single/15.html"  >签约成功</a>            </div><div class="service-class" style='width:160px; '>
-        <a target="_blank"  href="javascript:;"
-        ><span>平台流程</span></a>
-        <a target="_blank"  href="javascript:;"
-        >个人用户</a><a target="_blank"                         href="http://try.51eduline.com/single/18.html"  >机构（名师）用户</a><a target="_blank"                         href="http://try.51eduline.com/single/19.html"  >第二级页面展示</a>            </div>        <div class="tel-box">
-        <div class="week">关注官方微信</div>
-        <div class="tel-icon">
-            <img src="http://try.51eduline.com/data/upload/2018/0808/14/5b6a92f043126_120_120_120_120.jpg">
-        </div>
-    </div>
-    </div>
-    <div class="copyright-box">
-        Copyright 2017 seition All Rights Reserved  |  蜀ICP 备 16004612号    </div>
-</div>
-<!--footer end-->
-<div class="sidernav">
-    <ul>
-        <li>
-            <a href="javascript:;"><i class="icon-01"></i></a>
-            <div class="qq_and_phone_info_div">
-                <div class="siderbox">
-                    <p>分享到：</p>
-                    <div class="bdsharebuttonbox">
-                        <!-- <a data-cmd="more" class="bds_more " href="#"></a> -->
-                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                        <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-
-                        <script>
-                            window._bd_share_config = {
-                                "common": {
-                                    "bdSnsKey": {
-                                        "tqq": "https://share.baidu.com/code#"
-                                    },
-                                    "bdText": "",
-                                    "bdMini": "2",
-                                    "bdMiniList": ["tsina", "weixin", "qzone", "sqq", "renren", "copy"],
-                                    "bdPic": "",
-                                    "bdStyle": "1",
-                                    "bdSize": "24"
-                                },
-                                "share": {},
-                                "image": {
-                                    "viewList": ["tsina", "weixin", "qzone", "sqq"],
-                                    "viewText": "分享到：",
-                                    "viewSize": "0"}
-                            };
-                            with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement(
-                                'script')).src = 'http://try.51eduline.com/addons/theme/stv1/_static/js/baiduShare/static/api/js/share.js?cdnversion=' +
-                                ~(-new Date() / 36e5)];
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <!--<li>-->
-        <!--<a href="javascript:;">-->
-        <!--<i class="icon-02"></i>-->
-        <!--</a>-->
-        <!--<div class="xiala">-->
-        <!--<img src="http://try.51eduline.com/data/upload//_120_120." alt="">-->
-        <!--<p>扫描下载APP</p>-->
-        <!--</div>-->
-        <!--</li>-->
-
-        <li>
-            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3132698449&site=http://try.51eduline.com&menu=yes"> <i class="icon-03"></i>
-            </a>
-            <div class="qq_and_phone_info_div">
-                <div class="siderbox">
-                    <dl>
-                        <dt class="qq_info_dt">
-                            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3132698449&site=http://try.51eduline.com&menu=yes">
-                                <span class="icon-qq"></span>QQ在线咨询</a>
-                        </dt>
-                    </dl>
-                    <dl>
-                        <dt><span class="icon-ph"></span>咨询热线：</dt>
-                        <dd style="color:#188eee;">010-5334-5805</dd>
-                        <dd style="color:#25c151;">136-2125-8074</dd>
-                    </dl>
-                </div>
-            </div>
-        </li>
-
-        <li>
-            <a href="javascript:;">
-                <i class="icon-05"></i>
-            </a>
-            <div class="xiala">
-                <img src="http://try.51eduline.com/data/upload/2018/0808/14/5b6a92e7ca6bf_120_120_120_120.png" alt="">
-                <p>扫一扫关注官方<span style="color: #FB7D30">微博</span></p>
-            </div>
-        </li>
-
-        <li>
-            <a href="javascript:;">
-                <i class="icon-06"></i>
-            </a>
-            <div class="xiala">
-                <img src="http://try.51eduline.com/data/upload/2018/0808/14/5b6a92f043126_120_120_120_120.jpg" alt="">
-                <p>扫一扫关注官方<span style="color: #8BDA64">微信</span></p>
-            </div>
-        </li>
-
-        <li class="backtop"><a href="javascript:;"><i class="icon-07"></i></a></li>
-    </ul>
-</div>
-<script src="http://try.51eduline.com/online_check.php?uid=0&uname=&mod=Index&app=classroom&act=index&action=trace"></script>
-<script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/lazyload/jquery.lazyload.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        // 初始化
-        $("img.lazyload").lazyload({
-            effect: "fadeIn",
-            placeholder: "http://try.51eduline.com/addons/theme/stv1/_static/images/loading_image.png"
-        });
-    });
-</script>
+        </td>
+
+        <td style="width: 100%;height: 100%;">
+            <iframe style="background-color: #ffffff;" onload="nof5()" id="MainIframe" name="MainIframe" scrolling="yes"  width="100%" height="100%" frameborder="0" noresize> </iframe>
+        </td>
+    </tr>
+</table>
 
 </body>
-
 </html>
+<script type="text/javascript">
+    var current_channel = null;
+    var current_menu_root = null;
+    var current_menu_sub = null;
+    var viewed_channel = new Array();
+    $(function() {
+        $(".g-icon img").click(function() {
+            if ($("#FrameTitle").css("width") == "160px") {
+                $("#FrameTitle").css({
+                    "width": "50px"
+                });
+                $(".treemenu .text").hide();
+                $(".submenu li a").addClass("on").css("padding-left", "0px");
+                $(this).attr("src", "http://try.51eduline.com/apps/admin/_static/images/chu.png");
+                $(".MenuList a i").css("margin-left", "17px")
+            } else {
+                $("#FrameTitle").css({
+                    "width": "160px"
+                });
+                $(".treemenu .text").show();
+                $(".submenu li a").removeClass("on").css("padding-left", "60px");
+                $(this).attr("src", "http://try.51eduline.com/apps/admin/_static/images/jin.png");
+                $(".MenuList a i").css("margin-left", "40px")
+            }
+        });
+        if ($('.main_nav a:first').attr('id') != 'channel_index') {
+            switchChannel($('.main_nav a:first').attr('id').substring(8));
+        } else {
+            switchChannel('index');
+        }
+    });
+    //切换频道（即头部的tab）
+    function switchChannel(channel) {
+        //if(current_channel == channel) return false;
+        $('.main_nav').find('a').removeClass('on');
+        $('#channel_' + current_channel).removeClass('on');
+        $('#channel_' + channel).addClass('on');
+        $('#root_' + current_channel).css('display', 'none');
+        $('#root_' + channel).css('display', 'block');
+        var tmp_menulist = $('#root_' + channel).find('a');
+        tmp_menulist.each(function(i, n) {
+            // 防止重复点击ROOT菜单
+            if (i == 0 && $.inArray($(n).attr('id'), viewed_channel) == -1) {
+                $(n).click();
+                viewed_channel.push($(n).attr('id'));
+            }
+            if (i == 1) {
+                $(n).click();
+            }
+        });
+        current_channel = channel;
+    }
+
+    function switch_root_menu(root) {
+        root = $('#tree_' + root);
+        if (root.css('display') == 'block') {
+            root.css('display', 'none');
+            root.siblings("a").find("i").addClass("icon-sanjiaoxing-right").removeClass("icon-sanjiaoxing-down");
+        } else {
+            root.css('display', 'block').parent(".treemenu").siblings(".treemenu").find(".submenu").css("display", "none")
+            root.siblings("a").find("i").addClass("icon-sanjiaoxing-down").removeClass("icon-sanjiaoxing-right").parents(".treemenu").siblings(".treemenu").find("i").removeClass("icon-sanjiaoxing-down").addClass("icon-sanjiaoxing-right");
+        }
+    }
+
+    function switch_sub_menu(sub, url) {
+        if (current_menu_sub) {
+
+            $('#menu_' + current_menu_sub).addClass('submenuA').removeClass("submenuB");
+        }
+        $('#menu_' + sub).addClass('submenuB').removeClass("submenuA");
+        current_menu_sub = sub;
+        parent.MainIframe.location = url;
+    }
+</script>
