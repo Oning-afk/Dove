@@ -15,6 +15,7 @@
       <module>statistical</module>
       <module>operating</module>
       <module>user</module>
+      <module>mall</module>
     </modules>
     <packaging>pom</packaging>
 
