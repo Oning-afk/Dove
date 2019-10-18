@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.ReceivingMapper" >
+    <resultMap id="BaseResultMap" type="com.future.model.Receiving" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="region_id" property="regionId" jdbcType="INTEGER" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="enable" property="enable" jdbcType="INTEGER" />
+        <result column="default_address" property="defaultAddress" jdbcType="INTEGER" />
+    </resultMap>
+    <select id="getCount" parameterType="com.future.model.Receiving" resultType="java.lang.Integer">
+        select
+        count(*)
+        from
+        mall_receiving
+        where
+        1 = 1
+        <if test="id != null" >
+            and id = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="userId != null" >
+            and user_id = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="regionId != null" >
+            and region_id = #{regionId,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="receivingList" parameterType="map" resultMap="BaseResultMap">
+        select
+        *,
+        com.name as regionName,
+        us.id as userId
+        from
+        mall_receiving re
+        left join
+        mall_receiving_address com
+        on
+        re.region_id = com.id
+        left join
+        t_user us
+        on
+        re.user_id = us.id
+        where
+        1 = 1
+        <if test="id != null" >
+            and id = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="userId != null" >
+            and user_id = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="regionId != null" >
+            and region_id = #{regionId,jdbcType=INTEGER}
+        </if>
+        limit
+        #{page},#{rows}
+    </select>
+
+</mapper>
