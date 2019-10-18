@@ -1,11 +1,14 @@
 package com.future.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CardVoucherLog {
+public class CardVoucherLog implements Serializable {
     private Long id;
 
     private Long userId;
+
+    private String userName;
 
     private Long cardVoucherNo;
 
@@ -37,6 +40,14 @@ public class CardVoucherLog {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Long getCardVoucherNo() {
@@ -101,5 +112,22 @@ public class CardVoucherLog {
 
     public void setUpdatedate(Date updatedate) {
         this.updatedate = updatedate;
+    }
+
+    @Override
+    public String toString() {
+        return "CardVoucherLog{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", cardVoucherNo=" + cardVoucherNo +
+                ", cardType=" + cardType +
+                ", validiteDay=" + validiteDay +
+                ", cardStatus=" + cardStatus +
+                ", receivedDate=" + receivedDate +
+                ", isDel=" + isDel +
+                ", createdate=" + createdate +
+                ", updatedate=" + updatedate +
+                '}';
     }
 }

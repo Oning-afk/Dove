@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.OperatCardMapper" >
+    <resultMap id="BaseResultMap" type="com.future.model.CardVoucher" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="institutions_id" property="institutionsId" jdbcType="BIGINT" />
+        <result column="card_voucher_no" property="cardVoucherNo" jdbcType="INTEGER" />
+        <result column="card_voucher_number" property="cardVoucherNumber" jdbcType="INTEGER" />
+        <result column="received_number" property="receivedNumber" jdbcType="INTEGER" />
+        <result column="card_full" property="cardFull" jdbcType="INTEGER" />
+        <result column="card_delete" property="cardDelete" jdbcType="INTEGER" />
+        <result column="card_discount" property="cardDiscount" jdbcType="INTEGER" />
+        <result column="card_class_type" property="cardClassType" jdbcType="INTEGER" />
+        <result column="card_class_id" property="cardClassId" jdbcType="INTEGER" />
+        <result column="card_recharge" property="cardRecharge" jdbcType="INTEGER" />
+        <result column="card_vip_type" property="cardVipType" jdbcType="INTEGER" />
+        <result column="card_vip_day" property="cardVipDay" jdbcType="INTEGER" />
+        <result column="card_voucher_type" property="cardVoucherType" jdbcType="INTEGER" />
+        <result column="validite_day" property="validiteDay" jdbcType="INTEGER" />
+        <result column="to_received_date" property="toReceivedDate" jdbcType="TIMESTAMP" />
+        <result column="is_del" property="isDel" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="getCount" parameterType="com.future.model.CardVoucher" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            card_voucher
+        where
+            is_del = 0
+            <if test="cardVoucherType != null" >
+                and card_voucher_type = #{cardVoucherType}
+            </if>
+            <if test="cardVoucherType == null" >
+                and card_voucher_type = 1
+            </if>
+            <if test="id != null" >
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="institutionsId != null" >
+                and institutions_id = #{institutionsId,jdbcType=BIGINT}
+            </if>
+            <if test="cardVoucherNo != null" >
+                and card_voucher_no = #{cardVoucherNo,jdbcType=INTEGER}
+            </if>
+            <if test="cardClassType != null">
+                and card_class_type =#{cardClassType,jdbcType=INTEGER}
+            </if>
+            <if test="cardRecharge != null">
+                and card_recharge =#{cardRecharge,jdbcType=INTEGER}
+            </if>
+    </select>
+
+    <select id="cardVoucherList" parameterType="map" resultMap="BaseResultMap">
+        select
+            *,
+            cvt.card_voucher_name as cardVoucherName
+        from
+            card_voucher cv
+        left join
+            card_voucher_type cvt
+        on
+            cv.card_voucher_type = cvt.id
+        where
+            cv.is_del = 0
+            <if test="cardVoucher.cardVoucherType != null" >
+                and cv.card_voucher_type = #{cardVoucher.cardVoucherType,jdbcType=BIGINT}
+            </if>
+            <if test="cardVoucher.cardVoucherType == null" >
+                and cv.card_voucher_type = 1
+            </if>
+            <if test="cardVoucher.id != null" >
+                and cv.id = #{cardVoucher.id,jdbcType=BIGINT}
+            </if>
+            <if test="cardVoucher.institutionsId != null" >
+                and cv.institutions_id = #{cardVoucher.institutionsId,jdbcType=BIGINT}
+            </if>
+            <if test="cardVoucher.cardVoucherNo != null" >
+                and cv.card_voucher_no = #{cardVoucher.cardVoucherNo,jdbcType=INTEGER}
+            </if>
+            <if test="cardVoucher.cardClassType != null">
+                and cv.card_class_type =#{cardVoucher.cardClassType,jdbcType=INTEGER}
+            </if>
+            <if test="cardVoucher.cardRecharge != null">
+                and cv.card_recharge =#{cardVoucher.cardRecharge,jdbcType=INTEGER}
+            </if>
+        limit
+            #{page},#{rows}
+    </select>
+
+    <update id="delCardVoucher" parameterType="java.util.List">
+        update
+            card_voucher
+        set
+            is_del = 1
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updateStatusToUp" parameterType="java.util.List">
+        update
+            card_voucher
+        set
+            status = 0
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updateStatusToDown" parameterType="java.util.List">
+        update
+            card_voucher
+        set
+            status = 1
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <select id="exportCardVoucher" parameterType="com.future.model.CardVoucher" resultMap="BaseResultMap">
+        select
+            *
+        from
+            card_voucher
+        where
+            is_del = 0
+            <if test="institutionsId !=null and institutionsId != 0">
+               and institutions_id = #{institutionsId}
+            </if>
+    </select>
+
+    <insert id="addCardVoucher" parameterType="com.future.model.CardVoucher">
+        insert into card_voucher
+            (
+            institutions_id,
+            card_voucher_no,
+            card_voucher_number,
+            received_number,
+            card_full,
+            card_delete,
+            card_discount,
+            card_class_type,
+            card_class_id,
+            card_recharge,
+            card_vip_type,
+            card_vip_day,
+            card_voucher_type,
+            validite_day,
+            to_received_date,
+            is_del,
+            status,
+            create_date,
+            update_date)
+        values
+            (
+            #{institutionsId,jdbcType=BIGINT},
+            #{cardVoucherNo,jdbcType=INTEGER},
+            #{cardVoucherNumber,jdbcType=INTEGER},
+            0,
+            #{cardFull,jdbcType=INTEGER},
+            #{cardDelete,jdbcType=INTEGER},
+            #{cardDiscount,jdbcType=INTEGER},
+            #{cardClassType,jdbcType=INTEGER},
+            #{cardClassId,jdbcType=INTEGER},
+            #{cardRecharge,jdbcType=INTEGER},
+            #{cardVipType,jdbcType=INTEGER},
+            #{cardVipDay,jdbcType=INTEGER},
+            #{cardVoucherType,jdbcType=INTEGER},
+            #{validiteDay,jdbcType=INTEGER},
+            #{toReceivedDate,jdbcType=TIMESTAMP},
+            0,
+            0,
+            now(),
+            now())
+    </insert>
+
+    <update id="updateCardVoucher" parameterType="com.future.model.CardVoucher">
+        update
+            card_voucher
+        <set >
+            <if test="institutionsId != null" >
+                institutions_id = #{institutionsId,jdbcType=BIGINT},
+            </if>
+            <if test="cardVoucherNo != null" >
+                card_voucher_no = #{cardVoucherNo,jdbcType=INTEGER},
+            </if>
+            <if test="cardVoucherNumber != null" >
+                card_voucher_number = #{cardVoucherNumber,jdbcType=INTEGER},
+            </if>
+            <if test="receivedNumber != null" >
+                received_number = #{receivedNumber,jdbcType=INTEGER},
+            </if>
+            <if test="cardFull != null" >
+                card_full = #{cardFull,jdbcType=INTEGER},
+            </if>
+            <if test="cardDelete != null" >
+                card_delete = #{cardDelete,jdbcType=INTEGER},
+            </if>
+            <if test="cardDiscount != null" >
+                card_discount = #{cardDiscount,jdbcType=INTEGER},
+            </if>
+            <if test="cardClassType != null" >
+                card_class_type = #{cardClassType,jdbcType=INTEGER},
+            </if>
+            <if test="cardClassId != null" >
+                card_class_id = #{cardClassId,jdbcType=INTEGER},
+            </if>
+            <if test="cardRecharge != null" >
+                card_recharge = #{cardRecharge,jdbcType=INTEGER},
+            </if>
+            <if test="cardVipType != null" >
+                card_vip_type = #{cardVipType,jdbcType=INTEGER},
+            </if>
+            <if test="cardVipDay != null" >
+                card_vip_day = #{cardVipDay,jdbcType=INTEGER},
+            </if>
+            <if test="cardVoucherType != null" >
+                card_voucher_type = #{cardVoucherType,jdbcType=INTEGER},
+            </if>
+            <if test="validiteDay != null" >
+                validite_day = #{validiteDay,jdbcType=INTEGER},
+            </if>
+            <if test="toReceivedDate != null" >
+                to_received_date = #{toReceivedDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDel != null" >
+                is_del = #{isDel,jdbcType=INTEGER},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null" >
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null" >
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="echoCard" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        *,
+        cvt.card_voucher_name as cardVoucherName
+        from
+        card_voucher cv
+        left join
+        card_voucher_type cvt
+        on
+        cv.card_voucher_type = cvt.id
+        where
+        cv.id = #{id}
+    </select>
+</mapper>

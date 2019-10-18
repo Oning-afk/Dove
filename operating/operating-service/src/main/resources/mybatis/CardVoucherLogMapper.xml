@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.CardVoucherLogMapper" >
+    <resultMap id="BaseResultMap" type="com.future.model.CardVoucherLog" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="card_voucher_no" property="cardVoucherNo" jdbcType="BIGINT" />
+        <result column="card_type" property="cardType" jdbcType="INTEGER" />
+        <result column="validite_day" property="validiteDay" jdbcType="INTEGER" />
+        <result column="card_status" property="cardStatus" jdbcType="INTEGER" />
+        <result column="received_date" property="receivedDate" jdbcType="TIMESTAMP" />
+        <result column="is_del" property="isDel" jdbcType="INTEGER" />
+        <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+        <result column="updateDate" property="updatedate" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="getcardLogsCount" parameterType="com.future.model.CardVoucherLog" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            card_voucher_log
+        where
+            1=1
+        <if test="id != null" >
+            and id = #{id}
+        </if>
+        <if test="userId != null" >
+            and user_id = #{userId}
+        </if>
+    </select>
+
+    <select id="cardLogList" parameterType="map" resultMap="BaseResultMap">
+        select
+            *,
+            cvt.card_voucher_name as cardVoucherName
+        from
+            card_voucher_log cvl
+        left join
+            card_voucher_type cvt
+        on
+            cvl.card_type = cvt.id
+        where
+            1=1
+        <if test="cardVoucherLog.id != null" >
+            and cvl.id = #{cardVoucherLog.id}
+        </if>
+        <if test="cardVoucherLog.userId != null" >
+            and cvl.user_id = #{cardVoucherLog.userId}
+        </if>
+        limit
+        #{page},#{rows}
+    </select>
+
+    <select id="exportCardLog" resultMap="BaseResultMap">
+        select
+            *,
+            cvt.card_voucher_name as cardVoucherName
+        from
+            card_voucher_log cvl
+        left join
+            card_voucher_type cvt
+        on
+            cvl.card_type = cvt.id
+    </select>
+
+    <update id="delCardLogs" parameterType="java.util.List">
+        update
+        card_voucher_log
+        set
+        is_del = 1
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="restoreCardLog" parameterType="java.util.List">
+        update
+        card_voucher_log
+        set
+        is_del = 0
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updateCardToOverDue" parameterType="java.util.List">
+        update
+            card_voucher_log
+        set
+            card_status = 3
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+</mapper>
