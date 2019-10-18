@@ -12,7 +12,6 @@
         var SITE_URL = 'http://try.51eduline.com';
         var APPNAME = 'admin';
         /* 按下F5时仅刷新iframe页面 */
-
         document.onkeydown=function (e) {
             e=window.event||e;
             var key = e.keyCode;
@@ -44,7 +43,6 @@
             }
             return website;
         };
-
         function refresh() {
             parent.MainIframe.location.reload();
         }
@@ -317,8 +315,8 @@
                         <a id="root_97" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('97');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">营销卡管理</span></a>
                         <ul id="tree_97" class="submenu">
                             <!-- 第三级菜单 -->
-                            <li><a id="menu_98" href="javascript:void(0)" onClick="switch_sub_menu('98', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminUserCard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">卡券发放</a></li>
-                            <li><a id="menu_99" href="javascript:void(0)" onClick="switch_sub_menu('99', '/operating/findCardVoucher');" class="submenuA" hidefocus="true" style="outline:none;">线上卡券管理</a></li>
+                            <li><a id="menu_98" href="javascript:void(0)" onClick="switch_sub_menu('98', '/operating/card/findCardLog');">卡券发放</a></li>
+                            <li><a id="menu_99" href="javascript:void(0)" onClick="switch_sub_menu('99', '/operating/card/findCardVoucher');" class="submenuA" hidefocus="true" style="outline:none;">线上卡券管理</a></li>
                             <li><a id="menu_100" href="javascript:void(0)" onClick="switch_sub_menu('100', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminEntityCard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">实体卡管理</a></li>
                         </ul>
                     </li>
@@ -394,7 +392,6 @@
         });
         current_channel = channel;
     }
-
     function switch_root_menu(root) {
         root = $('#tree_' + root);
         if (root.css('display') == 'block') {
@@ -405,10 +402,8 @@
             root.siblings("a").find("i").addClass("icon-sanjiaoxing-down").removeClass("icon-sanjiaoxing-right").parents(".treemenu").siblings(".treemenu").find("i").removeClass("icon-sanjiaoxing-down").addClass("icon-sanjiaoxing-right");
         }
     }
-
     function switch_sub_menu(sub, url) {
         if (current_menu_sub) {
-
             $('#menu_' + current_menu_sub).addClass('submenuA').removeClass("submenuB");
         }
         $('#menu_' + sub).addClass('submenuB').removeClass("submenuA");

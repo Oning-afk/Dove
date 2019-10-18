@@ -5,10 +5,10 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @program: wangyi-education
+ * @program: dove-parent
  * @description: 分页
  * @author: 张晋浩
- * @create: 2019-10-11 14:55
+ * @create: 2019-10-15 14:55
  **/
 
 public class PageBean<T> {

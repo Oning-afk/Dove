@@ -1,9 +1,9 @@
 package com.future.service;
 
-import com.future.interfaces.OperatingServiceApi;
+import com.future.interfaces.OperatCardServiceApi;
 import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(value = "operating-service")
-public interface OperatingService extends OperatingServiceApi {
+public interface OperatCardService extends OperatCardServiceApi {
 
 }
