@@ -64,7 +64,7 @@
                         </#if>
                         <input name="cardVoucherType" id="cardVoucherType" type="hidden" value="4">
                         <#if bean ?? && bean.cardRecharge ??>
-                            <input name="cardRecharge" id="cardRecharge" type="text" value="#{bean.cardRecharge?c}"  class="s-txt" style='width:200px'>
+                            <input name="cardRecharge" id="cardRecharge" type="text" value="#{bean.cardRecharge}"  class="s-txt" style='width:200px'>
                         <#else >
                             <input name="cardRecharge" id="cardRecharge" type="text" value=""  class="s-txt" style='width:200px'>
                         </#if>

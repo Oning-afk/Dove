@@ -35,6 +35,14 @@ admin.addCoupon = function(type) {
 //新增或修改数据
 admin.addCard = function(cardVoucher){
     $.post('/operating/card/addCardVoucher',(cardVoucher),function () {
+        var val = 1;
+        cardVoucher.split('&').forEach(function(param){
+            param = param.split('=');
+            if(param[0] == 'cardVoucherType'){
+                val = param[1];
+            }
+        })
+        location.href="/operating/card/findCardVoucher?cardVoucherType="+val
     })
 }
 

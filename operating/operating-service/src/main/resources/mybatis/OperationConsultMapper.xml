@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.OperationConsultMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.OperationConsult" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="consult_type" property="consultType" jdbcType="BIGINT" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="is_recommended" property="isRecommended" jdbcType="INTEGER" />
+    <result column="sort_recommended" property="sortRecommended" jdbcType="INTEGER" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="views" property="views" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+  </resultMap>
+
+
+  <select id="getConsultingCounts" parameterType="com.future.model.OperationConsult" resultType="java.lang.Integer">
+    select
+        count(*)
+    from
+        operation_consult
+    where
+      is_del = 0
+      <if test="id != null" >
+        and id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="title != null" >
+        and title = #{title}
+      </if>
+      <if test="consultType != null" >
+        and consult_type = #{consultType}
+      </if>
+  </select>
+
+  <select id="findConsultingList" parameterType="map" resultMap="BaseResultMap">
+    select
+      *
+    from
+        operation_consult
+    where
+        is_del = 0
+          <if test="operationConsult.id != null" >
+            and id = #{operationConsult.id,jdbcType=BIGINT}
+          </if>
+          <if test="operationConsult.title != null" >
+            and title = #{operationConsult.title}
+          </if>
+          <if test="operationConsult.consultType != null" >
+            and consult_type = #{operationConsult.consultType}
+          </if>
+    order by
+        sort_recommended
+    asc
+    limit
+    #{page},#{rows}
+  </select>
+
+  <update id="updateDownRecommended" parameterType="java.lang.Long">
+    update
+        operation_consult
+    set
+        is_recommended = 1
+    where
+        id =#{id}
+  </update>
+
+  <update id="updateToRecommended" parameterType="java.lang.Long">
+    update
+        operation_consult
+    set
+        is_recommended = 0
+    where
+        id =#{id}
+  </update>
+
+  <update id="deleteConsult" parameterType="java.util.List">
+    update
+        operation_consult
+    set
+        is_del = 1
+    where
+        id
+    in
+      <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+  </update>
+
+  <insert id="addOperationConsult" parameterType="com.future.model.OperationConsult" >
+    insert into operation_consult
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="consultType != null" >
+        consult_type,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="isRecommended != null" >
+        is_recommended,
+      </if>
+      <if test="sortRecommended != null" >
+        sort_recommended,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="views != null" >
+        views,
+      </if>
+        create_time,
+        update_time,
+        is_del
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="consultType != null" >
+        #{consultType,jdbcType=BIGINT},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="isRecommended != null" >
+        #{isRecommended,jdbcType=INTEGER},
+      </if>
+      <if test="sortRecommended != null" >
+        #{sortRecommended,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="views != null" >
+        #{views,jdbcType=INTEGER},
+      </if>
+      now(),
+      now(),
+      0
+    </trim>
+  </insert>
+
+  <select id="echoConsult" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+        *
+    from
+        operation_consult
+    where
+        id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <update id="updateOperationConsult" parameterType="com.future.model.OperationConsult" >
+    update operation_consult
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="consultType != null" >
+        consult_type = #{consultType,jdbcType=BIGINT},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="isRecommended != null" >
+        is_recommended = #{isRecommended,jdbcType=INTEGER},
+      </if>
+      <if test="sortRecommended != null" >
+        sort_recommended = #{sortRecommended,jdbcType=INTEGER},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="views != null" >
+        views = #{views,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+        update_time = now(),
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
