@@ -67,11 +67,11 @@
             <div class="login">
                 <div class="login-inner">
                     <div class="login">
-                        <form action="http://localhost:5880/user/userLogin" name="reg" method="post" class="form-login" >
+                        <form action="" name="reg" method="post" class="form-login" >
                             <div class="hd">后台管理中心</div>
                             <ul>
                                 <li><div class="form-name">admin</div>
-                                    <div class="form-row"><input id="usercode" placeholder="" type="hidden" name='uid' value='admin'></div>
+                                    <div class="form-row"><input id="usercode" placeholder="" type="hidden" name='username' value='admin'></div>
                                 </li>
 
                                 <li>
@@ -103,38 +103,24 @@
     function loginSubmit() {
         var usercode = $("#usercode").val();
         var password = $("#password").val();
-        $.ajax({
-            url:"http://localhost:5880/user/userLogin",
-            type:"post",
-            data:{usercode:usercode,password:password},
-            dataType:"json",
-            success:function(data){
-                if(data.success){
-                    location.href="http://localhost:5880/page/userLogin";
-                }else{
-                    alert(data.message)
-                }
-            },
-            error:function(){
-                alert("错误");
-            }
-        })
+        if(usercode != null && password != null){
+            document.reg.submit();
+        }
 
     }
 </script>
 </body>
 </html>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript">
     // 绑定回车事件
     $(function() {
         $(this).bind('keydown', function(e) {
             var key = e.which;
             if(key == 13) {
-                var name = $.trim($('#login_name').val());
-                var pwd = $.trim($('#login_pwd').val());
-                var verify = $.trim($('#login_verify').val());
-                if(name != '' && pwd != '' && verify != '') {
+                var name = $.trim($('#usercode').val());
+                var pwd = $.trim($('#password').val());
+                if(name != '' && pwd != '') {
                     document.reg.submit();
                 }
             }

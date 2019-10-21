@@ -22,14 +22,5 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("login")
-    public Result login(User user){
-        return userService.login(user);
-    }
-
-    @RequestMapping("userLogin")
-    public Result userLogin(User user){
-        return userService.userLogin(user);
-    }
 
 }

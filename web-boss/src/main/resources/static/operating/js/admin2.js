@@ -1,5 +1,5 @@
 /**
- * 鍒犻櫎璁插笀
+ * 删除讲师
  * @param _id
  * @param action
  * @returns {boolean}
@@ -7,11 +7,11 @@
 admin.delTeacher = function (_id, action, title, category) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     if (id == '') {
-        ui.error("璇烽€夋嫨浣犺鍒犻櫎鐨�" + title + "");
+        ui.error("请��择你要删除�?" + title + "");
         return false;
     }
 
-    ui.confirm('纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵', {
+    ui.confirm('确定要进行此操作吗？', {
         yes: function() {
             $.post( U('classroom/AdminTeacher/'+action ), {
                 ids:id,category:category
@@ -22,16 +22,16 @@ admin.delTeacher = function (_id, action, title, category) {
     });
 };
 
-//鎵归噺鍒犻櫎璁插笀鐩稿叧
+//批量删除讲师相关
 admin.delTeacherAll=function(action,category){
     var ids=admin.getChecked();
     ids = ("undefined"== typeof(ids)|| ids=='') ? admin.getChecked() : ids;
     if(ids==''){
-        ui.error("璇烽€夋嫨瑕佸垹闄ょ殑璁插笀");
+        ui.error("请��择要删除的讲师");
         return false;
     }
 
-    ui.confirm('纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵', {
+    ui.confirm('确定要进行此操作吗？', {
         yes: function() {
             $.post( U('classroom/AdminTeacher/'+action ), {
                 ids:ids,category:category
@@ -42,14 +42,14 @@ admin.delTeacherAll=function(action,category){
     });
 };
 
-//绂佺敤 鐢ㄦ埛鍗″埜
+//禁用 用户卡券
 admin.mzUserCardEdit = function(_id, action, title, type) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     if (id == '') {
-        ui.error('璇烽€夋嫨瑕佹搷浣滅殑鍗″埜');
+        ui.error('请��择要操作的卡券');
         return false;
     }
-    ui.confirm('纭畾瑕�' + title + '閫変腑鐨�' + type + '?', {
+    ui.confirm('确定�?' + title + '选中�?' + type + '?', {
         yes: function() {
             $.post(U('classroom/AdminUserCard/' + action), {
                 id: id
@@ -59,15 +59,15 @@ admin.mzUserCardEdit = function(_id, action, title, type) {
         }
     });
 };
-//鎵归噺绂佺敤 鐢ㄦ埛鍗″埜
+//批量禁用 用户卡券
 admin.delUserCardAll = function(action) {
     var ids = admin.getChecked();
     ids = ("undefined" == typeof(ids) || ids == '') ? admin.getChecked() : ids;
     if (ids == '') {
-        ui.error("纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵");
+        ui.error("确定要进行此操作吗？");
         return false;
     }
-    ui.confirm('纭畾纭鍒犻櫎锛�', {
+    ui.confirm('确定确认删除�?', {
         yes: function() {
             $.post(U('classroom/AdminUserCard/' + action), {
                 ids: ids
@@ -77,14 +77,14 @@ admin.delUserCardAll = function(action) {
         }
     });
 };
-//禁用优惠券
+//�����Ż�ȯ
 admin.mzCouponCardEdit = function(_id, action, title, type) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     if (id == '') {
-        ui.error('确定要禁用选中的' + title + '打折卡' + type);
+        ui.error('ȷ��Ҫ����ѡ�е�' + title + '���ۿ�' + type);
         return false;
     }
-    ui.confirm('操作成功' + title + '閫変腑鐨�' + type + '锛�', {
+    ui.confirm('�����ɹ�' + title + '选中�?' + type + '�?', {
         yes: function() {
             $.post(U('classroom/AdminUserCard/' + action), {
                 id: id
@@ -94,14 +94,14 @@ admin.mzCouponCardEdit = function(_id, action, title, type) {
         }
     });
 };
-//鍒犻櫎 璇剧▼浼樻儬鍒�
+//删除 课程优惠�?
 admin.mzdelcoupon = function(_id, action) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     if (id == '') {
-        ui.error("璇烽€夋嫨瑕佸垹闄ょ殑鍗″埜");
+        ui.error("请��择要删除的卡券");
         return false;
     }
-    ui.confirm('纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵', {
+    ui.confirm('确定要进行此操作吗？', {
         yes: function() {
             $.post(U('classroom/AdminUserCard/' + action), {
                 ids: id
@@ -111,19 +111,19 @@ admin.mzdelcoupon = function(_id, action) {
         }
     });
 }
-//跳转至新增页面
+//��ת������ҳ��
 admin.addCoupon = function(action, type) {
     location.href = U('classroom/Admin' + action + '/' + type) + '&tabHash=' + type;
 };
-//禁用或启用
+//���û�����
 admin.delCouponAll = function(action) {
     var ids = admin.getChecked();
     ids = ("undefined" == typeof(ids) || ids == '') ? admin.getChecked() : ids;
     if (ids == '') {
-        ui.error("请选择要禁用的卡券!");
+        ui.error("��ѡ��Ҫ���õĿ�ȯ!");
         return false;
     }
-    ui.confirm('确定要进行此操作吗？', {
+    ui.confirm('ȷ��Ҫ���д˲�����', {
         yes: function() {
             $.post(U('classroom/AdminUserCard/' + action), {
                 ids: ids
@@ -133,14 +133,14 @@ admin.delCouponAll = function(action) {
         }
     });
 };
-//批量删除
+//����ɾ��
 admin.delCouponCard = function(_id, type) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     if (id == '') {
-        ui.error("请选择要删除的卡券!");
+        ui.error("��ѡ��Ҫɾ���Ŀ�ȯ!");
         return false;
     }
-    ui.confirm('确定要进行此操作吗？', {
+    ui.confirm('ȷ��Ҫ���д˲�����', {
         yes: function() {
             $.post(U('classroom/AdminOnlineCard/delCouponCard'), {
                 ids: id
@@ -151,17 +151,17 @@ admin.delCouponCard = function(_id, type) {
     });
 }
 
-//瀵煎嚭鍗″埜鍒楄〃
+//导出卡券列表
 admin.exportCoupon = function(explod) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : '';
     if (explod == '') {
-        ui.error("杩樻病鏁版嵁鍠忋€傘€�");
+        ui.error("还没数据喏����?");
         return false;
     }
     location.href = U('classroom/AdminEntityCard/exportCoupon') + "&explod=" + explod + "&ids=" + id;
 };
 /**
- * 绂佺敤vip绛夌骇
+ * 禁用vip等级
  * @param _id
  * @param action
  * @returns {boolean}
@@ -169,10 +169,10 @@ admin.exportCoupon = function(explod) {
 admin.closeVip = function(_id, type, action) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     if (id == '') {
-        ui.error("璇烽€夋嫨浣犺绂佺敤鐨�" + type);
+        ui.error("请��择你要禁用�?" + type);
         return false;
     }
-    ui.confirm('纭畾瑕佺‘璁ょ鐢ㄦ' + type + '锛�', {
+    ui.confirm('确定要确认禁用此' + type + '�?', {
         yes: function() {
             $.post(U('classroom/' + action + '/closeVip'), {
                 ids: id
@@ -183,7 +183,7 @@ admin.closeVip = function(_id, type, action) {
     });
 }
 /**
- * 鍚敤vip绛夌骇
+ * 启用vip等级
  * @param _id
  * @param action
  * @returns {boolean}
@@ -191,10 +191,10 @@ admin.closeVip = function(_id, type, action) {
 admin.openVip = function(_id, type, action) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     if (id == '') {
-        ui.error("璇烽€夋嫨浣犺鍚敤鐨�" + type);
+        ui.error("请��择你要启用�?" + type);
         return false;
     }
-    ui.confirm('纭畾鍚敤姝�' + type + '锛�', {
+    ui.confirm('确定启用�?' + type + '�?', {
         yes: function() {
             $.post(U('classroom/' + action + '/closeVip'), {
                 ids: id
@@ -205,7 +205,7 @@ admin.openVip = function(_id, type, action) {
     });
 };
 /**
- * 鍒犻櫎璁插笀澶磋
+ * 删除讲师头衔
  * @Author   Martinsun<syh@sunyonghong.com>
  * @DateTime 2018-05-25
  */
@@ -213,10 +213,10 @@ admin.delVipAll = function(type, action) {
     var ids = admin.getChecked();
     ids = ("undefined" == typeof(ids) || ids == '') ? admin.getChecked() : ids;
     if (ids == '') {
-        ui.error("璇烽€夋嫨浣犺鍒犻櫎鐨�" + type);
+        ui.error("请��择你要删除�?" + type);
         return false;
     }
-    ui.confirm('纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵', {
+    ui.confirm('确定要进行此操作吗？', {
         yes: function() {
             $.post(U('classroom/' + action + '/delVip'), {
                 ids: ids
@@ -226,15 +226,15 @@ admin.delVipAll = function(type, action) {
         }
     });
 };
-//鎵归噺鎿嶄綔璁㈠崟-鍋囧垹闄�
+//批量操作订单-假删�?
 admin.delOrders = function(type) {
     var ids = admin.getChecked();
     ids = ("undefined" == typeof(ids) || ids == '') ? admin.getChecked() : ids;
     if (ids == '') {
-        ui.error("璇烽€夋嫨瑕佹搷浣滅殑璁㈠崟");
+        ui.error("请��择要操作的订单");
         return false;
     }
-    ui.confirm('纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵', {
+    ui.confirm('确定要进行此操作吗？', {
         yes: function() {
             $.post(U('classroom/AdminOrder/delOrders'), {
                 ids: ids,
@@ -246,16 +246,16 @@ admin.delOrders = function(type) {
     });
 };
 
-//鎵归噺鎿嶄綔璁㈠崟-鐪熷垹闄�
+//批量操作订单-真删�?
 admin.realDeleteOrders = function(type,id) {
 
     var ids = ("undefined" == typeof(id) || id == '') ? admin.getChecked() : id;
 
     if (ids == '') {
-        ui.error("璇烽€夋嫨瑕佹搷浣滅殑璁㈠崟");
+        ui.error("请��择要操作的订单");
         return false;
     }
-    ui.confirm('纭畾瑕佹墽琛屾鎿嶄綔锛熷垹闄ゅ悗璇ュ鐢熷皢涓嶈兘瀛︿範璇ヨ绋嬩笖鏁版嵁涓嶅彲鎭㈠锛�', {
+    ui.confirm('确定要执行此操作？删除后该学生将不能学习该课程且数据不可恢复�?', {
         yes: function() {
             $.post(U('classroom/AdminOrder/delOrders'), {
                 ids: ids,
@@ -269,50 +269,50 @@ admin.realDeleteOrders = function(type,id) {
 };
 
 /**
- * 閫€娆惧鏍搁€氳繃
- * @param  integer id  璁よ瘉ID
- * @param  integer status 璁よ瘉鐘舵€�
- * @param  string info 璁よ瘉璧勬枡
+ * 逢�款审核��过
+ * @param  integer id  认证ID
+ * @param  integer status 认证状��?
+ * @param  string info 认证资料
  * @return void
  */
 admin.doThroughAudit = function(id, type) {
     if ("undefined" == typeof(id) || id == '') id = admin.getChecked();
     if (id == '') {
-        ui.error('鎯呴€夋嫨瑕佹搷浣滅殑鍐呭');
+        ui.error('情��择要操作的内容');
         return false;
     }
-    ui.box.load(U('classroom/AdminApplirefund/doThroughAudit') + '&id=' + id + '&type=' + type, '瀹℃牳涓�');
+    ui.box.load(U('classroom/AdminApplirefund/doThroughAudit') + '&id=' + id + '&type=' + type, '审核�?');
     return false;
 };
 /**
- * 閫€娆鹃┏鍥炲脊绐�
- * @param integer id 椹冲洖ID
+ * 逢�款驳回弹�?
+ * @param integer id 驳回ID
  * @return void
  */
 admin.doOverruleAudit = function(id, type) {
     if (typeof id === 'undefined') {
         return false;
     }
-    ui.box.load(U('classroom/AdminApplirefund/doOverruleAudit') + '&id=' + id + '&type=' + type, '椹冲洖鐞嗙敱');
+    ui.box.load(U('classroom/AdminApplirefund/doOverruleAudit') + '&id=' + id + '&type=' + type, '驳回理由');
     return false;
 };
 
-//瀵煎嚭鍒嗘垚鎶ヨ〃
+//导出分成报表
 admin.exportResult = function(id, type) {
     if (id == '') {
-        ui.error("杩樻病鏈夌浉鍏虫暟鎹�");
+        ui.error("还没有相关数�?");
         return false;
     }
     location.href = U('classroom/AdminSplit/splitExport') + '&id=' + id + '&type=' + type;
 };
-//澶勭悊璁插笀
+//处理讲师
 admin.mzTeacherEdit = function(_id, action, title, type, category) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     if (id == '') {
-        ui.error('璇烽€夋嫨瑕�' + title + '鐨�' + type);
+        ui.error('请��择�?' + title + '�?' + type);
         return false;
     }
-    ui.confirm('纭畾瑕�' + title + '閫変腑鐨�' + type + '锛�', {
+    ui.confirm('确定�?' + title + '选中�?' + type + '�?', {
         yes: function() {
             $.post(U('classroom/AdminTeacher/' + action), {
                 id: id,
@@ -323,14 +323,14 @@ admin.mzTeacherEdit = function(_id, action, title, type, category) {
         }
     });
 };
-/** 鍒犻櫎鐐硅瘎 */
+/** 删除点评 */
 admin.delReview = function(_id, action, uid, ctime, review_description) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     if (id == '') {
-        ui.error("璇烽€夋嫨鍒犻櫎鐨勭偣璇�");
+        ui.error("请��择删除的点�?");
         return false;
     }
-    ui.confirm("纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵", {
+    ui.confirm("确定要进行此操作吗？", {
         yes: function() {
             $.post(U('classroom/AdminReview/' + action), {
                 ids: id
@@ -340,15 +340,15 @@ admin.delReview = function(_id, action, uid, ctime, review_description) {
         }
     })
 }
-//澶勭悊鐐硅瘎
+//处理点评
 admin.delReviewAll = function(action) {
     var ids = admin.getChecked();
     ids = ("undefined" == typeof(ids) || ids == '') ? admin.getChecked() : ids;
     if (ids == '') {
-        ui.error("璇烽€夋嫨瑕佸垹闄ょ殑鐐硅瘎");
+        ui.error("请��择要删除的点评");
         return false;
     }
-    ui.confirm("纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵", {
+    ui.confirm("确定要进行此操作吗？", {
         yes: function() {
             $.post(U('classroom/AdminReview/' + action), {
                 ids: ids
@@ -358,37 +358,37 @@ admin.delReviewAll = function(action) {
         }
     });
 };
-//妫€鏌ユ枃搴撹〃鍗曟彁浜�
+//棢�查文库表单提�?
 admin.checkLibrary = function(form) {
     if (form.title.value.replace(/^ +| +$/g, '') == '') {
-        ui.error('鏂囧簱鍚嶇О涓嶈兘涓虹┖');
+        ui.error('文库名称不能为空');
         return false;
     }
     if ($('.mzTopLevel option:selected').val() <= 0) {
-        ui.error('璇烽€夋嫨鏂囧簱鍒嗙被');
+        ui.error('请��择文库分类');
         return false;
     }
     if (form.info.value.replace(/^ +| +$/g, '') == '') {
-        ui.error('鏂囧簱淇℃伅涓嶈兘涓虹┖');
+        ui.error('文库信息不能为空');
         return false;
     }
     if (form.price.value.replace(/^ +| +$/g, '') == '') {
-        ui.error('鏂囧簱浠锋牸涓嶈兘涓虹┖');
+        ui.error('文库价格不能为空');
         return false;
     }
     if (isNaN(form.price.value)) {
-        ui.error('鏂囧簱浠锋牸蹇呴』涓烘暟瀛�');
+        ui.error('文库价格必须为数�?');
         return false;
     }
     return true;
 };
-//绂佺敤鏂囧簱
+//禁用文库
 admin.closeLibrary = function(library_id) {
     if (library_id == '') {
-        ui.error("璇烽€夋嫨浣犺绂佺敤鐨勬枃搴�");
+        ui.error("请��择你要禁用的文�?");
         return false;
     }
-    ui.confirm("纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵", {
+    ui.confirm("确定要进行此操作吗？", {
         yes: function() {
             $.post(U('classroom/AdminLibrary/closeLibrary'), {
                 library_id: library_id
@@ -406,13 +406,13 @@ admin.closeLibrary = function(library_id) {
         }
     });
 };
-//鍚敤鏂囧簱
+//启用文库
 admin.openLibrary = function(library_id) {
     if (library_id == '') {
-        ui.error("璇烽€夋嫨浣犺鍚敤鐨勬枃搴�");
+        ui.error("请��择你要启用的文�?");
         return false;
     }
-    ui.confirm("纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵", {
+    ui.confirm("确定要进行此操作吗？", {
         yes: function() {
             $.post(U('classroom/AdminLibrary/openLibrary'), {
                 library_id: library_id
@@ -430,15 +430,15 @@ admin.openLibrary = function(library_id) {
         }
     });
 };
-//鎵归噺绂佺敤--鍒犻櫎鏂囧簱
+//批量禁用--删除文库
 admin.delLibraryAll = function(action, status) {
     var ids = admin.getChecked();
     ids = ("undefined" == typeof(ids) || ids == '') ? admin.getChecked() : ids;
     if (ids == '') {
-        ui.error("璇烽€夋嫨瑕佺鐢ㄧ殑鏂囧簱");
+        ui.error("请��择要禁用的文库");
         return false;
     }
-    ui.confirm("纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵", {
+    ui.confirm("确定要进行此操作吗？", {
         yes: function() {
             $.post(U('classroom/AdminLibrary/' + action), {
                 ids: ids,
@@ -449,7 +449,7 @@ admin.delLibraryAll = function(action, status) {
         }
     });
 };
-//澶勭悊鐐硅瘎  (30,'closereview','闅愯棌','鐐硅瘎',1,'23333333333333333333',1529563077)
+//处理点评  (30,'closereview','隐藏','点评',1,'23333333333333333333',1529563077)
 admin.mzReviewEdit = function(_id, action) { //,title,type
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     // if(id==''){
@@ -462,14 +462,14 @@ admin.mzReviewEdit = function(_id, action) { //,title,type
         admin.ajaxReload(msg);
     }, 'json');
 };
-//澶勭悊閾惰鍗�
+//处理银行�?
 admin.BankCardEdit = function(_id, action) {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : _id;
     if (id == '') {
-        ui.error("璇烽€夋嫨鍒犻櫎鐨勫崱鍙�");
+        ui.error("请��择删除的卡�?");
         return false;
     }
-    ui.confirm("纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵", {
+    ui.confirm("确定要进行此操作吗？", {
         yes: function() {
             $.post(U('classroom/AdminCard/' + action), {
                 ids: id
@@ -479,20 +479,20 @@ admin.BankCardEdit = function(_id, action) {
         }
     });
 };
-//瀵煎嚭鍗″彿鍒楄〃
+//导出卡号列表
 admin.exportCard = function() {
     var id = ("undefined" == typeof(_id) || _id == '') ? admin.getChecked() : '';
     location.href = U('classroom/AdminCard/export') + "&ids=" + id;
 };
-//鎵归噺鍒犻櫎瀛︿範璁板綍
+//批量删除学习记录
 admin.delLearns = function(type) {
     var ids = admin.getChecked();
     ids = ("undefined" == typeof(ids) || ids == '') ? admin.getChecked() : ids;
     if (ids == '') {
-        ui.error("璇烽€夋嫨瑕佸垹闄ょ殑瀛︿範璁板綍");
+        ui.error("请��择要删除的学习记录");
         return false;
     }
-    ui.confirm("纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵", {
+    ui.confirm("确定要进行此操作吗？", {
         yes: function() {
             $.post(U('classroom/AdminLearnRecord/delLearn'), {
                 id: ids,
@@ -504,14 +504,14 @@ admin.delLearns = function(type) {
     });
 };
 
-//鎵归噺瀹℃牳鎻愮幇
+//批量审核提现
 admin.doManyDispose=function(id){
     if('undefined' == typeof(id)||!id) id = admin.getChecked();
     if( id == '' ){
-        ui.error('璇烽€夋嫨瑕佹搷浣滅殑璁板綍');
+        ui.error('请��择要操作的记录');
         return false;
     }
-    ui.confirm("姝ゆ鎿嶄綔鍙細瀹℃牳鎻愮幇鍒版敮浠樺疂鐨勭敵璇凤紝纭畾瑕佹墽琛屾鎿嶄綔鍚楋紵", {
+    ui.confirm("此次操作只会审核提现到支付宝的申请，确定要执行此操作吗？", {
         yes: function() {
             $.post(U('classroom/AdminWithdraw/dispose'),{id:id},function(msg){
                 if (msg.status == 0) {
@@ -534,42 +534,42 @@ admin.doManyDispose=function(id){
 admin.SubmitCheck = function(id){
 
     if ( '' == $("input[name='name']").val() ){
-        ui.error('璇疯緭鍏ヨ甯堝鍚�');
+        ui.error('请输入讲师姓�?');
         return false;
     }
     if(!id){
         var email = $("input[name='email']").val();
         var isEmail = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
         if ( '' == email ){
-            ui.error('璇疯緭鍏ラ偖绠�');
+            ui.error('请输入邮�?');
             return false;
         }else if( !( isEmail.test(email) ) ){
-            ui.error('閭鏍煎紡閿欒');
+            ui.error('邮箱格式错误');
             return false;
         }
 
         var phone = $("input[name='phone']").val();
         var isPhone = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
         if ( '' == phone ){
-            ui.error('璇疯緭鍏ユ墜鏈哄彿');
+            ui.error('请输入手机号');
             return false;
         }else if( !( isPhone.test(phone) ) ){
-            ui.error('璇疯緭鍏ユ纭殑鎵嬫満鍙�');
+            ui.error('请输入正确的手机�?');
             return false;
         }
 
         var pass = $("input[name='password']").val();
         if ( '' == pass ){
-            ui.error('璇疯緭鍏ュ瘑鐮�');
+            ui.error('请输入密�?');
             return false;
         }else if( pass.length < 6 || pass.length > 20){
-            ui.error('瀵嗙爜闀垮害涓�6-20浣�');
+            ui.error('密码长度�?6-20�?');
             return false;
         }
     }
 }
 
-//闄愭椂鎵撴姌鎿嶄綔
+//限时打折操作
 admin.choiceVideo = function(obj) {
     $("#salbum").val('');
     $("#course_list").html('');
@@ -599,28 +599,28 @@ admin.choiceVideo = function(obj) {
         $("#dl_album_category").hide();
         $("#dl_album_category").children('dd').html('');
     }
-    // $("#dl_course_id").children('dd').html("<span>鏆傛椂娌℃湁璇剧▼鏁版嵁</span>");
+    // $("#dl_course_id").children('dd').html("<span>暂时没有课程数据</span>");
 }
 
-//闄愭椂鎵撴姌鎿嶄綔
+//限时打折操作
 admin.hideCategory = function(obj) {
     $("#dl_album_category").hide();
-    $("#dl_course_id").children('dd').html("<span>鏆傛椂娌℃湁璇剧▼鏁版嵁</span>");
+    $("#dl_course_id").children('dd').html("<span>暂时没有课程数据</span>");
 
-    //璇剧▼鍒嗙被鎿嶄綔
+    //课程分类操作
     $("#dl_video_category,#dl_album_category").on("change",'.mzLevel',function(){
-        //鍒ゆ柇鏄惁濉啓鏃ユ湡--鏈～閿欒鎻愮ず
+        //判断是否填写日期--未填错误提示
         var start_time= $("input[name='start_time']").val();
         var end_time  = $("input[name='end_time']").val();
         if(!start_time || !end_time){
-            ui.error('璇峰厛濉啓鏃ユ湡');
+            ui.error('请先填写日期');
             return false;
         }else{
             var stime = new Date(start_time);
             var etime = new Date(end_time);
             var time  = new Date();
             if(etime < time){
-                ui.error('缁撴潫鏃堕棿涓嶈兘灏忎簬褰撳墠鏃堕棿');
+                ui.error('结束时间不能小于当前时间');
                 return false;
             }
         }
@@ -641,7 +641,7 @@ admin.hideCategory = function(obj) {
         });
     });
 
-    //鍒ゆ柇璇剧▼鏄惁鍙備笌娲诲姩
+    //判断课程是否参与活动
     $("#dl_course_id").on("click",'.vid_check',function(){
         var _this = $(this);
         var vid = _this.val();
@@ -664,7 +664,7 @@ admin.hideCategory = function(obj) {
         });
     });
 
-    //鏌ョ湅鏇村
+    //查看更多
     $("#dl_course_id").on("click",'#show_more',function(){
         var video_levelhidden = $("#video_levelhidden").val();
         var video_type= $("input[name='course_type']:checked").val();
@@ -685,18 +685,18 @@ admin.hideCategory = function(obj) {
 
 }
 
-// 鍒犻櫎娲诲姩
+// 删除活动
 admin.delEvents = function(id) {
     if(!id){
         id = admin.getChecked();
     }
     var id = ("undefined" == typeof(id) || id == '') ? admin.getChecked() : id;
     if (id == '') {
-        ui.error("璇烽€夋嫨浣犺鍒犻櫎鐨勬椿鍔�");
+        ui.error("请��择你要删除的活�?");
         return false;
     }
 
-    ui.confirm('纭畾瑕佽繘琛屾鎿嶄綔鍚楋紵', {
+    ui.confirm('确定要进行此操作吗？', {
         yes: function() {
             $.post( U('classroom/AdminDiscount/delEvents' ), {
                 ids:id
@@ -712,7 +712,7 @@ admin.delEvents = function(id) {
     });
 };
 
-// 鍗″埜鍙戞斁鎿嶄綔--绾夸笂鍗″埜
+// 卡券发放操作--线上卡券
 admin.hideCoupon = function() {
     var type = $("input[name='type']:checked").val();
     if(type == 1){

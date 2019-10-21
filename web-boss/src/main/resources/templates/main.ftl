@@ -360,8 +360,7 @@
             el: '#slideshow',
             data:{
                 list:{
-                    imgs:'',
-                    url:''
+
                 }
             }
         });
@@ -414,7 +413,7 @@
     })
 
     function findSwiper(){
-        $.post("http://localhost:5880/findSwiper",{},function (data) {
+        $.post("http://localhost:5880/teacher/findSwiper",{},function (data) {
             vm.list = data;
         })
     }
@@ -428,13 +427,11 @@
 <section>
     <div class="swiper-container" >
             <div class="swiper-wrapper" id="slideshow">
-                <span v-for="site in list">
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" v-for="site in list">
                             <a :href="site.url" title="">
-                                <img :src="site.imgs" alt="" >
+                                <img :src="site.imgs" alt="">
                             </a>
                     </div>
-                </span>
             </div>
             <!-- Add Pagination -->
         <div class="swiper-button-prev"></div>
@@ -958,3 +955,114 @@
 </body>
 
 </html>
+<style>
+    .swiper-slide{position:absolute;top:0;opacity:0}
+    .swiper-slide:first-child{opacity:1}
+    .swiper-container-android .swiper-slide,.swiper-wrapper{height:416.28px}
+    .slideTxtBox{overflow:hidden}
+    .slideTxtBox .icon-youjiantou{position:absolute;top:0;right:0}
+    .slideTxtBox .icon-zuojiantou{position:absolute;top:0;left:0;z-index:10}
+    .slideTxtBox .bd ul{padding:0 40px;float:left;}
+    .slideTxtBox .icon:hover{cursor:pointer}
+    .slideTxtBox .bd{position:relative;left:0;-webkit-transition:all .2s linear;-moz-transition:all .2s linear;-ms-transition:all .2s linear;-o-transition:all .2s linear;transition:all .2s linear}
+    .slideTxtBox .hd ul li:first-child em{color:#00bed4}
+    .single-item{position:relative;min-height:364px}
+    .content{position: relative}
+    .single-item div{position:absolute;top:0;left:0;width:570px;}
+    .single-item div img{width:100%;min-height:364px}
+    .single-item div span{width:100%;position:absolute;bottom:0;left:0;line-height:50px;font-size:20px;background:-webkit-linear-gradient(transparent,rgba(51,51,51,.8));background:-o-linear-gradient(transparent,rgba(51,51,51,.8));background:-moz-linear-gradient(transparent,rgba(51,51,51,.8));background:linear-gradient(transparent,rgba(51,51,51,.8))}
+    .single-item div span p{color:#fff;width:430px;margin-left:16px;white-space:nowrap;-ms-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden;font-weight:700}
+</style>
+<script >
+    /*首页轮播兼容ie9*/
+    var newimg=0; //0==1 1==2 2==3
+    var length = $(".swiper-slide").length;
+    $(".swiper-button-next").click(function () {
+        newimg++;
+        if(newimg>length-1){
+            newimg=0;
+        }
+        $(".swiper-slide").css("opacity","0");
+        $($(".swiper-slide")[newimg]).css("opacity","1");
+        return false;
+    });
+    $(".swiper-button-prev").click(function(){
+        newimg--;
+        if (newimg<0){
+            newimg=length-1;
+        }
+        $(".swiper-slide").css("opacity","0");
+        $($(".swiper-slide")[newimg]).css("opacity","1");
+        return false;
+    });
+    /*直播预告*/
+    $(".slideTxtBox .bd").width($(".slideTxtBox .bd ul").width()*$(".slideTxtBox .bd ul").length+(80*$(".slideTxtBox .bd ul").length))
+    var bdlength=$(".slideTxtBox .bd").width();
+    var num=$(".slideTxtBox .bd ul").length;
+    var datalength=$(".slideTxtBox .bd ul").outerWidth(); //初始化
+    var data=[];
+    var page=0;//第几个 0==1 1==2 2==3 。。。。
+    for (var i=0;i<$(".slideTxtBox .bd ul").length;i++){
+        datalength=datalength-$(".slideTxtBox .bd ul").outerWidth();
+        data[i]=datalength
+    }
+    $(".icon-youjiantou").click(function () {
+        page++;
+        if(page<=data.length-1){
+            $(".slideTxtBox .bd").css("left",data[page]+"px");
+            $(".icon-yuandian").css("color","#888");
+            $($(".hd li")[page]).children(".icon-yuandian").css("color","#00bed4");
+        }else{
+            page=data.length-1;
+            return false;
+        }
+    });
+    $(".icon-zuojiantou").click(function(){
+        page--;
+        if(page>=0){
+            $(".icon-yuandian").css("color","#888");
+            $($(".hd li")[page]).children(".icon-yuandian").css("color","#00bed4");
+            $(".slideTxtBox .bd").css("left", data[page]+"px")
+        }else{
+            page=0;
+            return false;
+        }
+    });
+    (function(){
+        $("img.lazyload").lazyload({effect: "fadeIn",placeholder:"http://try.51eduline.com/addons/theme/stv1/_static/images/loading_image.png"});
+    })();
+    /*轮播
+    * 1，数量
+    * 长度
+    * 标识框*/
+    lunbo($(".content .single-item"),$(".content .single-item div"),$(".slick-prev"),$(".slick-next"));
+    function lunbo(a,b,pre,next){
+        //设置外框长度 a 为外框  b为每张轮播 pre为点击上一页 next 为下一页
+        a.width(parseInt(b.outerWidth())*b.length);
+        var i=0;  //当前项
+        var mylunbo=[];
+        b.each(function (i,index) {
+            mylunbo.push(index)
+        });
+        pre.on("click",function () {
+            i--;
+            if(i>0){
+
+            }else{
+                i=b.length-1;
+            }
+            b.hide();
+            $(mylunbo[i]).show()
+        });
+        next.on("click",function () {
+            i++;
+            if (i<b.length-1){
+
+            }else{
+                i=0;
+            }
+            b.hide();
+            $(mylunbo[i]).show()
+        })
+    }
+</script>
