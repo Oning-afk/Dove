@@ -10,7 +10,6 @@ import com.future.model.User;
  * @create: 2019-10-12 16:47
  **/
 public interface UserService {
-    Result login(User user);
 
-    Result userLogin(User user);
+    User userLogin(String name);
 }

@@ -5,6 +5,7 @@ import com.future.model.Result;
 import com.future.model.User;
 import com.future.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -21,17 +22,7 @@ public class UserController implements UserServiceApi {
     private UserService userService;
 
     @Override
-    public String testT() {
-        return "测试成功";
-    }
-
-    @Override
-    public Result login(User user) {
-        return userService.login(user);
-    }
-
-    @Override
-    public Result userLogin(User user) {
-        return userService.userLogin(user);
+    public User userLogin(@RequestParam String name) {
+        return userService.userLogin(name);
     }
 }

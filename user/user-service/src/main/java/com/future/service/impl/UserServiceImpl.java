@@ -28,44 +28,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RedisTemplate redisTemplate;
 
-
     @Override
-    public Result login(User user) {
-        if(user!=null){
-           User u = userMapper.findUser(user.getUsercode());
-           if(u==null){
-               return new Result(false,"账号密码不存在");
-           }
-           if(!user.getPassword().equals(u.getPassword())){
-               return new Result(false,"密码或账号错误");
-           }
-           return new Result(true,"登录成功");
-        }
-        return new Result(false,"账号密码不存在");
-    }
+    @Cacheable()
+    public User userLogin(String name) {
 
-    @Override
-    public Result userLogin(User user) {
-        if(user!=null){
-            User u;
-            if(redisTemplate.hasKey(user.getUsercode())) {
-                 u = (User) redisTemplate.opsForValue().get(user.getUsercode());
-            }else{
-                 u = userMapper.findUser(user.getUsercode());
-            }
-            if(u!=null){
-                if(u.getPassword().equals(user.getPassword())){
-                    Boolean hasKey = redisTemplate.hasKey(u.getUsercode());
-                    if(!hasKey){
-                        ValueOperations<String,User> ops = redisTemplate.opsForValue();
-                        ops.set(u.getUsercode(),u,1, TimeUnit.DAYS);
-                    }
-                    return new Result(true,"登录成功");
-                }else{
-                    return new Result(false,"密码或账号不正确");
-                }
-            }
-        }
-        return new Result(false,"账号不存在");
+        return userMapper.findUser(name);
     }
 }
