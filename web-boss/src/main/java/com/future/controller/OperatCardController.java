@@ -1,16 +1,15 @@
 package com.future.controller;
 
-import com.future.model.CardVoucher;
-import com.future.model.CardVoucherLog;
-import com.future.model.ExportExcel;
-import com.future.model.PageBean;
+import com.future.model.*;
 import com.future.service.OperatCardService;
+import com.future.service.OperationDirectMessagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.smartcardio.Card;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +25,9 @@ import java.util.List;
 public class OperatCardController {
     @Autowired
     private OperatCardService operatingService;
+
+    @Autowired
+    private OperationDirectMessagesService operationDirectMessagesService;
 
     /**
      *  运营-线上卡券管理-查询
@@ -313,4 +315,22 @@ public class OperatCardController {
         return "redirect:findCardLog";
     }
 
+    /**
+     * 运营-营销卡管理-线上卡券管理-跳转至发放页面
+     * @param model
+     * @param cardVoucher
+     * @return
+     */
+    @RequestMapping(value = "toIssueCard")
+    public String toIssueCard(Model model, CardVoucher cardVoucher){
+        List<UserBean> userList = operationDirectMessagesService.findUserList();
+        model.addAttribute("userList",userList);
+        model.addAttribute("bean",cardVoucher);
+        return "operating/card/issueCard";
+    }
+
+    @RequestMapping("issueCard")
+    public void issueCard(CardVoucherLog cardVoucherLog){
+        operatingService.issueCard(cardVoucherLog);
+    }
 }

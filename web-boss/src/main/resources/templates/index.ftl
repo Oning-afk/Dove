@@ -118,7 +118,6 @@
                             <!-- 第三级菜单 -->
                             <li><a id="menu_14" href="javascript:void(0)" onClick="switch_sub_menu('14', '/operating/card/findCardLog');" class="submenuA" hidefocus="true" style="outline:none;">卡券发放记录</a></li>
                             <li><a id="menu_15" href="javascript:void(0)" onClick="switch_sub_menu('15', '/operating/card/findCardVoucher');" class="submenuA" hidefocus="true" style="outline:none;">线上卡券管理</a></li>
-                            <li><a id="menu_16" href="javascript:void(0)" onClick="switch_sub_menu('16', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminEntityCard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">实体卡管理</a></li>
                         </ul>
                     </li>
                     <li class="treemenu">
@@ -126,9 +125,8 @@
                         <ul id="tree_17" class="submenu">
                             <!-- 第三级菜单 -->
                             <li><a id="menu_18" href="javascript:void(0)" onClick="switch_sub_menu('18', '/operating/content/findConsultingList');" class="submenuA" hidefocus="true" style="outline:none;">资讯管理</a></li>
-                            <li><a id="menu_19" href="javascript:void(0)" onClick="switch_sub_menu('19', 'http://try.51eduline.com/index.php?app=admin&mod=Single&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">单页管理</a></li>
-                            <li><a id="menu_20" href="javascript:void(0)" onClick="switch_sub_menu('20', 'http://try.51eduline.com/index.php?app=admin&mod=Content&act=message&');" class="submenuA" hidefocus="true" style="outline:none;">私信管理</a></li>
-                            <li><a id="menu_21" href="javascript:void(0)" onClick="switch_sub_menu('21', 'http://try.51eduline.com/index.php?app=admin&mod=Suggest&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">反馈管理</a></li>
+                            <li><a id="menu_19" href="javascript:void(0)" onClick="switch_sub_menu('19', '/operating/single/findSingleList');" class="submenuA" hidefocus="true" style="outline:none;">单页管理</a></li>
+                            <li><a id="menu_20" href="javascript:void(0)" onClick="switch_sub_menu('20', '/operating/message/findMessagesList?isDel=0');" class="submenuA" hidefocus="true" style="outline:none;">私信管理</a></li>
                             <li><a id="menu_22" href="javascript:void(0)" onClick="switch_sub_menu('22', 'http://try.51eduline.com/index.php?app=admin&mod=SystemMessage&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">系统消息管理</a></li>
                             <li><a id="menu_23" href="javascript:void(0)" onClick="switch_sub_menu('23', 'http://try.51eduline.com/index.php?app=admin&mod=MessageBoard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">留言板管理</a></li>
                         </ul>

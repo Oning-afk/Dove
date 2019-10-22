@@ -17,4 +17,6 @@ public interface CardVoucherLogMapper {
     void restoreCardLog(Long[] ids);
 
     void updateCardToOverDue(Long[] ids);
+
+    void issueCard(CardVoucherLog cardVoucherLog);
 }

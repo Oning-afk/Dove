@@ -78,4 +78,9 @@ public class OperatCardController implements OperatCardServiceApi {
     public void restoreCardLog(Long[] ids) {
         operatingService.restoreCardLog(ids);
     }
+
+    @Override
+    public void issueCard(CardVoucherLog cardVoucherLog) {
+        operatingService.issueCard(cardVoucherLog);
+    }
 }

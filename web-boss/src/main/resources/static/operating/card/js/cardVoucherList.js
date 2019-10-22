@@ -217,25 +217,17 @@ admin.mzRestoreCardLogs = function(ids){
     });
 }
 
-// 卡券发放操作--线上卡券
-admin.hideCoupon = function() {
-    var type = $("input[name='type']:checked").val();
-    if(type == 1){
-        $("#dl_user").hide();
-        $("#dl_user_group").show();
-    }else{
-        $("#dl_user").show();
-        $("#dl_user_group").hide();
-    }
+//跳转至卡券发放页面
+admin.toIssueCard = function(cardVoucherNo,cardVoucherType,validiteDay) {
+    var url = "/operating/card/toIssueCard?cardVoucherNo="+cardVoucherNo+"&cardVoucherType="+cardVoucherType+"&validiteDay="+validiteDay;
+    location.href=url;
 };
 
-admin.choiceCouponType = function(obj) {
-    var type = obj.value;
-    if(type == 1){
-        $("#dl_user").hide();
-        $("#dl_user_group").show();
-    }else{
-        $("#dl_user").show();
-        $("#dl_user_group").hide();
-    }
+// 卡券发放操作--线上卡券
+admin.issueCard = function(cardVoucherNo,cardVoucherType,validiteDay,userId) {
+    $.post('/operating/card/issueCard',{cardVoucherNo:cardVoucherNo,cardType:cardVoucherType,validiteDay:validiteDay,userId:userId},function () {
+        var callback = "location.href = location.href";
+        ui.success("操作成功");
+        setTimeout(callback,1500);
+    })
 };

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.OperationDirectMessagesMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.OperationDirectMessages" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="dialogue_user_id" property="dialogueUserId" jdbcType="BIGINT" />
+    <result column="dialogue_user" property="dialogueUser" jdbcType="VARCHAR" />
+    <result column="dialogue_content" property="dialogueContent" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="getMessagesCount" parameterType="com.future.model.OperationDirectMessages" resultType="java.lang.Integer">
+    select 
+        count(*) 
+    from 
+        operation_direct_messages 
+    where
+        1=1
+        <if test="userId != null and userId != 0">
+          and user_id = #{userId}
+        </if>
+        <if test="dialogueUser != null and dialogueUser != 0">
+          and dialogue_user like '%${dialogueUser}%'
+        </if>
+        <if test="dialogueContent != null">
+          and dialogue_content like '%${dialogueContent}%'
+        </if>
+        <if test="isDel != null">
+          and is_del = #{isDel}
+        </if>
+  </select>
+
+  <select id="findMessagesList" parameterType="com.future.model.OperationDirectMessages" resultMap="BaseResultMap">
+    select
+        *
+    from
+        operation_direct_messages
+    where
+        1=1
+        <if test="operationDirectMessages.userId != null and operationDirectMessages.userId != 0">
+          and user_id = #{operationDirectMessages.userId}
+        </if>
+        <if test="operationDirectMessages.dialogueUser != null and operationDirectMessages.dialogueUser != 0">
+          and dialogue_user like '%${operationDirectMessages.dialogueUser}%'
+        </if>
+        <if test="operationDirectMessages.dialogueContent != null">
+          and dialogue_content like '%${operationDirectMessages.dialogueContent}%'
+        </if>
+        <if test="operationDirectMessages.isDel != null">
+          and is_del = #{operationDirectMessages.isDel}
+        </if>
+    limit
+        #{page},#{rows}
+  </select>
+  
+  <select id="findUserNameById" parameterType="java.lang.Long" resultType="com.future.model.UserBean">
+    select id as id,name as userName from t_user where id = #{id}
+  </select>
+
+  <select id="findUserList" resultType="com.future.model.UserBean">
+    select id as id,name as userName from t_user
+  </select>
+
+  <update id="updateToRecycle" parameterType="java.lang.Long" >
+    update
+        operation_direct_messages
+    set
+        is_del = 1
+    where
+        id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="uodateToRecycles" parameterType="java.lang.Long" >
+    update
+        operation_direct_messages
+    set
+        is_del = 1
+    where
+        id
+    in
+      <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+  </update>
+
+  <update id="updateToBack" parameterType="java.lang.Long" >
+    update
+        operation_direct_messages
+    set
+        is_del = 0
+    where
+        id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <delete id="deleteMessages" parameterType="java.lang.Long" >
+    delete
+        operation_direct_messages
+    where
+        id
+    in
+      <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+  </delete>
+</mapper>

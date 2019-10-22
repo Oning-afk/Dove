@@ -127,4 +127,10 @@ public class OperatCardServiceImpl implements OperatCardService {
             cardVoucherLogMapper.updateCardToOverDue(ids);
         }
     }
+
+    @Override
+    public void issueCard(CardVoucherLog cardVoucherLog) {
+        cardVoucherLogMapper.issueCard(cardVoucherLog);
+        operatingMapper.updateCardCount(cardVoucherLog.getCardVoucherNo());
+    }
 }

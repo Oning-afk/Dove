@@ -44,4 +44,6 @@ public interface OperatCardServiceApi {
     @RequestMapping("restoreCardLog")
     void restoreCardLog(@RequestParam(value = "ids",required = false)Long[] ids);
 
+    @RequestMapping("issueCard")
+    void issueCard(@RequestBody(required = false) CardVoucherLog cardVoucherLog);
 }

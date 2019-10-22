@@ -37,4 +37,5 @@ public interface OperatCardService {
 
     void validationCard();
 
+    void issueCard(CardVoucherLog cardVoucherLog);
 }

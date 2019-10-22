@@ -24,4 +24,6 @@ public interface OperatCardMapper {
     void updateCardVoucher(CardVoucher cardVoucher);
 
     CardVoucher echoCard(Long id);
+
+    void updateCardCount(Long cardVoucherNo);
 }

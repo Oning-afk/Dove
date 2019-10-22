@@ -95,4 +95,32 @@
             #{item}
         </foreach>
     </update>
+
+    <insert id="issueCard" parameterType="com.future.model.CardVoucherLog">
+        insert into
+            card_voucher_log
+        (
+            user_id,
+            card_voucher_no,
+            card_type,
+            validite_day,
+            card_status,
+            received_date,
+            is_del,
+            createDate,
+            updateDate
+        )
+        values
+        (
+            #{userId},
+            #{cardVoucherNo},
+            #{cardType},
+            #{validiteDay},
+            1,
+            now(),
+            0,
+            now(),
+            now()
+        )
+    </insert>
 </mapper>

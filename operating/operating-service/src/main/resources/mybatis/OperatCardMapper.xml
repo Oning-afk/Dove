@@ -259,4 +259,14 @@
         where
         cv.id = #{id}
     </select>
+
+    <update id="updateCardCount" parameterType="java.lang.Long">
+        update
+            card_voucher
+        set
+            card_voucher_number = card_voucher_number - 1,
+            received_number = received_number + 1
+        where
+            card_voucher_number > 0
+    </update>
 </mapper>

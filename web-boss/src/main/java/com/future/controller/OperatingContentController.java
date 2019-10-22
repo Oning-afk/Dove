@@ -49,7 +49,7 @@ public class OperatingContentController {
     }
 
     /**
-     * 取消推荐
+     * 运营-内容管理-资讯管理-取消推荐
      * @param id
      * @return
      */
@@ -60,7 +60,7 @@ public class OperatingContentController {
     }
 
     /**
-     * 设为推荐
+     * 运营-内容管理-资讯管理-设为推荐
      * @param id
      * @return
      */
@@ -70,6 +70,11 @@ public class OperatingContentController {
         return "redirect:findConsultingList";
     }
 
+    /**
+     * 运营-内容管理-资讯管理-批量删除
+     * @param id
+     * @return
+     */
     @RequestMapping("deleteConsult")
     public String deleteConsult(Long[] id){
         operatingContentService.deleteConsult(id);
@@ -77,7 +82,7 @@ public class OperatingContentController {
     }
 
     /**
-     * 跳转至新增页面
+     * 运营-内容管理-资讯管理-跳转至新增页面
      * @return
      */
     @RequestMapping(value = "toAddPage")
@@ -86,7 +91,7 @@ public class OperatingContentController {
     }
 
     /**
-     * 新增或者修改资讯
+     * 运营-内容管理-资讯管理-新增或者修改资讯
      * @param operationConsult
      * @return
      */
@@ -97,7 +102,7 @@ public class OperatingContentController {
     }
 
     /**
-     * 上传图片至oss
+     * 运营-内容管理-资讯管理-上传图片至oss
      * @param request
      * @param file
      * @param model
@@ -123,7 +128,7 @@ public class OperatingContentController {
     }
 
     /**
-     * 回显
+     * 运营-内容管理-资讯管理-回显
      * @param id
      * @param model
      * @return

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.OperatSingleMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.OperationSingle" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="only_sign" property="onlySign" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="getSingleCounts" resultType="int">
+    select
+        count(*)
+    from
+        operation_single
+    where
+        is_del = 0
+  </select>
+
+  <select id="findSingleList" parameterType="map" resultMap="BaseResultMap">
+    select
+        *
+    from
+        operation_single
+    where
+      is_del = 0
+      limit
+      #{page},#{rows}
+  </select>
+
+  <insert id="addSingle" parameterType="com.future.model.OperationSingle" >
+    insert into operation_single
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="onlySign != null" >
+        only_sign,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+        create_time,
+        update_time,
+        is_del
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="onlySign != null" >
+        #{onlySign,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      now(),
+      now(),
+      0
+    </trim>
+  </insert>
+
+  <update id="updateSingle" parameterType="com.future.model.OperationSingle" >
+    update operation_single
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="onlySign != null" >
+        only_sign = #{onlySign,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+        update_time = now()
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="echoSingle" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+        *
+    from
+        operation_single
+    where
+        id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <update id="delSingle" parameterType="java.lang.Long" >
+    update
+        operation_single
+    set
+        is_del = 1
+    where
+        id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="delSingles" parameterType="java.util.List">
+    update
+    operation_single
+    set
+    is_del = 1
+    where
+    id
+    in
+    <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+</mapper>

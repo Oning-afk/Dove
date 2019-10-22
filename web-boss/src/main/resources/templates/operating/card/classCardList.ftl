@@ -183,7 +183,7 @@
                             <a onclick="admin.mzstartCouponAll(${cardVoucher.id?c})" class="btn_a"><span>启用</span></a>|
                         </#if>
                         <a onclick="admin.echoCard(${cardVoucher.id?c})">修改</a>|
-                        <a href="">发放</a>|
+                        <a onclick="admin.toIssueCard(${cardVoucher.cardVoucherNo?c},${cardVoucher.cardVoucherType},${cardVoucher.validiteDay})">发放</a>|
                         <a onclick="admin.mzdelCouponCard(${cardVoucher.id?c})" class="btn_a"><span>删除</span></a>
                     </td>
                 </tr>
