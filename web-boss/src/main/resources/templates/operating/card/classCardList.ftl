@@ -67,20 +67,6 @@
                     </#if>
                 </dd>
             </dl>
-            <dl class="lineD" id='dl_sid'>
-                <dt>机构名称：</dt>
-                <dd>
-                    <#if bean ?? && bean.institutionsId ??>
-                        <select name="institutionsId" id="institutionsId" class='s-select' style="width:200px">
-
-                        </select>
-                    <#else >
-                        <select name="institutionsId" id="institutionsId" class='s-select' style="width:200px">
-
-                        </select>
-                    </#if>
-                </dd>
-            </dl>
             <dl class="lineD" id='dl_code'>
                 <dt>编号：</dt>
                 <dd>
@@ -140,7 +126,16 @@
                 <tr>
                     <td><input type="checkbox" value="${cardVoucher.id?c}" onclick="admin.checkon(this)"  name="checkbox"></td>
                     <td>${cardVoucher.id?c}</td>
-                    <td>${cardVoucher.institutionsId?c}</td>
+                    <td>
+                        <#if cardVoucher.institutionsId ??>
+                            <#elseif cardVoucher.institutionsId == 31>
+                                牛顿课堂
+                            <#elseif cardVoucher.institutionsId == 37>
+                                金科教育
+                            <#elseif cardVoucher.institutionsId == 37>
+                                伊顿教育
+                        </#if>
+                    </td>
                     <td>${cardVoucher.cardVoucherNo?c}</td>
                     <td>
                         <#if cardVoucher.cardClassType == 1>

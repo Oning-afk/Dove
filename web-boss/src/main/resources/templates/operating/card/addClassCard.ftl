@@ -65,22 +65,24 @@
                         <input name="cardVoucherType" id="cardVoucherType" type="hidden" value="3">
                         <#if bean ?? && bean.institutionsId ??>
                             <select name="institutionsId" id="institutionsId" class='s-select' style="width:200px">
-
+                                <#elseif bean.institutionsId == 31>
+                                    <option value="31" selected>牛顿课堂</option>
+                                    <option value="37" >金科教育</option>
+                                    <option value="38" >伊顿教育</option>
+                                <#elseif bean.institutionsId == 37>
+                                    <option value="31" >牛顿课堂</option>
+                                    <option value="37" selected>金科教育</option>
+                                    <option value="38" >伊顿教育</option>
+                                <#elseif bean.institutionsId == 37>
+                                    <option value="31" >牛顿课堂</option>
+                                    <option value="37" >金科教育</option>
+                                    <option value="38" selected>伊顿教育</option>
                             </select>
                         <#else >
                             <select name="institutionsId" id="institutionsId" >
-                                <option value="1" >测试机构1</option>
-                                <option value="2" >测试机构2</option>
-                                <option value="3" >测试机构3</option>
-                                <option value="4" >测试机构4</option>
-                                <option value="5" >测试机构5</option>
-                                <option value="6" >测试机构6</option>
-                                <option value="7" >测试机构7</option>
-                                <option value="8" >测试机构8</option>
-                                <option value="9" >测试机构9</option>
-                                <option value="10" >测试机构10</option>
                                 <option value="31" >牛顿课堂</option>
                                 <option value="37" >金科教育</option>
+                                <option value="38" >伊顿教育</option>
                             </select>
                         </#if>
                     </dd>

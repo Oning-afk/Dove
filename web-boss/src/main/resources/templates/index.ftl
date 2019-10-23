@@ -127,8 +127,6 @@
                             <li><a id="menu_18" href="javascript:void(0)" onClick="switch_sub_menu('18', '/operating/content/findConsultingList');" class="submenuA" hidefocus="true" style="outline:none;">资讯管理</a></li>
                             <li><a id="menu_19" href="javascript:void(0)" onClick="switch_sub_menu('19', '/operating/single/findSingleList');" class="submenuA" hidefocus="true" style="outline:none;">单页管理</a></li>
                             <li><a id="menu_20" href="javascript:void(0)" onClick="switch_sub_menu('20', '/operating/message/findMessagesList?isDel=0');" class="submenuA" hidefocus="true" style="outline:none;">私信管理</a></li>
-                            <li><a id="menu_22" href="javascript:void(0)" onClick="switch_sub_menu('22', 'http://try.51eduline.com/index.php?app=admin&mod=SystemMessage&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">系统消息管理</a></li>
-                            <li><a id="menu_23" href="javascript:void(0)" onClick="switch_sub_menu('23', 'http://try.51eduline.com/index.php?app=admin&mod=MessageBoard&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">留言板管理</a></li>
                         </ul>
                     </li>
                     <li class="treemenu">
