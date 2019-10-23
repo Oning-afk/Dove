@@ -147,7 +147,7 @@ public class OperatCardController {
                     obj[2] = "会员卡";
                 }
                 obj[3] = formatter.format(list.get(i).getCreateDate());
-                obj[4] = formatter.format(list.get(i).getToReceivedDate());
+                obj[4] = list.get(i).getToReceivedDate();
                 obj[5] = list.get(i).getCardVoucherType();
                 dataList.add(obj);
             }

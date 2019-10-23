@@ -54,13 +54,18 @@
     <select id="exportCardLog" resultMap="BaseResultMap">
         select
             *,
-            cvt.card_voucher_name as cardVoucherName
+            cvt.card_voucher_name as cardVoucherName,
+            tu.name as userName
         from
             card_voucher_log cvl
         left join
             card_voucher_type cvt
         on
             cvl.card_type = cvt.id
+        left join
+            t_user tu
+        on
+            cvl.user_id = tu.id
     </select>
 
     <update id="delCardLogs" parameterType="java.util.List">

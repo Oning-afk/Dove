@@ -67,7 +67,10 @@
                     <a href="http://try.51eduline.com/admin.html"><i class="icon icon-houtai9"></i>管理中心</a>
                 </div>
                 <div class="nav_sub">
-                    您好,17792274425&nbsp; | <a target="_blank" href="/">返回前台</a> | <a href="javascript:void(0);" onClick="refresh();">刷新</a> | <a href="http://try.51eduline.com/index.php?app=admin&mod=Public&act=logout">退出</a><br/>
+                    您好,admin &nbsp; |
+                    <a target="_blank" href="/">返回前台</a> |
+                    <a href="javascript:void(0);" onClick="refresh();">刷新</a> |
+                    <a href="http://try.51eduline.com/index.php?app=admin&mod=Public&act=logout">退出</a><br/>
                     <div id="TopTime"></div>
                 </div>
                 <div class="main_nav">

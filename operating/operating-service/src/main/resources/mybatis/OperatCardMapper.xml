@@ -134,6 +134,12 @@
             <if test="institutionsId !=null and institutionsId != 0">
                and institutions_id = #{institutionsId}
             </if>
+            <if test="cardVoucherType!=null">
+                and card_voucher_type = #{cardVoucherType}
+            </if>
+            <if test="status != null and status != -1">
+                and status =#{status}
+            </if>
     </select>
 
     <insert id="addCardVoucher" parameterType="com.future.model.CardVoucher">

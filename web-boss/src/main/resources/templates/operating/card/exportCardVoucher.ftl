@@ -49,13 +49,16 @@
         </ul>
         <!-- END TAB框 -->
         <!-- START CONFIG_FORM -->
-        <form istyle="margin-top:5px" method="post" action="/operating/exportCardVoucher" >
+        <form istyle="margin-top:5px" method="post" action="/operating/card/exportCardVoucher" >
             <div class="form2">
                 <dl class="lineD" id='dl_mhm_id'>
                     <dt>机构：</dt>
                     <dd>
                         <select name="institutionsId" id="form_mhm_id" >
                             <option value="0"  selected="selected" >全部</option>
+                            <option value="31" >牛顿课堂</option>
+                            <option value="37" >金科教育</option>
+                            <option value="38" >伊顿教育</option>
                         </select>
                     </dd>
                 </dl>
