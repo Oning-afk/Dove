@@ -144,7 +144,7 @@
                     </#if>
                     共${integralPageBean.totalRecord}条
                 </td>
-            </tr>				</td>			</tr> </table>
+            </tr></td></tr> </table>
     </div>
 </div>
 
