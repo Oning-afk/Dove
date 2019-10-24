@@ -144,15 +144,15 @@
                         <a id="root_27" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('27');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">等级头衔管理</span></a>
                         <ul id="tree_27" class="submenu">
                             <!-- 第三级菜单 -->
-                            <li><a id="menu_28" href="javascript:void(0)" onClick="switch_sub_menu('28', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminVip&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">会员等级</a></li>
-                            <li><a id="menu_29" href="javascript:void(0)" onClick="switch_sub_menu('29', 'http://try.51eduline.com/index.php?app=classroom&mod=AdminTeacherVip&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">讲师头衔</a></li>
+                            <li><a id="menu_28" href="javascript:void(0)" onClick="switch_sub_menu('28', '/membership/findMembership');" class="submenuA" hidefocus="true" style="outline:none;">会员等级</a></li>
+                            <li><a id="menu_29" href="javascript:void(0)" onClick="switch_sub_menu('29', '/lecturership/findLecturership');" class="submenuA" hidefocus="true" style="outline:none;">讲师头衔</a></li>
                         </ul>
                     </li>
                     <li class="treemenu">
                         <a id="root_30" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('30');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">财务配置</span></a>
                         <ul id="tree_30" class="submenu">
                             <!-- 第三级菜单 -->
-                            <li><a id="menu_31" href="javascript:void(0)" onClick="switch_sub_menu('31', 'http://try.51eduline.com/index.php?app=mall&mod=AdminGlobalConfig&act=credit&');" class="submenuA" hidefocus="true" style="outline:none;">积分规则配置</a></li>
+                            <li><a id="menu_31" href="javascript:void(0)" onClick="switch_sub_menu('31', '/integral/findIntegral');" class="submenuA" hidefocus="true" style="outline:none;">积分规则配置</a></li>
                             <li><a id="menu_32" href="javascript:void(0)" onClick="switch_sub_menu('32', 'http://try.51eduline.com/index.php?app=admin&mod=Config&act=rechargeIntoConfig&');" class="submenuA" hidefocus="true" style="outline:none;">余额&积分配置</a></li>
                             <li><a id="menu_33" href="javascript:void(0)" onClick="switch_sub_menu('33', 'http://try.51eduline.com/index.php?app=admin&mod=Config&act=vipPatternConfig&');" class="submenuA" hidefocus="true" style="outline:none;">会员模式管理</a></li>
                         </ul>
