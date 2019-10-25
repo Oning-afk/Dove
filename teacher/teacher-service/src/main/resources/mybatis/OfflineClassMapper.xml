@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.OfflineClassMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.OfflineClass" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="offline_class_name" property="offlineClassName" jdbcType="VARCHAR" />
+    <result column="offline_class_price" property="offlineClassPrice" jdbcType="DECIMAL" />
+    <result column="offline_class_buy_num" property="offlineClassBuyNum" jdbcType="INTEGER" />
+    <result column="offline_class_type" property="offlineClassType" jdbcType="INTEGER" />
+    <result column="offline_class_institution" property="offlineClassInstitution" jdbcType="INTEGER" />
+    <result column="offline_class_total_people" property="offlineClassTotalPeople" jdbcType="INTEGER" />
+    <result column="offline_class_image" property="offlineClassImage" jdbcType="VARCHAR" />
+    <result column="offline_class_creater" property="offlineClassCreater" jdbcType="BIGINT" />
+    <result column="offline_class_teacher" property="offlineClassTeacher" jdbcType="BIGINT" />
+    <result column="offline_class_describe" property="offlineClassDescribe" jdbcType="VARCHAR" />
+    <result column="offline_class_start" property="offlineClassStart" jdbcType="TIMESTAMP" />
+    <result column="offline_class_end" property="offlineClassEnd" jdbcType="TIMESTAMP" />
+    <result column="offline_class_place" property="offlineClassPlace" jdbcType="VARCHAR" />
+    <result column="offline_class_is_free" property="offlineClassIsFree" jdbcType="INTEGER" />
+    <result column="offline_class_is_audit" property="offlineClassIsAudit" jdbcType="INTEGER" />
+    <result column="is_del" property="isDel" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <select id="getOfflineClassCount" parameterType="com.future.model.OfflineClass" resultType="java.lang.Integer">
+    select
+        count(*)
+    from
+        offline_class_manage
+    where
+        1=1
+        <if test="offlineClassIsAudit !=null">
+          and offline_class_is_audit = #{offlineClassIsAudit}
+        </if>
+        <if test="isDel !=null">
+          and is_del = #{isDel}
+        </if>
+        <if test="id !=null">
+          and id = #{id}
+        </if>
+        <if test="offlineClassName !=null and offlineClassName != ''">
+          and offline_class_name like '%${offlineClassName}%'
+        </if>
+  </select>
+  
+  <select id="findOfflineClassList" parameterType="map" resultMap="BaseResultMap">
+    select
+        *
+    from
+        offline_class_manage
+    where
+      1=1
+      <if test="offlineClass.offlineClassIsAudit !=null">
+        and offline_class_is_audit = #{offlineClass.offlineClassIsAudit}
+      </if>
+      <if test="offlineClass.isDel !=null">
+        and is_del = #{offlineClass.isDel}
+      </if>
+      <if test="offlineClass.id !=null">
+        and id = #{offlineClass.id}
+      </if>
+      <if test="offlineClass.offlineClassName !=null and offlineClass.offlineClassName != ''">
+        and offline_class_name like '%${offlineClass.offlineClassName}%'
+      </if>
+  </select>
+
+  <insert id="addOffline" parameterType="com.future.model.OfflineClass" >
+    insert into
+        offline_class_manage
+        (
+        offline_class_name,
+        offline_class_type,
+        offline_class_institution,
+        offline_class_teacher,
+        offline_class_image,
+        offline_class_describe,
+        offline_class_start,
+        offline_class_end,
+        offline_class_price,
+        offline_class_buy_num,
+        offline_class_total_people,
+        offline_class_creater,
+        offline_class_place,
+        offline_class_is_free,
+        offline_class_is_audit,
+        is_del,
+        create_time,
+        update_time
+        )
+    values
+        (
+        #{offlineClassName,jdbcType=VARCHAR},
+        #{offlineClassType,jdbcType=INTEGER},
+        #{offlineClassInstitution,jdbcType=INTEGER},
+        #{offlineClassTeacher,jdbcType=BIGINT},
+        #{offlineClassImage,jdbcType=VARCHAR},
+        #{offlineClassDescribe,jdbcType=VARCHAR},
+        #{offlineClassStart,jdbcType=TIMESTAMP},
+        #{offlineClassEnd,jdbcType=TIMESTAMP},
+        #{offlineClassPrice,jdbcType=DECIMAL},
+        0,
+        #{offlineClassTotalPeople,jdbcType=INTEGER},
+        2,
+        #{offlineClassPlace,jdbcType=VARCHAR},
+        #{offlineClassIsFree,jdbcType=INTEGER},
+        1,
+        0,
+        now(),
+        now()
+        )
+  </insert>
+  
+  <select id="echoOffline" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+        *
+    from
+        offline_class_manage
+    where
+        id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <update id="updateOffline" parameterType="com.future.model.OfflineClass">
+    update offline_class_manage
+    <set >
+      <if test="offlineClassName != null" >
+        offline_class_name = #{offlineClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="offlineClassType != null" >
+        offline_class_type = #{offlineClassType,jdbcType=VARCHAR},
+      </if>
+      <if test="offlineClassInstitution != null" >
+        offline_class_institution = #{offlineClassInstitution,jdbcType=VARCHAR},
+      </if>
+      <if test="offlineClassPrice != null" >
+        offline_class_price = #{offlineClassPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="offlineClassBuyNum != null" >
+        offline_class_buy_num = #{offlineClassBuyNum,jdbcType=INTEGER},
+      </if>
+      <if test="offlineClassTotalPeople != null" >
+        offline_class_total_people = #{offlineClassTotalPeople,jdbcType=INTEGER},
+      </if>
+      <if test="offlineClassImage != null" >
+        offline_class_image = #{offlineClassImage,jdbcType=VARCHAR},
+      </if>
+      <if test="offlineClassCreater != null" >
+        offline_class_creater = #{offlineClassCreater,jdbcType=BIGINT},
+      </if>
+      <if test="offlineClassTeacher != null" >
+        offline_class_teacher = #{offlineClassTeacher,jdbcType=BIGINT},
+      </if>
+      <if test="offlineClassDescribe != null" >
+        offline_class_describe = #{offlineClassDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="offlineClassStart != null" >
+        offline_class_start = #{offlineClassStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offlineClassEnd != null" >
+        offline_class_end = #{offlineClassEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offlineClassPlace != null" >
+        offline_class_place = #{offlineClassPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="offlineClassIsFree != null" >
+        offline_class_is_free = #{offlineClassIsFree,jdbcType=INTEGER},
+      </if>
+      <if test="offlineClassIsAudit != null" >
+        offline_class_is_audit = #{offlineClassIsAudit,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+</mapper>

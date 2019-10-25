@@ -79,7 +79,7 @@
                     <a id="channel_course"  href="javascript:void(0)" onclick="switchChannel('course');" hidefocus="true" style="outline:none;">课堂</a>
                     <a id="channel_finance"  href="javascript:void(0)" onclick="switchChannel('finance');" hidefocus="true" style="outline:none;">财务</a>
                     <a id="channel_mall"  href="javascript:void(0)" onclick="switchChannel('mall');" hidefocus="true" style="outline:none;">商城</a>
-                    <a id="channel_school"  href="javascript:void(0)" onclick="switchChannel('school');" hidefocus="true" style="outline:none;">机构</a>
+                    <a id="channel_school"  href="javascript:void(0)" onclick="switchChannel('school');" hidefocus="true" style="outline:none;">讲师</a>
                 </div>
             </div>
         </td>
@@ -167,7 +167,7 @@
                         <a id="root_45" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('45');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">线下课管理</span></a>
                         <ul id="tree_45" class="submenu">
                             <!-- 第三级菜单 -->
-                            <li><a id="menu_46" href="javascript:void(0)" onClick="switch_sub_menu('46', '???');" class="submenuA" hidefocus="true" style="outline:none;">线下课管理</a></li>
+                            <li><a id="menu_46" href="javascript:void(0)" onClick="switch_sub_menu('46', '/offline/class/findOfflineClassList');" class="submenuA" hidefocus="true" style="outline:none;">线下课管理</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -223,11 +223,11 @@
                         <ul id="tree_82" class="submenu">
                             <!-- 第三级菜单 -->
                             <li><a id="menu_86" href="javascript:void(0)" onClick="switch_sub_menu('86', '???');" class="submenuA" hidefocus="true" style="outline:none;">班级课管理</a></li>
-                            <li><a id="menu_87" href="javascript:void(0)" onClick="switch_sub_menu('87', '???');" class="submenuA" hidefocus="true" style="outline:none;">线下课管理</a></li>
+                            <li><a id="menu_87" href="javascript:void(0)" onClick="switch_sub_menu('87', '/offline/class/findOfflineClassList');" class="submenuA" hidefocus="true" style="outline:none;">线下课管理</a></li>
                         </ul>
                     </li>
                     <li class="treemenu">
-                        <a id="root_88" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('88');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">用户</span></a>
+                        <a id="root_88" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('88');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">讲师</span></a>
                         <ul id="tree_88" class="submenu">
                             <!-- 第三级菜单 -->
                             <li><a id="menu_89" href="javascript:void(0)" onClick="switch_sub_menu('89', '???');" class="submenuA" hidefocus="true" style="outline:none;">讲师管理</a></li>
