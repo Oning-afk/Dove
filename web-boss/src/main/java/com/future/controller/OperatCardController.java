@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * @program: dove-parent
- * @description: 运营控制层
+ * @description: 运营-营销卡管理控制层
  * @author: 张晋浩
  * @create: 2019-10-14 20:19
  **/
@@ -30,7 +30,7 @@ public class OperatCardController {
     private OperationDirectMessagesService operationDirectMessagesService;
 
     /**
-     *  运营-线上卡券管理-查询
+     *  运营-营销卡管理-线上卡券管理-查询
      * @param cardVoucher
      * @param model
      * @param page
@@ -59,7 +59,7 @@ public class OperatCardController {
     }
 
     /**
-     * 运营-线上卡券管理-删除
+     * 运营-营销卡管理-线上卡券管理-删除
      * @param id
      * @param model
      * @return
@@ -75,7 +75,7 @@ public class OperatCardController {
     }
 
     /**
-     * 运营-线上卡券管理-启用
+     * 运营-营销卡管理-线上卡券管理-启用
      * @param id
      * @param model
      * @return
@@ -91,7 +91,7 @@ public class OperatCardController {
     }
 
     /**
-     * 运营-线上卡券管理-禁用
+     * 运营-营销卡管理-线上卡券管理-禁用
      * @param id
      * @param model
      * @return
@@ -107,7 +107,7 @@ public class OperatCardController {
     }
 
     /**
-     * 运营-线上卡券管理-跳转至导出页面
+     * 运营-营销卡管理-线上卡券管理-跳转至导出页面
      * @return
      */
     @RequestMapping(value = "toExportPage")
@@ -116,7 +116,7 @@ public class OperatCardController {
     }
 
     /**
-     * 运营-线上卡券管理-卡券导出
+     * 运营-营销卡管理-线上卡券管理-卡券导出
      * @param cardVoucher
      * @param response
      */
@@ -161,7 +161,7 @@ public class OperatCardController {
     }
 
     /**
-     * 运营-线上卡券管理-跳转至新增页面
+     * 运营-营销卡管理-线上卡券管理-跳转至新增页面
      * @param type
      * @return
      */
@@ -194,7 +194,7 @@ public class OperatCardController {
     }
 
     /**
-     * 运营-线上卡券管理-回显卡券
+     * 运营-营销卡管理-线上卡券管理-回显卡券
      * @param id
      * @param model
      * @return
@@ -218,7 +218,7 @@ public class OperatCardController {
     }
 
     /**
-     *  运营-卡券发放记录-查询
+     *  运营-营销卡管理-卡券发放记录-查询
      * @param cardVoucherLog
      * @param model
      * @param page
@@ -234,7 +234,7 @@ public class OperatCardController {
     }
 
     /**
-     * 运营-卡券发放记录-导出
+     * 运营-营销卡管理-卡券发放记录-导出
      * @param response
      */
     @RequestMapping(value = "exportCardLog")
@@ -294,7 +294,7 @@ public class OperatCardController {
     }
 
     /**
-     * 运营-卡券发放记录-删除
+     * 运营-营销卡管理-卡券发放记录-删除
      * @param ids
      * @return
      */
@@ -305,7 +305,7 @@ public class OperatCardController {
     }
 
     /**
-     * 运营-卡券发放记录-恢复
+     * 运营-营销卡管理-卡券发放记录-恢复
      * @param ids
      * @return
      */
@@ -329,6 +329,10 @@ public class OperatCardController {
         return "operating/card/issueCard";
     }
 
+    /**
+     * 运营-营销卡管理-线上卡券管理-卡券发放
+     * @param cardVoucherLog
+     */
     @RequestMapping("issueCard")
     public void issueCard(CardVoucherLog cardVoucherLog){
         operatingService.issueCard(cardVoucherLog);
