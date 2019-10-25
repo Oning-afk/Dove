@@ -202,6 +202,39 @@
                     $(".news-msg").remove();
                 }
             </script>
+
+            <div class="nav1">
+                <div class="look_scanning">
+                    <i></i>
+                    <div class="ewm">
+                        <div class="h5">
+                            <div id="nav_h5_qrcode"><img style="display: block;" width="86" height="86" src="http://try.51eduline.com/index.php?app=basic&mod=Qrcode&act=index&config[content]=http%3A%2F%2Ftry.51eduline.com&config[print]=1" data-bd-imgshare-binded="1"></div>
+                            <p>手机网页端</p>
+                        </div>
+                        <div class="app">
+                            <div id="nav_app_qrcode"><img src="http://try.51eduline.com/index.php?app=basic&mod=Qrcode&act=index&config[content]=https%3A%2F%2Fwww.pgyer.com%2F5RDd%3Fversion%3D4.1&config[print]=1" data-bd-imgshare-binded="1"></div>
+                            <p>APP下载</p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="page_header_adiv">
+                    <li class="header_top_nav">
+                        <a href="http://try.51eduline.com/my/set_up/info.html">admin</a>
+                        <i class="icon-nav-arrow"></i>
+                    </li>
+                    <dl class="login-after-position">
+                        <dd class="login-after-bdbt"><a href="http://try.51eduline.com/my/index.html">个人中心</a></dd>
+                        <dd class="login-after-bdbt"><a href="http://try.51eduline.com/my/order.html">财务中心</a></dd>
+                        <dd class="login-after-bdbt"><a href="http://try.51eduline.com/my/set_up/info.html">我的设置</a></dd>
+                        <dd class="login-after-bdbt"><a href="http://try.51eduline.com/message/index.html">我的消息</a></dd>
+                        <dd class="login-after-bdbt"><a href="http://try.51eduline.com/admin.html">后台管理</a></dd>
+                        <dd class="login-after-bdbt"><a href="javascript:;" onClick="logout()">退出</a></dd>
+                    </dl>
+                </ul>
+                </li>
+                </ul>
+            </div>
+
             <div class="nav2">
                 <a class="page_header_adiv" href="http://try.51eduline.com/login.html">机构入驻</a>
             </div>
@@ -214,10 +247,10 @@
 <link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/slider_banner.css">
 <script src="../js/swiper.js"></script>
 <script src="../js/vue/vue.js"></script>
-<script src="http://try.51eduline.com/addons/theme/stv1/_static/js/countUp.min.js"></script>
-<script src="http://try.51eduline.com/addons/theme/stv1/_static/js/index_2.0.js"></script>
-<script src="http://try.51eduline.com/addons/theme/stv1/_static/js/slick.js"></script>
-<script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="../js/countUp.min.js"></script>
+<script src="../js/index_2.0.js"></script>
+<script src="../js/slick.js"></script>
+<script type="text/javascript" src="../js/jquery.SuperSlide.2.1.1.js"></script>
 <script>
     $(function(){
         vm = new Vue({
@@ -293,7 +326,7 @@
             <div class="swiper-wrapper" id="slideshow">
                     <div class="swiper-slide" v-for="site in list">
                             <a :href="site.url" title="">
-                                <img :src="site.imgs" alt="">
+                                <img :src="site.imgs" alt="" width="100%">
                             </a>
                     </div>
             </div>
@@ -395,6 +428,11 @@
 <script src="http://try.51eduline.com/online_check.php?uid=0&uname=&mod=Index&app=classroom&act=index&action=trace"></script>
 <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/lazyload/jquery.lazyload.min.js"></script>
 <script type="text/javascript">
+
+    function reg_login(){
+        location.href="../teacher";
+    }
+
     $(function () {
         // 初始化
         $("img.lazyload").lazyload({

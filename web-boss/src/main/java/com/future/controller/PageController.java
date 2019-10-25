@@ -34,4 +34,9 @@ public class PageController {
         return "main";
     }
 
+    @RequestMapping("teacher")
+    public String teacher(){
+        return "teacher/teacher";
+    }
+
 }

@@ -2,11 +2,13 @@ package com.future.controller;
 
 import com.future.interfaces.TeacherServiceApi;
 import com.future.model.Swiper;
+import com.future.model.Teacher;
 import com.future.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @program: dove-parent
@@ -24,5 +26,10 @@ public class TeacherController implements TeacherServiceApi {
     @Override
     public List<Swiper> findSwiper() {
         return teacherService.findSwiper();
+    }
+
+    @Override
+    public Map applyFor(Teacher teacher) {
+        return teacherService.applyFor(teacher);
     }
 }

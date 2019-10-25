@@ -20,15 +20,21 @@ public class Teacher {
 
     private String name;
 
-    //讲师等级Id
-    private Integer teacherRankId;
+    //认证状态
+    private Integer type;
 
+    //讲师等级
+    private Integer rankId;
+
+    //创建时间
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
 
-    private String dept;
+    //认证理由
+    private String reason;
 
-    private String phone;
+    //真实姓名
+    private String realname;
 
     //直播课程Id
     private Integer courseId;
@@ -36,5 +42,6 @@ public class Teacher {
     //线下课程Id
     private Integer programsId;
 
-
+    //证书文件
+    private String attach;
 }
