@@ -247,10 +247,6 @@
 <link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/slider_banner.css">
 <script src="../js/swiper.js"></script>
 <script src="../js/vue/vue.js"></script>
-<script src="../js/countUp.min.js"></script>
-<script src="../js/index_2.0.js"></script>
-<script src="../js/slick.js"></script>
-<script type="text/javascript" src="../js/jquery.SuperSlide.2.1.1.js"></script>
 <script>
     $(function(){
         vm = new Vue({
@@ -357,6 +353,7 @@
 <div class="body01">
     <h1>最新课程</h1>
     <div class="body01-content">
+
         <ul>
             <li>
                 <img class="lefttopimg" src="http://try.51eduline.com/addons/theme/stv1/_static/images/course.png"
@@ -406,6 +403,18 @@
 <div class="body01">
     <h1>讲师团队</h1>
     <div class="teacher-team">
+        <ul v-for="">
+            <li>
+                <a href="">
+                    <span>
+                        <img class="lazyload" data-original="">
+                    </span>
+                    <h5></h5>
+                    <small></small>
+                    <p></p>
+                </a>
+            </li>
+        </ul>
         <ul>
             <li>
                 <a href="http://try.51eduline.com/teacher/80.html">
