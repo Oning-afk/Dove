@@ -497,38 +497,38 @@
                     <#if commodityPageBean.totalRecord == 0>
                     </#if>
                     <#if commodityPageBean.totalRecord &gt; 0>
-                        <a href="/mall/findCommodity?page=1">首页</a>
+                        <a href="/commodityType/findCommodity?page=1">首页</a>
                         <!-- 如果当前为第一页时,就没有上一页这个超链接显示 -->
                         <#if commodityPageBean ?? && commodityPageBean.pageNum == 1 && commodityPageBean.pageNum != commodityPageBean.totalPage>
                             <#list commodityPageBean.start..commodityPageBean.end as i>
                                 <#if commodityPageBean.pageNum == i>
                                     ${i}
                                 <#else >
-                                    <a href="/mall/findCommodity?page=${i}">${i}</a>
+                                    <a href="/commodityType/findCommodity?page=${i}">${i}</a>
                                 </#if>
                             </#list>
-                            <a href="/mall/findCommodity?page=${commodityPageBean.pageNum + 1}">下一页</a>
+                            <a href="/commodityType/findCommodity?page=${commodityPageBean.pageNum + 1}">下一页</a>
                         </#if>
                         <!-- 如果当前不是第一页,也不是最后一页时,则有上一页跟下一页 -->
                         <#if commodityPageBean.pageNum &gt;1 && commodityPageBean.pageNum &lt; commodityPageBean.totalPage>
-                            <a href="/mall/findCommodity?page=${commodityPageBean.pageNum-1}">上一页</a>
+                            <a href="/commodityType/findCommodity?page=${commodityPageBean.pageNum-1}">上一页</a>
                             <#list commodityPageBean.start..commodityPageBean.end as i>
                                 <#if commodityPageBean.pageNum == i>
                                     ${i}
                                 <#else >
-                                    <a href="/mall/findCommodity?page=${i}">${i}</a>
+                                    <a href="/commodityType/findCommodity?page=${i}">${i}</a>
                                 </#if>
                             </#list>
-                            <a href="/mall/findCommodity?page=${commodityPageBean.pageNum + 1}">下一页</a>
+                            <a href="/commodityType/findCommodity?page=${commodityPageBean.pageNum + 1}">下一页</a>
                         </#if>
                         <!-- 如果当前为最后一页时,则没有下一页 -->
                         <#if commodityPageBean.pageNum == commodityPageBean.totalPage && commodityPageBean.pageNum != 1>
-                            <a href="/mall/findCommodity?page=${commodityPageBean.pageNum-1}">上一页</a>
+                            <a href="/commodityType/findCommodity?page=${commodityPageBean.pageNum-1}">上一页</a>
                             <#list commodityPageBean.start..commodityPageBean.end as i>
                                 <#if commodityPageBean.pageNum == i>
                                     ${i}
                                 <#else >
-                                    <a href="/mall/findCommodity?page=${i}">${i}</a>
+                                    <a href="/commodityType/findCommodity?page=${i}">${i}</a>
                                 </#if>
                             </#list>
                         </#if>
@@ -538,11 +538,11 @@
                                 <#if commodityPageBean.pageNum == i>
                                     ${i}
                                 <#else >
-                                    <a href="/mall/findCommodity?page=${i}">${i}</a>
+                                    <a href="/commodityType/findCommodity?page=${i}">${i}</a>
                                 </#if>
                             </#list>
                         </#if>
-                        <a href="/mall/findCommodity?page=${commodityPageBean.totalPage}">尾页</a>
+                        <a href="/commodityType/findCommodity?page=${commodityPageBean.totalPage}">尾页</a>
                     </#if>
                     共${commodityPageBean.totalRecord}条
                 </td>
