@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.FinanceYueMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.FinanceYue" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="xinming" property="xinming" jdbcType="VARCHAR" />
+    <result column="shenfenzhenghao" property="shenfenzhenghao" jdbcType="VARCHAR" />
+    <result column="yonghuquanxian" property="yonghuquanxian" jdbcType="VARCHAR" />
+    <result column="keyongyue" property="keyongyue" jdbcType="INTEGER" />
+    <result column="dongjieyue" property="dongjieyue" jdbcType="INTEGER" />
+    <result column="vipleixing" property="vipleixing" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="getCountYue" parameterType="com.future.model.FinanceYue" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            finance_yue
+        where
+            1 = 1
+    </select>
+
+  <select id="findYue" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+            from
+            finance_yue
+        where
+            1 = 1
+        limit
+            #{page},#{rows}
+    </select>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.FgztuikuanMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.Fgztuikuan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="getCountTuikuan" parameterType="com.future.model.Fgztuikuan" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            finance_tuikuan
+        where
+            1 = 1
+    </select>
+  <select id="findTuikuan" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+        from
+            finance_tuikuan
+        where
+            1 = 1
+        limit
+            #{page},#{rows}
+    </select>
+</mapper>

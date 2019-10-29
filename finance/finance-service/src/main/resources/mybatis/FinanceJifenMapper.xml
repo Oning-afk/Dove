@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.FinanceJifenMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.FinanceJifen" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="yonghuid" property="yonghuid" jdbcType="VARCHAR" />
+    <result column="yonghuming" property="yonghuming" jdbcType="VARCHAR" />
+    <result column="jifen" property="jifen" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="getCountJifen" parameterType="com.future.model.FinanceJifen" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            finance_jifen
+        where
+            1 = 1
+
+    </select>
+
+  <select id="findJifen" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+            from
+            finance_jifen
+        where
+            1 = 1
+        limit
+            #{page},#{rows}
+    </select>
+</mapper>
