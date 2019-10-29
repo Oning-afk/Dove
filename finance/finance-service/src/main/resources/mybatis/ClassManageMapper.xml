@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.ClassManageMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.ClassManage" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="class_type" property="classType" jdbcType="INTEGER" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <result column="class_describe" property="classDescribe" jdbcType="VARCHAR" />
+    <result column="class_price" property="classPrice" jdbcType="DECIMAL" />
+    <result column="class_buy_number" property="classBuyNumber" jdbcType="INTEGER" />
+    <result column="class_totale_people" property="classTotalePeople" jdbcType="INTEGER" />
+    <result column="class_creater" property="classCreater" jdbcType="BIGINT" />
+    <result column="class_content" property="classContent" jdbcType="INTEGER" />
+    <result column="class_image" property="classImage" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+      <result column="classJigou" property="classJigou" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="getCountManage" parameterType="com.future.model.ClassManage" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            class_manage
+        where
+            1 = 1
+    </select>
+  <select id="findManage" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+        from
+           class_manage
+        where
+            1 = 1
+        limit
+            #{page},#{rows}
+    </select>
+    <insert id="addManage" parameterType="com.future.model.ClassManage">
+        insert into class_manage
+            (
+            class_type,
+            class_name,
+            class_describe,
+            class_price,
+            class_buy_number,
+            class_totale_people,
+            class_creater,
+            class_content,
+            class_image,
+            is_del,
+            create_time,
+            update_time,
+            class_jigou
+        )
+        values
+            (
+            #{classType,jdbcType=BIGINT},
+            #{className,jdbcType=INTEGER},
+            #{classDescribe,jdbcType=INTEGER},
+            #{classPrice,jdbcType=INTEGER},
+            0,
+            #{classTotalePeople,jdbcType=INTEGER},
+            2,
+            #{classContent,jdbcType=INTEGER},
+            #{classImage,jdbcType=INTEGER},
+            0,
+            now(),
+            now(),
+            #{classJigou,jdbcType=INTEGER}
+      )
+    </insert>
+
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.FinanceShouruMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.FinanceShouru" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="xingming" property="xingming" jdbcType="VARCHAR" />
+    <result column="shenfenzhenghao" property="shenfenzhenghao" jdbcType="VARCHAR" />
+    <result column="yonghuzu" property="yonghuzu" jdbcType="VARCHAR" />
+    <result column="keyongshouru" property="keyongshouru" jdbcType="INTEGER" />
+    <result column="dongjieshouru" property="dongjieshouru" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="getCountShouru" parameterType="com.future.model.FinanceShouru" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            finance_shouru
+        where
+            1 = 1
+    </select>
+
+  <select id="findShouru" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+            from
+            finance_shouru
+        where
+            1 = 1
+        limit
+            #{page},#{rows}
+    </select>
+</mapper>

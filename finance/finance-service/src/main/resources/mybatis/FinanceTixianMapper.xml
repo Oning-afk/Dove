@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.FinanceTixianMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.FinanceTixian" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="tixianjine" property="tixianjine" jdbcType="INTEGER" />
+    <result column="tixianleixing" property="tixianleixing" jdbcType="VARCHAR" />
+    <result column="tixianren" property="tixianren" jdbcType="VARCHAR" />
+    <result column="tixianzhanghu" property="tixianzhanghu" jdbcType="VARCHAR" />
+    <result column="shenqingshijian" property="shenqingshijian" jdbcType="VARCHAR" />
+    <result column="zhaungtai" property="zhaungtai" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="quxiaoyuanyin" property="quxiaoyuanyin" jdbcType="VARCHAR" />
+    <result column="shibaiyuanyin" property="shibaiyuanyin" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="getCountTixian" parameterType="com.future.model.FinanceTixian" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            finance_tixian
+        where
+           zhaungtai=1
+    </select>
+
+  <select id="findTixian" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+            from
+            finance_tixian
+        where
+            zhaungtai=1
+        limit
+            #{page},#{rows}
+    </select>
+
+</mapper>

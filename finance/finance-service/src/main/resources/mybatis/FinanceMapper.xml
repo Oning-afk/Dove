@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.FinanceMapper" >
+    <resultMap id="BaseResultMap" type="com.future.model.Findingdan" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="jigou" property="jigou" jdbcType="VARCHAR" />
+        <result column="yuanjia" property="yuanjia" jdbcType="INTEGER" />
+        <result column="zhekouleixing" property="zhekouleixing" jdbcType="VARCHAR" />
+        <result column="jiage" property="jiage" jdbcType="INTEGER" />
+        <result column="zhaungtai" property="zhaungtai" jdbcType="INTEGER" />
+        <result column="youxiaotianshu" property="youxiaotianshu" jdbcType="VARCHAR" />
+        <result column="youxiaoqi" property="youxiaoqi" jdbcType="VARCHAR" />
+        <result column="fukuanshijian" property="fukuanshijian" jdbcType="VARCHAR" />
+        <result column="banjimingcheng" property="banjimingcheng" jdbcType="VARCHAR" />
+        <result column="xuexizhuangtai" property="xuexizhuangtai" jdbcType="INTEGER" />
+        <result column="zhibokemingcheng" property="zhibokemingcheng" jdbcType="VARCHAR" />
+        <result column="xianxiakemingcheng" property="xianxiakemingcheng" jdbcType="VARCHAR" />
+        <result column="userid" property="userid" jdbcType="INTEGER" />
+    </resultMap>
+  <select id="getCount" parameterType="com.future.model.Findingdan" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            finance_dingdan
+        where
+           xuexizhuangtai = 1
+    </select>
+
+  <select id="findDingdan" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+            from
+            finance_dingdan
+        where
+           xuexizhuangtai = 1
+        limit
+            #{page},#{rows}
+    </select>
+    <select id="getCountBj" parameterType="com.future.model.Findingdan" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            finance_dingdan
+        where
+           xuexizhuangtai = 2
+    </select>
+
+    <select id="findDingdanBj" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+            from
+            finance_dingdan
+        where
+           xuexizhuangtai = 2
+        limit
+            #{page},#{rows}
+    </select>
+    <select id="getCountZb" parameterType="com.future.model.Findingdan" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            finance_dingdan
+        where
+           xuexizhuangtai = 3
+    </select>
+
+    <select id="findDingdanZb" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+            from
+            finance_dingdan
+        where
+           xuexizhuangtai = 3
+        limit
+            #{page},#{rows}
+    </select>
+    <select id="getCountXx" parameterType="com.future.model.Findingdan" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            finance_dingdan
+        where
+           xuexizhuangtai = 4
+    </select>
+
+    <select id="findDingdanXx" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+            from
+            finance_dingdan
+        where
+           xuexizhuangtai = 4
+        limit
+            #{page},#{rows}
+    </select>
+    <update id="delDingdan" parameterType="com.future.model.Findingdan" >
+        update finance_dingdan
+            xuexizhuangtai = 5
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

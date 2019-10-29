@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.FinanceKahaoMapper" >
+  <resultMap id="BaseResultMap" type="com.future.model.FinanceKahao" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="chikazhe" property="chikazhe" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="kaihuhang" property="kaihuhang" jdbcType="VARCHAR" />
+    <result column="zhanghao" property="zhanghao" jdbcType="VARCHAR" />
+    <result column="shengshi" property="shengshi" jdbcType="VARCHAR" />
+    <result column="kaihuhangdizhi" property="kaihuhangdizhi" jdbcType="VARCHAR" />
+    <result column="lianxirenshouji" property="lianxirenshouji" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="getCountKahao" parameterType="com.future.model.FinanceKahao" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            finance_kahao
+        where
+            1 = 1
+    </select>
+
+  <select id="findKahao" parameterType="map" resultMap="BaseResultMap">
+        select
+            *
+            from
+            finance_kahao
+        where
+            1 = 1
+        limit
+            #{page},#{rows}
+    </select>
+</mapper>
