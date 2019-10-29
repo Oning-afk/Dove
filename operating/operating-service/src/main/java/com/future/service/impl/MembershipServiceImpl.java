@@ -47,4 +47,22 @@ public class MembershipServiceImpl implements MembershipService {
     }
 
 
+    @Override
+    public void addMembership(Membership membership) {
+        if(membership.getId()!=null){
+
+            membershipMapper.updateMembership(membership);
+        }else{
+
+            membershipMapper.addMembership(membership);
+        }
+
+
+    }
+
+    @Override
+    public Membership echoMembership(Long id) {
+        return membershipMapper.echoMembership(id);
+    }
+
 }

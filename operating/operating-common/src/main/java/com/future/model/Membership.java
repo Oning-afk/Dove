@@ -37,7 +37,10 @@ public class Membership implements Serializable {
     private Integer forbidden;
 
 
-
+    /**
+     * pc封面
+     */
+    private String image;
 
     @Override
     public String toString() {
@@ -48,7 +51,16 @@ public class Membership implements Serializable {
                 ", monthly=" + monthly +
                 ", annualized=" + annualized +
                 ", forbidden=" + forbidden +
+                ", image='" + image + '\'' +
                 '}';
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Long getId() {

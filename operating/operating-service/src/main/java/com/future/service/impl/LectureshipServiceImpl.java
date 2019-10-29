@@ -44,5 +44,23 @@ public class LectureshipServiceImpl implements LectureshipService {
         return lecturershipMapper.updateLecturerStatusToDown(id);
     }
 
+    @Override
+    public void addLecturership(LectureshipBean lectureshipBean) {
+
+        if(lectureshipBean.getId()!=null){
+
+            lecturershipMapper.updateLecturer(lectureshipBean);
+        }else{
+
+            lecturershipMapper.addLecturership(lectureshipBean);
+        }
+    }
+
+    @Override
+    public LectureshipBean echoLecturership(Long id) {
+
+        return lecturershipMapper.echoLecturership(id);
+    }
+
 
 }

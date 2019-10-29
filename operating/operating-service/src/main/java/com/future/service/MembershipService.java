@@ -24,4 +24,9 @@ public interface MembershipService {
 
     boolean updateStatusTodown(Long[] id);
 
+
+    void addMembership(Membership membership);
+
+
+    Membership echoMembership(Long id);
 }

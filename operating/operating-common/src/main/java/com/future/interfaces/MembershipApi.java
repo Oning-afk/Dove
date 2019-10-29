@@ -2,6 +2,7 @@ package com.future.interfaces;
 
 import com.future.model.LectureshipBean;
 import com.future.model.Membership;
+import com.future.model.OperationConsult;
 import com.future.model.PageBean;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,5 +25,13 @@ public interface MembershipApi {
     @RequestMapping("updateStatusTodown")
     boolean updateStatusTodown(@RequestParam(value = "ids",required = false)Long[] id);
 
+
+
+    @RequestMapping("addMembership")
+    void addMembership(@RequestBody(required = false) Membership membership);
+
+
+    @RequestMapping("echoMembership")
+    Membership echoMembership(@RequestParam(value = "id",required = false)Long id);
 
 }

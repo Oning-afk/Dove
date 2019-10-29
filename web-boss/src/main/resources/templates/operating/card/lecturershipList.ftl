@@ -30,8 +30,8 @@
     <script type="text/javascript" src="../operating/card/js/module.js"></script>
     <script src="../operating/card/js/common.js"></script>
     <script src="../operating/card/js/module.common.js"></script>
-    <script type="text/javascript" src="../operating/js/admin.js"></script>
-    <script type="text/javascript" src="../operating/js/ui.layer.js"></script>
+    <script type="text/javascript" src="../operating/card/js/admin.js"></script>
+    <script type="text/javascript" src="../operating/card/js/ui.layer.js"></script>
     <!--非admin应用的后台js脚本统一写在  模板风格对应的app目录下的admin.js中-->
     <script type="text/javascript" src="../operating/card/js/Lecturership.js"></script>
     <style>
@@ -178,6 +178,7 @@
     <div class="Toolbar_inbox">
         <!-- <div class="page right"><span>共1条</span></div> -->
         <a onclick="admin.delLecturership()" class="btn_a"><span>删除</span></a>
+        <a onclick="addLecturership()" class="btn_a"><span>添加</span></a>
     </div>
     <!-- END TOOLBAR -->
 
@@ -215,7 +216,7 @@
                         <#if lectureShip.status == 1>
                             <a onclick="admin.mzstartCouponAll1(${lectureShip.id?c})" class="btn_a"><span>启用</span></a>|
                         </#if>
-                        <a onclick="admin.echoCard(${lectureShip.id?c})">编辑</a>
+                        <a onclick="echoLecturership(${lectureShip.id?c})">编辑</a>
                     </td>
 
 
@@ -294,8 +295,18 @@
         var url = $('#search_form form ').attr('action');
         window.location.href = url;
     }
+    //跳转至修改页面
+    function echoLecturership(id){
+        location.href="/lecturership/echoLecturership?id="+id;
+    }
 </script>
 <script type="text/javascript">
+
+    //跳转至新增页面
+    function addLecturership  () {
+        location.href="/lecturership/toAddLecturership";
+    };
+
     document.onkeydown=function (e) {
         e=window.event||e;
         var key = e.keyCode;

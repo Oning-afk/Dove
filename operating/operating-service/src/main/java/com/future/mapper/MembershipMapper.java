@@ -2,6 +2,7 @@ package com.future.mapper;
 
 import com.future.model.LectureshipBean;
 import com.future.model.Membership;
+import com.future.model.OperationConsult;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,4 +33,9 @@ public interface MembershipMapper {
 
     boolean updateStatusTodown(Long[] id);
 
+    void updateMembership(Membership membership);
+
+    void addMembership(Membership membership);
+
+    Membership echoMembership(Long id);
 }

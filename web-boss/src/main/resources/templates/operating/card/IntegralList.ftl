@@ -29,8 +29,8 @@
     <script type="text/javascript" src="../operating/card/js/module.js"></script>
     <script src="../operating/card/js/common.js"></script>
     <script src="../operating/card/js/module.common.js"></script>
-    <script type="text/javascript" src="../operating/js/admin.js"></script>
-    <script type="text/javascript" src="../operating/js/ui.layer.js"></script>
+    <script type="text/javascript" src="../operating/card/js/admin.js"></script>
+    <script type="text/javascript" src="../operating/card/js/ui.layer.js"></script>
     <!--非admin应用的后台js脚本统一写在  模板风格对应的app目录下的admin.js中-->
     <script type="text/javascript" src="../operating/card/js/IntegralList.js"></script>
     <style>
@@ -144,7 +144,7 @@
                     </#if>
                     共${integralPageBean.totalRecord}条
                 </td>
-            </tr></td></tr> </table>
+            </tr>				</td></tr> </table>
     </div>
 </div>
 

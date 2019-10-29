@@ -12,6 +12,27 @@ public class LectureshipBean implements Serializable {
 
     private Integer status;
 
+    private String image;
+
+    @Override
+    public String toString() {
+        return "LectureshipBean{" +
+                "id=" + id +
+                ", lecturership='" + lecturership + '\'' +
+                ", ordering=" + ordering +
+                ", status=" + status +
+                ", image='" + image + '\'' +
+                '}';
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Long getId() {
         return id;
     }
@@ -44,13 +65,4 @@ public class LectureshipBean implements Serializable {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "LectureshipBean{" +
-                "id=" + id +
-                ", lecturership='" + lecturership + '\'' +
-                ", ordering=" + ordering +
-                ", status=" + status +
-                '}';
-    }
 }

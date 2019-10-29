@@ -14,3 +14,4 @@ public interface OperatSingleService {
 
     void delSingles(Long[] id);
 }
+ 

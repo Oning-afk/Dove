@@ -71,4 +71,85 @@
     </update>
 
 
+    <insert id="addMembership" parameterType="com.future.model.Membership" >
+        insert into operation_membership
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="grade != null" >
+                grade,
+            </if>
+            <if test="monthly != null" >
+                monthly,
+            </if>
+            <if test="annualized != null" >
+                annualized,
+            </if>
+            <if test="image != null" >
+                image,
+            </if>
+            <if test="forbidden != null" >
+                forbidden
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="grade != null" >
+                #{grade,jdbcType=INTEGER},
+            </if>
+            <if test="monthly != null" >
+                #{monthly,jdbcType=INTEGER},
+            </if>
+            <if test="annualized != null" >
+                #{annualized,jdbcType=INTEGER},
+            </if>
+            <if test="image != null" >
+                #{image,jdbcType=VARCHAR},
+            </if>
+            0
+        </trim>
+    </insert>
+
+
+    <select id="echoMembership" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        *
+        from
+        operation_membership
+        where
+        id = #{id}
+    </select>
+
+
+
+    <update id="updateMembership" parameterType="com.future.model.Membership">
+        update
+        operation_membership
+        <set >
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="grade != null" >
+                grade = #{grade,jdbcType=INTEGER},
+            </if>
+            <if test="monthly != null" >
+                monthly = #{monthly,jdbcType=INTEGER},
+            </if>
+            <if test="annualized != null" >
+                annualized = #{annualized,jdbcType=INTEGER},
+            </if>
+            <if test="image != null" >
+                image = #{image,jdbcType=VARCHAR},
+            </if>
+            <if test="forbidden != null" >
+                forbidden = 0
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+
 </mapper>

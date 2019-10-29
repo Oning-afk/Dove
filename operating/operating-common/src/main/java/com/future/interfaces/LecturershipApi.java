@@ -20,4 +20,12 @@ public interface LecturershipApi {
 
     @RequestMapping("updateLecturerStatusToDown")
     boolean updateLecturerStatusToDown(@RequestParam(value = "ids",required = false)Long[] id);
+
+
+    @RequestMapping("addLecturership")
+    void addLecturership(@RequestBody(required = false) LectureshipBean lectureshipBean);
+
+
+    @RequestMapping("echoLecturership")
+    LectureshipBean echoLecturership(@RequestParam(value = "id",required = false)Long id);
 }

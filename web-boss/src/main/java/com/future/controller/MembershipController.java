@@ -2,6 +2,7 @@ package com.future.controller;
 
 import com.future.model.LectureshipBean;
 import com.future.model.Membership;
+import com.future.model.OperationConsult;
 import com.future.model.PageBean;
 import com.future.service.MembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.lang.reflect.Member;
 
 @Controller
 @RequestMapping("membership")
@@ -86,6 +89,30 @@ public class MembershipController {
     public String toAddMembership(){
 
          return "operating/card/addMembership";
+    }
+
+
+
+
+    @RequestMapping("addMembership")
+    public String addMembership(Membership membership){
+        membershipService.addMembership(membership);
+        return "redirect:findMembership";
+    }
+
+
+
+    /**
+     * 运营-会员等级-回显卡券
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "echoMembership")
+    public String echoMembership(Long id,Model model){
+        Membership membership = membershipService.echoMembership(id);
+        model.addAttribute("bean",membership);
+        return "operating/card/addMembership";
     }
 
 

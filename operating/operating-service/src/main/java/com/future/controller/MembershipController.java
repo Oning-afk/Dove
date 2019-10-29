@@ -36,5 +36,15 @@ public class MembershipController implements MembershipApi {
         return membershipService.updateStatusTodown(id);
     }
 
+    @Override
+    public void addMembership(Membership membership) {
+        membershipService.addMembership(membership);
+    }
+
+    @Override
+    public Membership echoMembership(Long id) {
+        return membershipService.echoMembership(id);
+    }
+
 
 }

@@ -98,7 +98,11 @@ admin.delCouponAll = function() {
 };
 
 
-//跳转至新增页面
-admin.addCoupon1 = function() {
-    location.href="/membership/toAddMembership";
-};
+//新增或修改
+admin.addMembership = function (Membership) {
+    $.post('/membership/addMembership',(Membership),function () {
+        location.href="/membership/findMembership";
+    })
+}
+
+

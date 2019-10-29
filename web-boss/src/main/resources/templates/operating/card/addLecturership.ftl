@@ -48,15 +48,15 @@
     <div class="tit_tab">
         <!-- START TAB框 -->
         <ul>
-            <li><a href="http://try.51eduline.com/index.php?app=classroom&mod=AdminVip&act=index&tabHash=index"  >列表</a></li><li><a href="http://try.51eduline.com/index.php?app=classroom&mod=AdminVip&act=addVip&tabHash=addVip" class="on" >添加</a></li>
+            <li><a href="http://try.51eduline.com/index.php?app=classroom&mod=AdminTeacherVip&act=index&tabHash=index"  >列表</a></li><li><a href="http://try.51eduline.com/index.php?app=classroom&mod=AdminTeacherVip&act=addVip&tabHash=addVip" class="on" >添加</a></li>
         </ul>                    <!-- END TAB框 -->
 
         <!-- START PAGE_CONFIG -->
         <div id='page_config' class = "form2 list" >
             <div class="hd">提示：checkbox如果默认有多个值，请以“,”隔开。</div>
             <form action="http://try.51eduline.com/index.php?app=admin&mod=Index&act=savePageConfig" method="POST">
-                <input type="hidden" name='pageKey' value="classroom_AdminVip_addVip" />
-                <input type="hidden" name='pageTitle' value="添加" />
+                <input type="hidden" name='pageKey' value="classroom_AdminTeacherVip_addVip" />
+                <input type="hidden" name='pageTitle' value="添加讲师头衔" />
                 <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
                         <th>字段</th>
@@ -93,7 +93,7 @@
                         <td><input type='text' name='key_javascript[]' value='' class="s-txt"></td>
                     </tr>                        <tr overstyle="on">
                         <td> <input type="hidden" name='key[]' value='sort'> sort</td>
-                        <td><input type="text" name='key_name[]' value='等级'  class="s-txt"/></td>
+                        <td><input type="text" name='key_name[]' value='排序'  class="s-txt"/></td>
                         <td><select name='key_type[]'>
                                 <option value='text' selected="selected">文本框:input_text</option>
                                 <option value='password' >密码框:input_password</option>
@@ -114,61 +114,11 @@
                                 <option value='define' >自定义</option>
                             </select></td>
                         <td><input type='text' name='key_default[]' value='' class="s-txt"></td>
-                        <td><input type='text' name='key_tishi[]' value='数字越高，等级越高' class="s-txt"></td>
-                        <td><input type='text' name='key_javascript[]' value='' class="s-txt"></td>
-                    </tr>                        <tr overstyle="on">
-                        <td> <input type="hidden" name='key[]' value='vip_month'> vip_month</td>
-                        <td><input type="text" name='key_name[]' value='月费'  class="s-txt"/></td>
-                        <td><select name='key_type[]'>
-                                <option value='text' selected="selected">文本框:input_text</option>
-                                <option value='password' >密码框:input_password</option>
-                                <option value='select' >下拉框:select</option>
-                                <option value='radio' >单选框:radio</option>
-                                <option value='checkbox' >多选框:checkbox</option>
-                                <option value='date' >日期插件:date</option>
-                                <option value='textarea' >文本域:textarea</option>
-                                <option value='editor' >编辑器:editor</option>
-                                <option value='word' >纯文字:word</option>
-                                <option value='hidden' >隐藏值:input_hidden</option>
-                                <option value='image' >图片上传:input_image</option>
-                                <option value='file' >附件上传:input_file</option>
-                                <option value='user' >用户选择:selectUser</option>
-                                <option value='oneUser' >单用户选择:selectOneUser</option>
-                                <option value='stringText' >分割存储:stringText</option>
-                                <option value='color' >色彩框：color</option>
-                                <option value='define' >自定义</option>
-                            </select></td>
-                        <td><input type='text' name='key_default[]' value='' class="s-txt"></td>
-                        <td><input type='text' name='key_tishi[]' value='单位：元' class="s-txt"></td>
-                        <td><input type='text' name='key_javascript[]' value='' class="s-txt"></td>
-                    </tr>                        <tr overstyle="on">
-                        <td> <input type="hidden" name='key[]' value='vip_year'> vip_year</td>
-                        <td><input type="text" name='key_name[]' value='年费'  class="s-txt"/></td>
-                        <td><select name='key_type[]'>
-                                <option value='text' selected="selected">文本框:input_text</option>
-                                <option value='password' >密码框:input_password</option>
-                                <option value='select' >下拉框:select</option>
-                                <option value='radio' >单选框:radio</option>
-                                <option value='checkbox' >多选框:checkbox</option>
-                                <option value='date' >日期插件:date</option>
-                                <option value='textarea' >文本域:textarea</option>
-                                <option value='editor' >编辑器:editor</option>
-                                <option value='word' >纯文字:word</option>
-                                <option value='hidden' >隐藏值:input_hidden</option>
-                                <option value='image' >图片上传:input_image</option>
-                                <option value='file' >附件上传:input_file</option>
-                                <option value='user' >用户选择:selectUser</option>
-                                <option value='oneUser' >单用户选择:selectOneUser</option>
-                                <option value='stringText' >分割存储:stringText</option>
-                                <option value='color' >色彩框：color</option>
-                                <option value='define' >自定义</option>
-                            </select></td>
-                        <td><input type='text' name='key_default[]' value='' class="s-txt"></td>
-                        <td><input type='text' name='key_tishi[]' value='单位：元' class="s-txt"></td>
+                        <td><input type='text' name='key_tishi[]' value='' class="s-txt"></td>
                         <td><input type='text' name='key_javascript[]' value='' class="s-txt"></td>
                     </tr>                        <tr overstyle="on">
                         <td> <input type="hidden" name='key[]' value='cover'> cover</td>
-                        <td><input type="text" name='key_name[]' value='PC封面'  class="s-txt"/></td>
+                        <td><input type="text" name='key_name[]' value='图标'  class="s-txt"/></td>
                         <td><select name='key_type[]'>
                                 <option value='text' >文本框:input_text</option>
                                 <option value='password' >密码框:input_password</option>
@@ -189,32 +139,7 @@
                                 <option value='define' >自定义</option>
                             </select></td>
                         <td><input type='text' name='key_default[]' value='' class="s-txt"></td>
-                        <td><input type='text' name='key_tishi[]' value='建议尺寸：100px*100px' class="s-txt"></td>
-                        <td><input type='text' name='key_javascript[]' value='' class="s-txt"></td>
-                    </tr>                        <tr overstyle="on">
-                        <td> <input type="hidden" name='key[]' value='h5_icon'> h5_icon</td>
-                        <td><input type="text" name='key_name[]' value='H5封面'  class="s-txt"/></td>
-                        <td><select name='key_type[]'>
-                                <option value='text' >文本框:input_text</option>
-                                <option value='password' >密码框:input_password</option>
-                                <option value='select' >下拉框:select</option>
-                                <option value='radio' >单选框:radio</option>
-                                <option value='checkbox' >多选框:checkbox</option>
-                                <option value='date' >日期插件:date</option>
-                                <option value='textarea' >文本域:textarea</option>
-                                <option value='editor' >编辑器:editor</option>
-                                <option value='word' >纯文字:word</option>
-                                <option value='hidden' >隐藏值:input_hidden</option>
-                                <option value='image' selected="selected">图片上传:input_image</option>
-                                <option value='file' >附件上传:input_file</option>
-                                <option value='user' >用户选择:selectUser</option>
-                                <option value='oneUser' >单用户选择:selectOneUser</option>
-                                <option value='stringText' >分割存储:stringText</option>
-                                <option value='color' >色彩框：color</option>
-                                <option value='define' >自定义</option>
-                            </select></td>
-                        <td><input type='text' name='key_default[]' value='' class="s-txt"></td>
-                        <td><input type='text' name='key_tishi[]' value='建议尺寸：40px*40px' class="s-txt"></td>
+                        <td><input type='text' name='key_tishi[]' value='' class="s-txt"></td>
                         <td><input type='text' name='key_javascript[]' value='' class="s-txt"></td>
                     </tr>                </table>
                 <div class="page_btm">
@@ -227,7 +152,7 @@
         <!-- START CONFIG_FORM -->
 
 
-        <form id='addConsult1' style="margin-top:5px">
+        <form id='addConsult' style="margin-top:5px">
             <div class="form2">
                 <dl class="lineD" id='dl_from'>
                     <dt>名称：</dt>
@@ -235,15 +160,25 @@
                         <#if bean ?? && bean.id ??>
                             <input name="id" id="id" type="hidden" value="${bean.id?c}">
                         </#if>
-                        <#if bean ?? && bean.name ??>
-                            <input name="name" id="name" type="text" value="${bean.name}"  class="s-txt" style='width:200px'>
+                        <#if bean ?? && bean.lecturership ??>
+                            <input name="lecturership" id="lecturership" type="text" value="${bean.lecturership}"  class="s-txt" style='width:200px'>
                         <#else >
-                            <input name="name" id="name" type="text" value=""  class="s-txt" style='width:200px'>
+                            <input name="lecturership" id="lecturership" type="text" value=""  class="s-txt" style='width:200px'>
                         </#if>
                     </dd>
                 </dl>
-                <dl class="lineD" id='dl_image'>
-                    <dt>pc封面：</dt>
+                <dl class="lineD" id='dl_from'>
+                    <dt>排序：</dt>
+                    <dd>
+                        <#if bean ?? && bean.ordering ??>
+                            <input name="ordering" id="ordering" type="text" value="${bean.ordering}"  class="s-txt" style='width:200px'>
+                        <#else >
+                            <input name="ordering" id="ordering" type="text" value=""  class="s-txt" style='width:200px'>
+                        </#if>
+                    </dd>
+                </dl>
+                <dl class="lineD" id='dl_cover'>
+                    <dt>图标：</dt>
                     <dd>
                         <!--  上传插件 -->
                         <div>
@@ -267,38 +202,6 @@
                         <p>建议尺寸：360px*360px</p>
                     </dd>
                 </dl>
-                <dl class="lineD" id='dl_from'>
-                    <dt>等级：</dt>
-                    <dd>
-                        <#if bean ?? && bean.grade ??>
-                            <input name="grade" id="grade" type="text" value="${bean.grade}"  class="s-txt" style='width:200px'>
-                        <#else >
-                            <input name="grade" id="grade" type="text" value=""  class="s-txt" style='width:200px'>
-                        </#if>
-                    </dd>
-                </dl>
-
-                <dl class="lineD" id='dl_from'>
-                    <dt>月费：</dt>
-                    <dd>
-                        <#if bean ?? && bean.monthly ??>
-                            <input name="monthly" id="monthly" type="text" value="${bean.monthly}"  class="s-txt" style='width:200px'>
-                        <#else >
-                            <input name="monthly" id="monthly" type="text" value=""  class="s-txt" style='width:200px'>
-                        </#if>
-                    </dd>
-                </dl>
-
-                <dl class="lineD" id='dl_from'>
-                    <dt>年费：</dt>
-                    <dd>
-                        <#if bean ?? && bean.annualized ??>
-                            <input name="annualized" id="annualized" type="text" value="${bean.annualized}"  class="s-txt" style='width:200px'>
-                        <#else >
-                            <input name="annualized" id="annualized" type="text" value=""  class="s-txt" style='width:200px'>
-                        </#if>
-                    </dd>
-                </dl>
 
 
                 <div class="page_btm" >
@@ -313,10 +216,18 @@
     </div>
     <script>
         function submitform(){
-            admin.addMembership($("#addConsult1").serialize());
+            addLecturership($("#addConsult").serialize());
         }
     </script>
     <script type="text/javascript">
+
+        //新增或修改
+         function addLecturership (LecturershipBean) {
+            $.post('/lecturership/addLecturership',(LecturershipBean),function () {
+                location.href="/lecturership/findLecturership";
+            })
+        }
+
         document.onkeydown=function (e) {
             e=window.event||e;
             var key = e.keyCode;
@@ -332,6 +243,8 @@
             }
         }
 
+
+
         var uploader = WebUploader.create({
             auto: true, // 选完文件后，是否自动上传
             swf: '../js/webuploader/Uploader.swf', // swf文件路径
@@ -344,11 +257,6 @@
                 mimeTypes: 'image/*'
             }
         });
-
-
-
-
-
         uploader.on( 'fileQueued', function( file ) {
             $("#fileList").empty();
             var $list = $("#fileList"),
@@ -413,31 +321,8 @@
         });
 
 
-        /**
-         * 初始化对象
-         */
-//表格样式
-        $(document).ready(function(){
-            admin.bindTrOn();});
 
 
-
-
-
-        document.onkeydown=function (e) {
-            e=window.event||e;
-            var key = e.keyCode;
-            if ((e.ctrlKey && key == 82) || key == 116) {
-                parent.MainIframe.location.reload();
-                if(document.all) {
-                    e.keyCode = 0;
-                    e.returnValue = false;
-                }else {
-                    e.cancelBubble = true;
-                    e.preventDefault();
-                }
-            }
-        }
         /**
          * 初始化对象
          */

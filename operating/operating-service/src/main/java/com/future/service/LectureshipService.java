@@ -23,4 +23,8 @@ public interface LectureshipService {
     boolean updateLecturerStatusToUp(Long[] id);
 
     boolean updateLecturerStatusToDown(Long[] id);
+
+    void addLecturership(LectureshipBean lectureshipBean);
+
+    LectureshipBean echoLecturership(Long id);
 }

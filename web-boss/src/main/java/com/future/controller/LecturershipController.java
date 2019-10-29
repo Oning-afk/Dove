@@ -72,4 +72,42 @@ public class LecturershipController {
         }
         return "redirect:findLecturership";
     }
+
+
+
+
+
+
+
+    /**
+     * 运营-积分规则配置-跳转至新增页面
+     * @param
+     * @return
+     */
+    @RequestMapping(value = "toAddLecturership")
+    public String toAddLecturership(){
+
+        return "operating/card/addLecturership";
+    }
+
+
+    @RequestMapping("addLecturership")
+    public String addLecturership(LectureshipBean lectureshipBean){
+        lectureshipService.addLecturership(lectureshipBean);
+        return "redirect:findLecturership";
+    }
+
+
+    /**
+     * 运营-线上卡券管理-回显卡券
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "echoLecturership")
+    public String echoLecturership(Long id,Model model){
+        LectureshipBean lectureshipBean = lectureshipService.echoLecturership(id);
+        model.addAttribute("bean",lectureshipBean);
+        return "operating/card/addLecturership";
+    }
 }

@@ -34,4 +34,15 @@ public class LecturershipController implements LecturershipApi {
         return lectureshipService.updateLecturerStatusToDown(id);
     }
 
+    @Override
+    public void addLecturership(LectureshipBean lectureshipBean) {
+        lectureshipService.addLecturership(lectureshipBean);
+    }
+
+
+    @Override
+    public LectureshipBean echoLecturership(Long id) {
+        return lectureshipService.echoLecturership(id);
+    }
+
 }
