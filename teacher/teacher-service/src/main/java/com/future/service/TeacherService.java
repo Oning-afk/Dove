@@ -23,4 +23,6 @@ public interface TeacherService {
     void updateToAllowed(Long[] id);
 
     void updateToRefused(Long[] id);
+
+    Teacher findTeacherById(Long id);
 }

@@ -68,7 +68,7 @@
                 </div>
                 <div class="nav_sub">
                     您好,admin &nbsp; |
-                    <a target="_blank" href="/main">返回前台</a> |
+                    <a target="_blank" href="/offline/class/findOffClassOnMain">返回前台</a> |
                     <a href="javascript:void(0);" onClick="refresh();">刷新</a> |
                     <a href="http://try.51eduline.com/index.php?app=admin&mod=Public&act=logout">退出</a><br/>
                     <div id="TopTime"></div>

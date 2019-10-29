@@ -48,4 +48,9 @@ public class TeacherController implements TeacherServiceApi {
     public void updateToRefused(Long[] id) {
         teacherService.updateToRefused(id);
     }
+
+    @Override
+    public Teacher findTeacherById(Long id) {
+        return teacherService.findTeacherById(id);
+    }
 }

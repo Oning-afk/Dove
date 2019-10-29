@@ -104,4 +104,11 @@ public class TeacherController {
         return "redirect:findTeacherList";
     }
 
+    @RequestMapping("findTeacherById")
+    public String findTeacherById(Long id ,Model model){
+        Teacher teacher = teacherService.findTeacherById(id);
+        model.addAttribute("teacher",teacher);
+        return "teacher/details";
+    }
+
 }

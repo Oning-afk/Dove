@@ -73,4 +73,9 @@ public class TeacherServiceImpl implements TeacherService  {
     public void updateToRefused(Long[] id) {
         teacherMapper.updateToRefused(id);
     }
+
+    @Override
+    public Teacher findTeacherById(Long id) {
+        return teacherMapper.findTeacherById(id);
+    }
 }

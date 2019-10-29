@@ -68,4 +68,8 @@
             #{item}
         </foreach>
     </update>
+
+    <select id="findTeacherById" parameterType="java.lang.Long" resultType="com.future.model.Teacher">
+        select * from teacher_user where id = #{id};
+    </select>
 </mapper>

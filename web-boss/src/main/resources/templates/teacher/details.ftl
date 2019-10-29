@@ -3,8 +3,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Eduline — Eduline在线教育平台|在线网校系统|在线教育系统|在线教育解决方案|在线教育系统|在线学习系统|在线培训系统</title>
-    <meta content="在线教育，教育系统，在线教育系统，在线教育平台，在线教育网站，在线教育解决方案，网络教学系统，直播系统，点播系统，录播系统，在线约课，在线考试，在线题库，题库系统，在线教育app，在线网校系统，网校系统，培训系统，企业培训系统，企业内训系统，在线培训系统，在线教育系统，在线学习系统，慕课系统，教育系统源码，教育源码，教育源码" name="keywords">
+    <title>${teacher.name}</title>
+    <meta content="Eduline多机构在线教育交易平台" name="keywords">
     <meta content="Eduline多机构在线教育交易平台" name="description">
     <meta name="viewport" charset="UTF-8" content="user-scalable=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
@@ -43,8 +43,8 @@
         var UPLOAD_URL= 'http://try.51eduline.com/data/upload';
         var THEME_URL = 'http://try.51eduline.com/addons/theme/stv1/_static';
         var APPNAME   = 'classroom';
-        var MID		  = '0';
-        var UID		  = '0';
+        var MID		  = '1710';
+        var UID		  = '1710';
         var initNums  =  '140';
         var SYS_VERSION = '20180814';
         var _ROOT_    = 'http://try.51eduline.com';
@@ -82,13 +82,13 @@
                 $("#search_cate").val(a_Attr);
                 $(".search_index #search_combo_input").attr("placeholder","搜索"+span_Val);
                 $(this).hide().siblings().show();
-            });
+            })
 
             $(".search_index input").focus(function(){
                 $(".search_index").css("width","250px");
                 $(".search_index input").css("width","140px");
-            });
-            $.post("http://localhost:5880/statistics/saveVisit");
+            })
+
         });
 
         $(window).scroll(function(){
@@ -122,7 +122,9 @@
 <body>
 
 
-<link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/reg_login.css?v=20180814">
+
+<div class="win hide"></div>
+
 <div class="top">
     <div class="header_new2">
         <div class="top1">
@@ -241,208 +243,51 @@
         </div>
     </div>
 </div>
-<link rel="stylesheet" type="text/css" href="http://try.51eduline.com/apps/classroom/_static/css/index.css">
-<link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/slick_banner.css">
-<link rel="stylesheet" type="text/css" href="http://try.51eduline.com/addons/theme/stv1/_static/css/slider_banner.css">
-<script src="../js/swiper.js"></script>
-<script src="../js/vue/vue.js"></script>
 <script>
-    $(function(){
-        vm = new Vue({
-            el: '#slideshow',
-            data:{
-                list:{
-
-                }
-            }
-        });
-
-        findSwiper();
-
-        $(".direction a").on("click",function(){
-            $("#search_cate").val($(this).attr("attr"));
-            var search_cate = $("search_cate").val();
-        });
-        $('#btn_search_site').click(function(){
-            var search_cate = $('#search_cate').val();
-            var search_combo_input = $('#search_combo_input').val();
-            if(search_combo_input != ''){
-                if(search_cate == 'video'){
-                    window.open("http://try.51eduline.com/course.html"+"?search="+search_combo_input);
-                }else if(search_cate == 'school'){
-                    window.open("http://try.51eduline.com/school.html"+"?search="+search_combo_input);
-                }else if(search_cate == 'teacher'){
-                    window.open("http://try.51eduline.com/teacher.html"+"?search="+search_combo_input);
-                }
-            }
-        });
-        $('.search_hot a').click(function(){
-            var cateId = $(this).attr('attr');
-            var search_cate = $('#search_cate').val();
-            if(search_cate == 'video'){
-                window.open("http://try.51eduline.com/course.html"+"?search="+cateId);
-            }else if(search_cate == 'school'){
-                window.open("http://try.51eduline.com/school.html"+"&search="+cateId);
-            }else if(search_cate == 'teacher'){
-                window.open("http://try.51eduline.com/teacher.html"+"?search="+cateId);
-            }
-        });
-        $(window).scroll(function () {
-            var _lazydata=[];
-            $.each($(".information-imgtxt .lazyload"),function () {
-                lazydata={
-                    obj:$(this),
-                    url:$(this).attr("data-original"),
-                };
-                _lazydata.push(lazydata)
-            });
-            $.each(_lazydata,function (i,data) {
-                if(data.obj.offset().top-$(document).scrollTop()<$(window).height()){
-                    data.obj.attr("src",data.url)
-                }
-            })
-        })
-    })
-
-    function findSwiper(){
-        $.post("http://localhost:5880/teacher/findSwiper",{},function (data) {
-            vm.list = data;
-        })
+    if($(".ewm").children().length>1){
+        $(".ewm").width(203)
+    }else{
+        $(".ewm").width(93)
     }
-
-    var mySwiper = new Swiper('.swiper-container',{
-        prevButton:'.swiper-button-prev',
-        nextButton:'.swiper-button-next',
-    })
 </script>
-<!--banner start-->
-<section>
-    <div class="swiper-container" >
-            <div class="swiper-wrapper" id="slideshow">
-                    <div class="swiper-slide" v-for="site in list">
-                            <a :href="site.url" title="">
-                                <img :src="site.imgs" alt="" width="100%">
-                            </a>
+
+<link rel="stylesheet" href="http://try.51eduline.com/apps/classroom/_static/css/teacher_view.css">
+<!--top-->
+
+<div class="topbox teacherbg" style="background:url(http://try.51eduline.com/addons/theme/stv1/_static/images/banner1.jpg) center center no-repeat;background-size: cover;">
+    <div class="g-bg04">
+        <div class="wrap">
+            <div class="teacher-profile">
+                <div class="info">
+                    <div class="portrait"><img src="${teacher.image}" alt="${teacher.name}"></div>
+                    <div class="data">
+                        <div class="title-box">
+                            <h1 class="name"><a href="javascript:;">${teacher.name}</a></h1>
+                        </div>
+                        <div class="summary-box">
+                            <div class="voice1" style="margin-right:0px;">
+                            </div>
+                            <span class="slogon"></span>
+                        </div>
                     </div>
+                    <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+                </div>
             </div>
-            <!-- Add Pagination -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
-</section>
-<!--banner end-->
-
-<!-- 首页模块 -->
-<!--APP下载、创建小组、入驻机构-->
-<div class="body01" style="margin:0 auto">
-    <ul class="my-server">
-        <li>
-            <a href="javascript:;" onClick="reg_login();">
-                <i class="icon icon-laoshi"></i>
-                <span>
-                    <h3>认证讲师</h3>
-                    <small>寻找更多志同道合的人</small>
-                </span>
-            </a>
-        </li>
-    </ul>
-</div>
-
-<!--最新课程 start-->
-<div class="body01">
-    <h1>最新课程</h1>
-    <div class="body01-content">
-        <#list list.list as offlineClass>
-            <ul>
-                <li>
-                    <img class="lefttopimg" src="http://try.51eduline.com/addons/theme/stv1/_static/images/course.png" alt="">
-                    <a href="/offline/class/findClassId?id=${offlineClass.id}">
-                        <img class="lazyload" data-original="${offlineClass.offlineClassImage}" alt="" />
-                    </a>
-                    <div class="title">
-                        <h5><a href="http://try.51eduline.com/course/176.html">${offlineClass.offlineClassName}</a></h5>
-                        <span><strong>${offlineClass.offlineClassPrice}</strong><small>${offlineClass.offlineClassBuyNum}</small></span>
-                    </div>
-                </li>
-            </ul>
-        </#list>
+        </div>
     </div>
 </div>
-<!--最新课程 end-->
 
-<!--精选课程 start-->
-<div class="body01">
-    <h1>精选课程</h1>
-    <div class="body01-content">
-        <#list list.list as offlineClass>
-            <ul>
-                <li>
-                    <img class="lefttopimg" src="http://try.51eduline.com/addons/theme/stv1/_static/images/course.png" alt="">
-                    <a href="/offline/class/findClassId?id=${offlineClass.id}">
-                        <img class="lazyload" data-original="${offlineClass.offlineClassImage}" alt="" />
-                    </a>
-                    <div class="title">
-                        <h5><a href="/offline/class/findClassId?id=${offlineClass.id}">${offlineClass.offlineClassName}</a></h5>
-                        <span><strong>${offlineClass.offlineClassPrice}</strong><small>${offlineClass.offlineClassBuyNum}</small></span>
-                    </div>
-                </li>
-            </ul>
-        </#list>
-    </div>
-</div>
-<!--精选课程 end-->
-
-<!--讲师团队 start-->
-<div class="body01">
-    <h1>讲师团队</h1>
-    <div class="teacher-team">
-        <ul v-for="">
-            <li>
-                <a href="">
-                    <span>
-                        <img class="lazyload" data-original="">
-                    </span>
-                    <h5></h5>
-                    <small></small>
-                    <p></p>
-                </a>
-            </li>
+<div class="gr-main-infos">
+    <div class="wraps" style="width:1200px;margin:0 auto;">
+        <ul class="nav-box" id="view_main_nav">
+            <li >个人简介</li>
         </ul>
-        <ul>
-            <#list teacherList.list as teacher>
-                <li>
-                    <a href="/teacher/findTeacherById?id=${teacher.id}">
-                            <span>
-                                <img class="lazyload" data-original="${teacher.image}">
-                            </span>
-                        <h5>${teacher.name}</h5>
-                        <small>
-                            <#if teacher.rankId == 1>
-                                普通讲师
-                            </#if>
-                            <#if teacher.rankId == 2>
-                                银牌讲师
-                            </#if>
-                            <#if teacher.rankId == 3>
-                                金牌讲师
-                            </#if>
-                        </small>
-                        <p>${teacher.describe}</p>
-                    </a>
-                </li>
-            </#list>
-        </ul>
+        ${teacher.describe}
     </div>
 </div>
-<!--讲师团队 end-->
-<script src="http://try.51eduline.com/online_check.php?uid=0&uname=&mod=Index&app=classroom&act=index&action=trace"></script>
+<script src="http://try.51eduline.com/online_check.php?uid=1710&uname=17792274425&mod=Teacher&app=classroom&act=view&action=trace"></script>
 <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/lazyload/jquery.lazyload.min.js"></script>
 <script type="text/javascript">
-
-    function reg_login(){
-        location.href="../teacher";
-    }
-
     $(function () {
         // 初始化
         $("img.lazyload").lazyload({
@@ -455,114 +300,3 @@
 </body>
 
 </html>
-<style>
-    .swiper-slide{position:absolute;top:0;opacity:0}
-    .swiper-slide:first-child{opacity:1}
-    .swiper-container-android .swiper-slide,.swiper-wrapper{height:416.28px}
-    .slideTxtBox{overflow:hidden}
-    .slideTxtBox .icon-youjiantou{position:absolute;top:0;right:0}
-    .slideTxtBox .icon-zuojiantou{position:absolute;top:0;left:0;z-index:10}
-    .slideTxtBox .bd ul{padding:0 40px;float:left;}
-    .slideTxtBox .icon:hover{cursor:pointer}
-    .slideTxtBox .bd{position:relative;left:0;-webkit-transition:all .2s linear;-moz-transition:all .2s linear;-ms-transition:all .2s linear;-o-transition:all .2s linear;transition:all .2s linear}
-    .slideTxtBox .hd ul li:first-child em{color:#00bed4}
-    .single-item{position:relative;min-height:364px}
-    .content{position: relative}
-    .single-item div{position:absolute;top:0;left:0;width:570px;}
-    .single-item div img{width:100%;min-height:364px}
-    .single-item div span{width:100%;position:absolute;bottom:0;left:0;line-height:50px;font-size:20px;background:-webkit-linear-gradient(transparent,rgba(51,51,51,.8));background:-o-linear-gradient(transparent,rgba(51,51,51,.8));background:-moz-linear-gradient(transparent,rgba(51,51,51,.8));background:linear-gradient(transparent,rgba(51,51,51,.8))}
-    .single-item div span p{color:#fff;width:430px;margin-left:16px;white-space:nowrap;-ms-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden;font-weight:700}
-</style>
-<script >
-    /*首页轮播兼容ie9*/
-    var newimg=0; //0==1 1==2 2==3
-    var length = $(".swiper-slide").length;
-    $(".swiper-button-next").click(function () {
-        newimg++;
-        if(newimg>length-1){
-            newimg=0;
-        }
-        $(".swiper-slide").css("opacity","0");
-        $($(".swiper-slide")[newimg]).css("opacity","1");
-        return false;
-    });
-    $(".swiper-button-prev").click(function(){
-        newimg--;
-        if (newimg<0){
-            newimg=length-1;
-        }
-        $(".swiper-slide").css("opacity","0");
-        $($(".swiper-slide")[newimg]).css("opacity","1");
-        return false;
-    });
-    /*直播预告*/
-    $(".slideTxtBox .bd").width($(".slideTxtBox .bd ul").width()*$(".slideTxtBox .bd ul").length+(80*$(".slideTxtBox .bd ul").length))
-    var bdlength=$(".slideTxtBox .bd").width();
-    var num=$(".slideTxtBox .bd ul").length;
-    var datalength=$(".slideTxtBox .bd ul").outerWidth(); //初始化
-    var data=[];
-    var page=0;//第几个 0==1 1==2 2==3 。。。。
-    for (var i=0;i<$(".slideTxtBox .bd ul").length;i++){
-        datalength=datalength-$(".slideTxtBox .bd ul").outerWidth();
-        data[i]=datalength
-    }
-    $(".icon-youjiantou").click(function () {
-        page++;
-        if(page<=data.length-1){
-            $(".slideTxtBox .bd").css("left",data[page]+"px");
-            $(".icon-yuandian").css("color","#888");
-            $($(".hd li")[page]).children(".icon-yuandian").css("color","#00bed4");
-        }else{
-            page=data.length-1;
-            return false;
-        }
-    });
-    $(".icon-zuojiantou").click(function(){
-        page--;
-        if(page>=0){
-            $(".icon-yuandian").css("color","#888");
-            $($(".hd li")[page]).children(".icon-yuandian").css("color","#00bed4");
-            $(".slideTxtBox .bd").css("left", data[page]+"px")
-        }else{
-            page=0;
-            return false;
-        }
-    });
-    (function(){
-        $("img.lazyload").lazyload({effect: "fadeIn",placeholder:"http://try.51eduline.com/addons/theme/stv1/_static/images/loading_image.png"});
-    })();
-    /*轮播
-    * 1，数量
-    * 长度
-    * 标识框*/
-    lunbo($(".content .single-item"),$(".content .single-item div"),$(".slick-prev"),$(".slick-next"));
-    function lunbo(a,b,pre,next){
-        //设置外框长度 a 为外框  b为每张轮播 pre为点击上一页 next 为下一页
-        a.width(parseInt(b.outerWidth())*b.length);
-        var i=0;  //当前项
-        var mylunbo=[];
-        b.each(function (i,index) {
-            mylunbo.push(index)
-        });
-        pre.on("click",function () {
-            i--;
-            if(i>0){
-
-            }else{
-                i=b.length-1;
-            }
-            b.hide();
-            $(mylunbo[i]).show()
-        });
-        next.on("click",function () {
-            i++;
-            if (i<b.length-1){
-
-            }else{
-                i=0;
-            }
-            b.hide();
-            $(mylunbo[i]).show()
-        })
-    }
-</script>

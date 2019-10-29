@@ -27,4 +27,7 @@ public interface TeacherServiceApi {
 
     @RequestMapping("updateToRefused")
     void updateToRefused(@RequestParam(required = false,value = "id") Long[] id);
+
+    @RequestMapping("findTeacherById")
+    Teacher findTeacherById(@RequestParam(required = false,value = "id")Long id);
 }
