@@ -150,8 +150,7 @@
                         <a id="root_36" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('36');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">用户</span></a>
                         <ul id="tree_36" class="submenu">
                             <!-- 第三级菜单 -->
-                            <li><a id="menu_37" href="javascript:void(0)" onClick="switch_sub_menu('37', '???');" class="submenuA" hidefocus="true" style="outline:none;">用户管理</a></li>
-                            <li><a id="menu_38" href="javascript:void(0)" onClick="switch_sub_menu('38', '???');" class="submenuA" hidefocus="true" style="outline:none;">讲师管理</a></li>
+                            <li><a id="menu_38" href="javascript:void(0)" onClick="switch_sub_menu('38', '/teacher/findTeacherList?type=1');" class="submenuA" hidefocus="true" style="outline:none;">讲师管理</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -160,7 +159,7 @@
                         <a id="root_43" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('43');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">班级管理</span></a>
                         <ul id="tree_43" class="submenu">
                             <!-- 第三级菜单 -->
-                            <li><a id="menu_44" href="javascript:void(0)" onClick="switch_sub_menu('44', '???');" class="submenuA" hidefocus="true" style="outline:none;">班级课管理</a></li>
+                            <li><a id="menu_44" href="javascript:void(0)" onClick="switch_sub_menu('44', 'http://try.51eduline.com/index.php?app=course&mod=AdminAlbum&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">班级课管理</a></li>
                         </ul>
                     </li>
                     <li class="treemenu">
@@ -215,14 +214,14 @@
                         <a id="root_78" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('78');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">机构</span></a>
                         <ul id="tree_78" class="submenu">
                             <!-- 第三级菜单 -->
-                            <li><a id="menu_79" href="javascript:void(0)" onClick="switch_sub_menu('79', '???');" class="submenuA" hidefocus="true" style="outline:none;">机构管理</a></li>
+                            <li><a id="menu_79" href="javascript:void(0)" onClick="switch_sub_menu('79', 'http://try.51eduline.com/index.php?app=school&mod=AdminSchool&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">机构管理</a></li>
                         </ul>
                     </li>
                     <li class="treemenu">
                         <a id="root_82" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('82');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">内容管理</span></a>
                         <ul id="tree_82" class="submenu">
                             <!-- 第三级菜单 -->
-                            <li><a id="menu_86" href="javascript:void(0)" onClick="switch_sub_menu('86', '???');" class="submenuA" hidefocus="true" style="outline:none;">班级课管理</a></li>
+                            <li><a id="menu_86" href="javascript:void(0)" onClick="switch_sub_menu('86', 'http://try.51eduline.com/index.php?app=course&mod=AdminAlbum&act=index&');" class="submenuA" hidefocus="true" style="outline:none;">班级课管理</a></li>
                             <li><a id="menu_87" href="javascript:void(0)" onClick="switch_sub_menu('87', '/offline/class/findOfflineClassList');" class="submenuA" hidefocus="true" style="outline:none;">线下课管理</a></li>
                         </ul>
                     </li>
@@ -230,7 +229,7 @@
                         <a id="root_88" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('88');" hidefocus="true" style="outline:none;"><i class="icon icon-sanjiaoxing-right"></i><span class="text">讲师</span></a>
                         <ul id="tree_88" class="submenu">
                             <!-- 第三级菜单 -->
-                            <li><a id="menu_89" href="javascript:void(0)" onClick="switch_sub_menu('89', '???');" class="submenuA" hidefocus="true" style="outline:none;">讲师管理</a></li>
+                            <li><a id="menu_89" href="javascript:void(0)" onClick="switch_sub_menu('89', '/teacher/findTeacherList?type=1');" class="submenuA" hidefocus="true" style="outline:none;">讲师管理</a></li>
                         </ul>
                     </li>
                 </ul>

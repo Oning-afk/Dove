@@ -1,10 +1,8 @@
 package com.future.controller;
 
-import com.future.model.CardVoucher;
 import com.future.model.OfflineClass;
 import com.future.model.PageBean;
 import com.future.service.OfflineClassService;
-import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,8 +52,9 @@ public class ClassroomController {
      * @param offlineClass
      */
     @RequestMapping("addOffline")
-    public void addOffline(OfflineClass offlineClass){
+    public String addOffline(OfflineClass offlineClass){
         offlineClassService.addOffline(offlineClass);
+        return "redirect:findOfflineClassList";
     }
 
     /**

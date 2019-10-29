@@ -16,7 +16,9 @@ admin.searchList = function(page,id,offlineClassName,teacherName){
 //新增或修改数据
 admin.addOffline = function(offlineClass){
     $.post('/offline/class/addOffline',(offlineClass),function () {
-        location.href="/offline/class/findOfflineClassList?isDel=0&offlineClassIsAudit=1"
+        var callback = "location.href = location.href";
+        ui.success("操作成功");
+        setTimeout(callback,1500);
     })
 }
 

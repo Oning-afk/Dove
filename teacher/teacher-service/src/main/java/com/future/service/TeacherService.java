@@ -1,5 +1,6 @@
 package com.future.service;
 
+import com.future.model.PageBean;
 import com.future.model.Swiper;
 import com.future.model.Teacher;
 
@@ -16,4 +17,10 @@ public interface TeacherService {
     List<Swiper> findSwiper();
 
     Map applyFor(Teacher teacher);
+
+    PageBean<Teacher> findTeacherList(Teacher teacher, Integer page, Integer rows);
+
+    void updateToAllowed(Long[] id);
+
+    void updateToRefused(Long[] id);
 }

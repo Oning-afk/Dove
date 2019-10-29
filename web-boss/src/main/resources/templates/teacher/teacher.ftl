@@ -121,32 +121,36 @@
 
 <div class="win hide"></div>
 
-<div class="top">
+<<div class="top">
     <div class="header_new2">
         <div class="top1">
             <div class="top1img">
-                <a href="/" title="Eduline"><img src="../images/shu.png" width="150"/></a>
+                <a href="/" title="Eduline"><img src="http://try.51eduline.com/data/upload/2018/12/045c065a09b4e79.png" width="150"/></a>
             </div>
-
             <div class="nav">
                 <ul>
+                    <li class='active'>
+                        <a href="/" target="_self">首页</a>
+                    </li>
                     <li >
-                        <a href="http://try.51eduline.com" target="_self">首页</a>
-                    </li>                        <li >
                         <a href="javascript:;" target="_self">课程</a>
                         <span class="course-class">
-                            <a href="http://try.51eduline.com/course.html?vtype=1" target="_self">点播</a><a href="http://try.51eduline.com/course.html?vtype=2" target="_self">直播</a><a href="http://try.51eduline.com/album.html" target="_self">班级</a><a href="http://try.51eduline.com/lineclass.html" target="_self">线下</a>                            </span>                        </li>                        <li >
-                        <a href="http://try.51eduline.com/exam.html" target="_self">考试</a>
-                    </li>                        <li >
-                        <a href="http://try.51eduline.com/school.html" target="_self">机构</a>
-                    </li>                        <li >
+                            <a href="http://try.51eduline.com/album.html" target="_self">班级</a>
+                            <a href="http://try.51eduline.com/lineclass.html" target="_self">线下</a>
+                        </span>
+                    </li>
+                    <li >
                         <a href="http://try.51eduline.com/teacher.html" target="_self">名师</a>
-                    </li>                        <li >
-                        <a href="http://try.51eduline.com/vip.html" target="_self">会员</a>
-                    </li>                        <li >
+                    </li>
+                    <li >
                         <a href="javascript:;" target="_self">更多</a>
                         <span class="course-class">
-                            <a href="http://try.51eduline.com/mall.html" target="_self">商城</a><a href="http://try.51eduline.com/card_receipt/coupon.html" target="_self">卡券</a><a href="http://try.51eduline.com/news.html" target="_self">资讯</a><a href="http://try.51eduline.com/question.html" target="_self">问答</a><a href="http://try.51eduline.com/library.html" target="_self">资料</a>                            </span>                        </li>                </ul>
+                            <a href="http://try.51eduline.com/mall.html" target="_self">商城</a>
+                            <a href="http://try.51eduline.com/card_receipt/coupon.html" target="_self">卡券</a>
+                            <a href="http://try.51eduline.com/news.html" target="_self">资讯</a>
+                        </span>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -154,9 +158,6 @@
             <!--消息提示-->
             <ul class="news-msg" style="display:none;">
                 <a class="shanchu-ico" href="javascript:;" onClick="closeMsg(this)">×</a>
-
-
-
             </ul>
             <div class="search_index">
                 <div class="search_index_val">
@@ -165,7 +166,7 @@
                     </div>
                     <span>
                         <a href="javascript:void(0)" attr="course">课程</a>
-                        <a href="javascript:void(0)" attr="school">机构</a>                        <a href="javascript:void(0)" attr="teacher">讲师</a>
+                        <a href="javascript:void(0)" attr="teacher">讲师</a>
                     </span>
                     <input value="video" id="search_cate" type="hidden" disabled />
                 </div>
@@ -199,6 +200,7 @@
                     $(".news-msg").remove();
                 }
             </script>
+
             <div class="nav1">
                 <div class="look_scanning">
                     <i></i>
@@ -227,9 +229,12 @@
                         <dd class="login-after-bdbt"><a href="javascript:;" onClick="logout()">退出</a></dd>
                     </dl>
                 </ul>
+                </li>
+                </ul>
             </div>
+
             <div class="nav2">
-                <a class="page_header_adiv" href="http://try.51eduline.com/school/authentication.html">机构入驻</a>
+                <a class="page_header_adiv" href="http://try.51eduline.com/login.html">机构入驻</a>
             </div>
         </div>
     </div>
@@ -323,7 +328,6 @@
                             <p>提示：请填写认证理由</p>
                         </dd>
                     </dl>
-
                     <dl>
                         <dt><span>*</span>资格认证附件：</dt>
                         <p>教师认证必须上传教师资格证等其相关证明 </p>
@@ -484,134 +488,6 @@
 </script>
 
 <script src="http://try.51eduline.com/addons/theme/stv1/_static/js/module.form.js"></script>
-
-<!--footer start-->
-<div class="post-service yensen">
-    <div class="other-service">
-        <div class="service-class" style='width:160px; '>
-            <a target="_blank"  href="javascript:;"
-            ><span>服务规则</span></a>
-            <a target="_blank"                         href="http://try.51eduline.com/single/1.html"  >绑卡验证协议</a><a target="_blank"                         href="http://try.51eduline.com/single/2.html"  >会员服务协议</a><a target="_blank"                         href="http://try.51eduline.com/single/23.html"  >合作专区</a><a target="_blank"                         href="http://try.51eduline.com/single/25.html"  >机构帮助</a><a target="_blank"                         href="http://try.51eduline.com/single/26.html"  >机构入驻协议</a>            </div><div class="service-class" style='width:160px; '>
-            <a target="_blank"  href="javascript:;"
-            ><span>机构入驻</span></a>
-            <a target="_blank"                         href="http://try.51eduline.com/single/4.html"  >第一步</a><a target="_blank"  href="javascript:;"
-            >机构入驻</a><a target="_blank"                         href="http://try.51eduline.com/single/5.html"  >第二步</a><a target="_blank"                         href="http://try.51eduline.com/single/6.html"  >第三步</a><a target="_blank"  href="javascript:;"
-            >第四步</a>            </div><div class="service-class" style='width:160px; '>
-            <a target="_blank"  href="javascript:;"
-            ><span>用户注册</span></a>
-            <a target="_blank"                         href="http://try.51eduline.com/single/9.html"  >第一步</a><a target="_blank"                         href="http://try.51eduline.com/single/10.html"  >第二步</a><a target="_blank"                         href="http://try.51eduline.com/single/11.html"  >第三步</a><a target="_blank"  href="javascript:;"
-            >第四步</a>            </div><div class="service-class" style='width:160px; '>
-            <a target="_blank"  href="javascript:;"
-            ><span>名师签约</span></a>
-            <a target="_blank"                         href="http://try.51eduline.com/single/13.html"  >联系平台</a><a target="_blank"                         href="http://try.51eduline.com/single/14.html"  >后台审核</a><a target="_blank"                         href="http://try.51eduline.com/single/15.html"  >签约成功</a>            </div><div class="service-class" style='width:160px; '>
-            <a target="_blank"  href="javascript:;"
-            ><span>平台流程</span></a>
-            <a target="_blank"  href="javascript:;"
-            >个人用户</a><a target="_blank"                         href="http://try.51eduline.com/single/18.html"  >机构（名师）用户</a><a target="_blank"                         href="http://try.51eduline.com/single/19.html"  >第二级页面展示</a>            </div>        <div class="tel-box">
-            <div class="week">关注官方微信</div>
-            <div class="tel-icon">
-                <img src="http://try.51eduline.com/data/upload/2018/0808/14/5b6a92f043126_120_120_120_120.jpg">
-            </div>
-        </div>
-    </div>
-    <div class="copyright-box">
-        Copyright 2017 seition All Rights Reserved  |  蜀ICP 备 16004612号    </div>
-</div>
-<!--footer end-->
-<div class="sidernav">
-    <ul>
-        <li>
-            <a href="javascript:;"><i class="icon-01"></i></a>
-            <div class="qq_and_phone_info_div">
-                <div class="siderbox">
-                    <p>分享到：</p>
-                    <div class="bdsharebuttonbox">
-                        <!-- <a data-cmd="more" class="bds_more " href="#"></a> -->
-                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                        <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-
-                        <script>
-                            window._bd_share_config = {
-                                "common": {
-                                    "bdSnsKey": {
-                                        "tqq": "https://share.baidu.com/code#"
-                                    },
-                                    "bdText": "",
-                                    "bdMini": "2",
-                                    "bdMiniList": ["tsina", "weixin", "qzone", "sqq", "renren", "copy"],
-                                    "bdPic": "",
-                                    "bdStyle": "1",
-                                    "bdSize": "24"
-                                },
-                                "share": {},
-                                "image": {
-                                    "viewList": ["tsina", "weixin", "qzone", "sqq"],
-                                    "viewText": "分享到：",
-                                    "viewSize": "0"}
-                            };
-                            with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement(
-                                'script')).src = 'http://try.51eduline.com/addons/theme/stv1/_static/js/baiduShare/static/api/js/share.js?cdnversion=' +
-                                ~(-new Date() / 36e5)];
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <!--<li>-->
-        <!--<a href="javascript:;">-->
-        <!--<i class="icon-02"></i>-->
-        <!--</a>-->
-        <!--<div class="xiala">-->
-        <!--<img src="http://try.51eduline.com/data/upload//_120_120." alt="">-->
-        <!--<p>扫描下载APP</p>-->
-        <!--</div>-->
-        <!--</li>-->
-
-        <li>
-            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3132698449&site=http://try.51eduline.com&menu=yes"> <i class="icon-03"></i>
-            </a>
-            <div class="qq_and_phone_info_div">
-                <div class="siderbox">
-                    <dl>
-                        <dt class="qq_info_dt">
-                            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3132698449&site=http://try.51eduline.com&menu=yes">
-                                <span class="icon-qq"></span>QQ在线咨询</a>
-                        </dt>
-                    </dl>
-                    <dl>
-                        <dt><span class="icon-ph"></span>咨询热线：</dt>
-                        <dd style="color:#188eee;">010-5334-5805</dd>
-                        <dd style="color:#25c151;">136-2125-8074</dd>
-                    </dl>
-                </div>
-            </div>
-        </li>
-
-        <li>
-            <a href="javascript:;">
-                <i class="icon-05"></i>
-            </a>
-            <div class="xiala">
-                <img src="http://try.51eduline.com/data/upload/2018/0808/14/5b6a92e7ca6bf_120_120_120_120.png" alt="">
-                <p>扫一扫关注官方<span style="color: #FB7D30">微博</span></p>
-            </div>
-        </li>
-
-        <li>
-            <a href="javascript:;">
-                <i class="icon-06"></i>
-            </a>
-            <div class="xiala">
-                <img src="http://try.51eduline.com/data/upload/2018/0808/14/5b6a92f043126_120_120_120_120.jpg" alt="">
-                <p>扫一扫关注官方<span style="color: #8BDA64">微信</span></p>
-            </div>
-        </li>
-
-        <li class="backtop"><a href="javascript:;"><i class="icon-07"></i></a></li>
-    </ul>
-</div>
 <script src="http://try.51eduline.com/online_check.php?uid=1682&uname=13525434041&mod=User&app=home&act=authTeacher&action=trace"></script>
 <script type="text/javascript" src="http://try.51eduline.com/addons/theme/stv1/_static/js/lazyload/jquery.lazyload.min.js"></script>
 <script type="text/javascript">

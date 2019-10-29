@@ -2,4 +2,70 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.future.mapper.TeacherMapper" >
 
+    <resultMap id="BaseResultMap" type="com.future.model.Teacher" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="image" property="image" jdbcType="VARCHAR" />
+        <result column="describe" property="describe" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="BIGINT" />
+        <result column="realname" property="realname" jdbcType="VARCHAR" />
+        <result column="reason" property="reason" jdbcType="VARCHAR" />
+        <result column="attach" property="attach" jdbcType="VARCHAR" />
+        <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="rankId" property="rankId" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="getTeacherCount" parameterType="com.future.model.Teacher" resultType="java.lang.Integer">
+        select
+            count(*)
+        from
+            teacher_user
+        where
+            1 = 1
+            <if test="type != null">
+                and type = #{type}
+            </if>
+            <if test="name != null">
+                and name like '%${name}%'
+            </if>
+    </select>
+
+    <select id="findTeacherList" parameterType="com.future.model.Teacher" resultMap="BaseResultMap">
+        select
+            *
+        from
+            teacher_user
+        where
+            1 = 1
+            <if test="teacher.type != null">
+                and type = #{teacher.type}
+            </if>
+            <if test="teacher.name != null">
+                and name like  '%${teacher.name}%'
+            </if>
+        limit
+            #{page},#{rows}
+    </select>
+
+    <update id="updateToAllowed" parameterType="java.util.List">
+        update
+            teacher_user
+        set
+            type = 1
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updateToRefused" parameterType="java.util.List">
+        update
+            teacher_user
+        set
+            type = 2
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 </mapper>

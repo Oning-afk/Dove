@@ -18,30 +18,59 @@ public class Teacher {
 
     private Long id;
 
+    /**
+     * 名称
+     */
     private String name;
 
-    //认证状态
+    /**
+     * 认证状态
+     */
     private Integer type;
 
-    //讲师等级
+    /**
+     * 讲师等级
+     */
     private Integer rankId;
 
-    //创建时间
+    /**
+     * 创建时间
+     */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
 
-    //认证理由
+    /**
+     * 认证理由
+     */
     private String reason;
 
-    //真实姓名
+    /**
+     * 真实姓名
+     */
     private String realname;
 
-    //直播课程Id
+    /**
+     * 直播课程Id
+     */
     private Integer courseId;
 
-    //线下课程Id
+    /**
+     * 线下课程Id
+     */
     private Integer programsId;
 
-    //证书文件
+    /**
+     * 证书文件
+     */
     private String attach;
+
+    /**
+     * 头像
+     */
+    private String image;
+
+    /**
+     * 简介
+     */
+    private String describe;
 }

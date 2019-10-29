@@ -1,9 +1,7 @@
 package com.future.service.impl;
 
 import com.future.mapper.TeacherMapper;
-import com.future.model.Result;
-import com.future.model.Swiper;
-import com.future.model.Teacher;
+import com.future.model.*;
 import com.future.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -50,5 +48,29 @@ public class TeacherServiceImpl implements TeacherService  {
         }
 
         return msg;
+    }
+
+    @Override
+    public PageBean<Teacher> findTeacherList(Teacher teacher, Integer page, Integer rows) {
+        Integer totalSize = teacherMapper.getTeacherCount(teacher);
+        HashMap<String, Object> map = new HashMap<>();
+        int pageNumber = (page -1) *rows ;
+        map.put("page",pageNumber);
+        map.put("rows",rows);
+        map.put("teacher",teacher);
+        PageBean<Teacher> teacherPageBean = new PageBean<Teacher>(page, rows, totalSize);
+        List<Teacher> teacherList = teacherMapper.findTeacherList(map);
+        teacherPageBean.setList(teacherList);
+        return teacherPageBean;
+    }
+
+    @Override
+    public void updateToAllowed(Long[] id) {
+        teacherMapper.updateToAllowed(id);
+    }
+
+    @Override
+    public void updateToRefused(Long[] id) {
+        teacherMapper.updateToRefused(id);
     }
 }

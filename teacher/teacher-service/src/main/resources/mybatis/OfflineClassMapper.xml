@@ -63,6 +63,8 @@
       <if test="offlineClass.offlineClassName !=null and offlineClass.offlineClassName != ''">
         and offline_class_name like '%${offlineClass.offlineClassName}%'
       </if>
+    limit
+      #{page},#{rows}
   </select>
 
   <insert id="addOffline" parameterType="com.future.model.OfflineClass" >

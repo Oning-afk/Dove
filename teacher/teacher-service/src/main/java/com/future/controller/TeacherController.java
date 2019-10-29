@@ -1,6 +1,7 @@
 package com.future.controller;
 
 import com.future.interfaces.TeacherServiceApi;
+import com.future.model.PageBean;
 import com.future.model.Swiper;
 import com.future.model.Teacher;
 import com.future.service.TeacherService;
@@ -31,5 +32,20 @@ public class TeacherController implements TeacherServiceApi {
     @Override
     public Map applyFor(Teacher teacher) {
         return teacherService.applyFor(teacher);
+    }
+
+    @Override
+    public PageBean<Teacher> findTeacherList(Teacher teacher, Integer page, Integer rows) {
+        return teacherService.findTeacherList(teacher,page,rows);
+    }
+
+    @Override
+    public void updateToAllowed(Long[] id) {
+        teacherService.updateToAllowed(id);
+    }
+
+    @Override
+    public void updateToRefused(Long[] id) {
+        teacherService.updateToRefused(id);
     }
 }
