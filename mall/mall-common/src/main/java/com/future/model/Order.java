@@ -21,5 +21,6 @@ public class Order {
     private String   userName;         //用户名称
     private String   commodityName;    //商品名称
     private Double  commodityFreight;  //运费
+    private String   userCode;         //用户账号
 
 }

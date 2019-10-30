@@ -28,4 +28,21 @@ public class OrderServiceImpl implements OrderService {
         orderPageBean.setList(orderList);
         return orderPageBean;
     }
+
+    @Override
+    public Order orderShow(Long id) {
+        return orderMapper.orderShow(id);
+    }
+
+    @Override
+    public List<Order> exportOrder(Order order) {
+        return orderMapper.exportOrder(order);
+    }
+
+    @Override
+    public void delGoodsOrder(Long[] id) {
+        orderMapper.delGoodsOrder(id);
+    }
+
+
 }

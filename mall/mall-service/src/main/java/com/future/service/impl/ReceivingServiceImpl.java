@@ -28,4 +28,28 @@ public class ReceivingServiceImpl implements ReceivingService {
         receivingPageBean.setList(receivingList);
         return receivingPageBean;
     }
+
+    @Override
+    public void addReceiving(Receiving receiving) {
+        if(receiving.getId()!=null){
+            receivingMapper.updateReceiving(receiving);
+        }else{
+            receivingMapper.addReceiving(receiving);
+        }
+    }
+
+    @Override
+    public void deleteReceiving(Long[] id) {
+        receivingMapper.deleteReceiving(id);
+    }
+
+    @Override
+    public boolean updateReceivingToUp(Long[] id) {
+        return receivingMapper.updateReceivingToUp(id);
+    }
+
+    @Override
+    public boolean updateReceivingToDown(Long[] id) {
+        return receivingMapper.updateReceivingToDown(id);
+    }
 }

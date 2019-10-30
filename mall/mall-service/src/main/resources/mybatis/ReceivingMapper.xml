@@ -59,4 +59,81 @@
         #{page},#{rows}
     </select>
 
+    <insert id="addReceiving" parameterType="com.future.model.Receiving" >
+        insert into mall_receiving
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            user_id as userId,
+
+            region_id as regionId,
+
+            <if test="address != null" >
+                address,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="phone != null" >
+                phone,
+            </if>
+            enable,
+            <if test="defaultAddress != null" >
+                default_address,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            2,
+            2,
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            1,
+            <if test="defaultAddress != null" >
+                #{default_address,jdbcType=INTEGER},
+            </if>
+
+        </trim>
+    </insert>
+
+    <delete id="deleteReceiving" parameterType="java.util.List">
+        delete from mall_receiving where id in
+
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <update id="updateReceivingToUp" parameterType="java.util.List">
+        update
+        mall_receiving
+        set
+        enable = 0
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updateReceivingToDown" parameterType="java.util.List">
+        update
+        mall_receiving
+        set
+        enable = 1
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 </mapper>

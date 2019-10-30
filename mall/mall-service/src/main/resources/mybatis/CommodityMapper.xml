@@ -14,6 +14,7 @@
         <result column="introduction" property="introduction" jdbcType="VARCHAR" />
         <result column="coverimg" property="coverimg" jdbcType="VARCHAR" />
         <result column="details" property="details" jdbcType="VARCHAR" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
     </resultMap>
     <select id="getCount" parameterType="com.future.model.Commodity" resultType="java.lang.Integer">
         select
@@ -52,4 +53,165 @@
         #{page},#{rows}
     </select>
 
+    <update id="delCommodity" parameterType="java.util.List">
+        update
+        mall_commodity
+        set
+        state = 0
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updateStateToUp" parameterType="java.util.List">
+        update
+        mall_commodity
+        set
+        state = 2
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updateStateToDown" parameterType="java.util.List">
+        update
+        mall_commodity
+        set
+        state = 1
+        where id in
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <select id="getCount1" parameterType="com.future.model.Commodity" resultType="java.lang.Integer">
+        select
+        count(*)
+        from
+        mall_commodity
+        where
+        1 = 1
+        <if test="id != null" >
+            and id = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="classificationId != null" >
+            and classification_id = #{classificationId,jdbcType=BIGINT}
+        </if>
+        <if test="userId != null" >
+            and user_id = #{userId,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="commodityShow" parameterType="map" resultMap="BaseResultMap">
+        select
+        *,
+        com.name as name,
+        us.id as userId,
+        us.name as userName
+        from
+        mall_commodity co
+        left join
+        mall_commodity_type com
+        on
+        co.classification_id  = com.id
+        left join
+        t_user us
+        on
+        co.user_id = us.id
+        where
+        co.state = 0
+        <if test="id != null" >
+            and id = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="classificationId != null" >
+            and classification_id = #{classificationId,jdbcType=BIGINT}
+        </if>
+        <if test="userId != null" >
+            and user_id = #{userId,jdbcType=INTEGER}
+        </if>
+        limit
+        #{page},#{rows}
+    </select>
+
+    <insert id="addCommodity" parameterType="com.future.model.Commodity" >
+        insert into mall_commodity
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="commodityName != null" >
+                commodity_name,
+            </if>
+            <if test="classificationId != null" >
+                classification_id,
+            </if>
+            <if test="coverimg != null" >
+                coverimg,
+            </if>
+            <if test="introduction != null" >
+                introduction,
+            </if>
+            <if test="details != null" >
+                details,
+            </if>
+            <if test="state != null" >
+                state,
+            </if>
+            <if test="creationTime != null">
+                creation_time,
+            </if>
+            <if test="price != null" >
+                price,
+            </if>
+            <if test="inventory != null" >
+                inventory,
+            </if>
+            <if test="freight != null" >
+                freight,
+            </if>
+            <if test="essence != null" >
+                essence
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="commodityName != null" >
+                #{commodityName,jdbcType=VARCHAR},
+            </if>
+            <if test="classificationId != null" >
+                #{classificationId,jdbcType=BIGINT},
+            </if>
+            <if test="coverimg != null" >
+                #{coverimg,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction != null" >
+                #{introduction,jdbcType=VARCHAR},
+            </if>
+            <if test="details != null" >
+                #{details,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=INTEGER},
+            </if>
+            now(),
+            <if test="price != null" >
+                #{price},
+            </if>
+            <if test="inventory != null" >
+                #{inventory,jdbcType=INTEGER},
+            </if>
+            <if test="freight != null" >
+                #{freight},
+            </if>
+            <if test="essence != null" >
+                #{essence}
+            </if>
+        </trim>
+    </insert>
+    <delete id="deleteCommodity" parameterType="java.util.List">
+        delete from mall_commodity where id in
+
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>

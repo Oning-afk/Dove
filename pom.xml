@@ -16,6 +16,7 @@
       <module>operating</module>
       <module>user</module>
       <module>mall</module>
+      <module>finance</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -30,7 +30,7 @@ import java.util.Map;
 @RequestMapping("teacher")
 public class TeacherController {
 
-    @Autowired
+   @Autowired
     private TeacherService teacherService;
 
     @RequestMapping("findSwiper")

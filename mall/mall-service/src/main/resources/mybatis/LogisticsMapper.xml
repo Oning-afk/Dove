@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.mapper.LogisticsMapper" >
+
+    <insert id="addLogistics" parameterType="com.future.model.Logistics">
+        insert into mall_logistics
+            (
+            company_number,
+            logistics_key
+            )
+        values
+            (
+            #{companyNumber,jdbcType=VARCHAR},
+            #{key,jdbcType=VARCHAR}
+           )
+    </insert>
+
+</mapper>

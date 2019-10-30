@@ -1,13 +1,9 @@
 package com.future.controller;
 
-import com.future.model.Result;
-import com.future.model.User;
 import com.future.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 /**
  * @program: dove-parent

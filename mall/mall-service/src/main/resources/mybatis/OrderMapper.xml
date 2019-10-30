@@ -60,4 +60,65 @@
         limit
         #{page},#{rows}
     </select>
+    <select id="orderShow" parameterType="java.lang.Long" resultType="com.future.model.Order">
+         select
+        *,
+        a.user_id as userId,
+        us.usercode as userCode,
+        a.commodity_id as commodityId,
+        com.commodity_name as commodityName,
+        com.freight as commodityFreight,
+        us.name as userName
+        from
+        mall_order a
+        left join
+        mall_commodity com
+        on
+        a.commodity_id = com.id
+        left join
+        t_user us
+        on
+        a.user_id = us.id
+        where
+        a.orderid = #{id}
+    </select>
+    <select id="exportOrder" parameterType="com.future.model.Order" resultMap="BaseResultMap">
+        select
+        *,
+        a.user_id as userId,
+        us.usercode as userCode,
+        a.commodity_id as commodityId,
+        com.commodity_name as commodityName,
+        com.freight as commodityFreight,
+        us.name as userName
+        from
+        mall_order a
+        left join
+        mall_commodity com
+        on
+        a.commodity_id = com.id
+        left join
+        t_user us
+        on
+        a.user_id = us.id
+        where
+        1 = 1
+        <if test="orderId != null" >
+            and orderid = #{orderId,jdbcType=INTEGER}
+        </if>
+        <if test="userId != null" >
+            and user_id = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="commodityId != null" >
+            and commodity_id = #{commodityId,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <delete id="delGoodsOrder" parameterType="java.util.List">
+        delete from mall_order where id in
+
+        <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>
